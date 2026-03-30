@@ -1,0 +1,312 @@
+<%- include('../partials/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+    --shadow: 0 4px 24px rgba(15,26,48,0.09);
+    --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7 }
+  img { max-width: 100%; display: block }
+  a { text-decoration: none; color: inherit }
+
+  /* ── PAGE HERO ── */
+  .blogs-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 80px 5% 72px;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .blogs-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .blogs-hero::after {
+    content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(circle, rgba(26,171,152,0.14) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .blogs-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto }
+
+  .section-label {
+    font-size: 0.70rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 28px; height: 2px; background: var(--teal); border-radius: 2px; display: inline-block }
+  .section-label::after { content: ''; width: 28px; height: 2px; background: var(--teal); border-radius: 2px; display: inline-block }
+
+  .blogs-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .blogs-hero h1 em { color: var(--gold); font-style: italic }
+  .blogs-hero p { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.80; max-width: 520px; margin: 0 auto }
+
+  /* ── BLOGS GRID ── */
+  .blogs-section { padding: 88px 5%; background: var(--off-white) }
+  .blogs-inner { max-width: 1100px; margin: 0 auto }
+
+  .blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  /* Featured first blog spans 2 columns */
+  .blog-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); border-color: var(--teal) }
+
+  .blog-card.featured { grid-column: 1 / 3 }
+  .blog-card.featured .blog-img { height: 300px }
+  .blog-card.featured .blog-title { font-size: 1.4rem }
+
+  .blog-img {
+    width: 100%; height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .blog-card:hover .blog-img { transform: scale(1.04) }
+  .blog-img-placeholder {
+    width: 100%; height: 200px;
+    background: linear-gradient(135deg, var(--gray-lt) 0%, var(--border) 100%);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .blog-card.featured .blog-img-placeholder { height: 300px }
+  .blog-img-placeholder i { font-size: 2.5rem; color: var(--border) }
+
+  .blog-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1 }
+
+  .blog-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap }
+  .blog-cat {
+    font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.09em; color: var(--white);
+    background: var(--teal); padding: 3px 11px; border-radius: 50px;
+  }
+  .blog-num {
+    font-size: 0.72rem; font-weight: 600; color: var(--text-lt);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .blog-num i { font-size: 0.60rem; color: var(--gold) }
+
+  .blog-title {
+    font-family: var(--font-head);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--navy); line-height: 1.40;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .blog-title:hover { color: var(--teal) }
+
+  .blog-excerpt { font-size: 0.84rem; color: var(--text-lt); line-height: 1.75; flex: 1; margin-bottom: 20px }
+
+  .blog-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border) }
+  .blog-author { display: flex; align-items: center; gap: 9px }
+  .blog-author-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    object-fit: cover; object-position: top;
+    border: 1.5px solid var(--teal);
+  }
+  .blog-author-name { font-size: 0.78rem; font-weight: 600; color: var(--navy) }
+  .blog-read-link {
+    font-size: 0.80rem; font-weight: 600; color: var(--teal);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all var(--transition);
+  }
+  .blog-card:hover .blog-read-link { gap: 10px; color: var(--teal-d) }
+
+  /* ── CTA STRIP ── */
+  .blogs-cta-strip {
+    background: var(--navy);
+    padding: 56px 5%;
+    text-align: center;
+  }
+  .blogs-cta-strip h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--white); font-weight: 600; margin-bottom: 10px }
+  .blogs-cta-strip h2 em { color: var(--gold); font-style: italic }
+  .blogs-cta-strip p { font-size: 0.92rem; color: rgba(255,255,255,0.50); max-width: 440px; margin: 0 auto 28px }
+  .btn-primary {
+    background: var(--teal); color: var(--white); padding: 13px 28px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,171,152,0.32); color: var(--white) }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .blogs-grid { grid-template-columns: repeat(2, 1fr) }
+    .blog-card.featured { grid-column: 1 / -1 }
+  }
+  @media (max-width: 640px) {
+    .blogs-grid { grid-template-columns: 1fr }
+    .blog-card.featured { grid-column: auto }
+    .blog-card.featured .blog-img, .blog-card.featured .blog-img-placeholder { height: 200px }
+    .blog-card.featured .blog-title { font-size: 1.05rem }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="blogs-hero">
+  <div class="blogs-hero-inner">
+    <div class="section-label">Health Blog</div>
+    <h1>Insights on <em>Orthopedic Health</em></h1>
+    <p>Evidence-based articles on joint pain, non-surgical treatment, sports injuries, and bone health — written to help you make informed decisions about your care.</p>
+  </div>
+</section>
+
+<!-- ═══════ BLOGS GRID ═══════ -->
+<section class="blogs-section">
+  <div class="blogs-inner">
+    <div class="blogs-grid">
+
+      <!-- Blog 1 — FEATURED -->
+      <a href="/blogs/vitamin-d3-b12-joint-pain" class="blog-card featured">
+        <div class="blog-img-placeholder"><i class="fa-solid fa-bone"></i></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Bone Health</span>
+            <span class="blog-num"><i class="fa-solid fa-circle-dot"></i> Article 01</span>
+          </div>
+          <div class="blog-title">Why Your Joint Pain Isn't Just 'Getting Old': The Hidden Role of Vitamin D3 & B12 in Bone Health</div>
+          <p class="blog-excerpt">Millions of Indians live with chronic joint pain that gets dismissed as a normal part of ageing — when in reality, Vitamin D3 and B12 deficiencies are silently driving inflammation, weakening bones, and slowing recovery. Understanding this hidden connection could change how you manage your pain entirely.</p>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+              <span class="blog-author-name">Dr. Sarish Sharma</span>
+            </div>
+            <span class="blog-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Blog 2 -->
+      <a href="/blogs/hyaluronic-acid-vs-cortisone" class="blog-card">
+        <div class="blog-img-placeholder"><i class="fa-solid fa-vial"></i></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Joint Care</span>
+            <span class="blog-num"><i class="fa-solid fa-circle-dot"></i> Article 02</span>
+          </div>
+          <div class="blog-title">Hyaluronic Acid Injections vs. Cortisone: Which Is Right for Your Knee or Hip Pain?</div>
+          <p class="blog-excerpt">Two of the most commonly offered injections for knee and hip arthritis — but they work very differently and suit different patients. Here is an honest, unbiased comparison to help you understand which option is right for your condition, age, and health profile.</p>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+              <span class="blog-author-name">Dr. Sarish Sharma</span>
+            </div>
+            <span class="blog-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Blog 3 -->
+      <a href="/blogs/slipped-disc-vs-muscle-spasm" class="blog-card">
+        <div class="blog-img-placeholder"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Spine</span>
+            <span class="blog-num"><i class="fa-solid fa-circle-dot"></i> Article 03</span>
+          </div>
+          <div class="blog-title">Slipped Disc or Muscle Spasm? How to Tell the Difference — and When to See a Specialist</div>
+          <p class="blog-excerpt">Back pain is one of the most common reasons people visit a doctor — but the cause is often misidentified. A slipped disc and a muscle spasm feel similar but require very different treatments. This guide helps you recognise the key differences and know exactly when specialist care is needed.</p>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+              <span class="blog-author-name">Dr. Sarish Sharma</span>
+            </div>
+            <span class="blog-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Blog 4 -->
+      <a href="/blogs/non-surgical-joint-care-osteoarthritis" class="blog-card">
+        <div class="blog-img-placeholder"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Osteoarthritis</span>
+            <span class="blog-num"><i class="fa-solid fa-circle-dot"></i> Article 04</span>
+          </div>
+          <div class="blog-title">You Don't Always Need Surgery: A Complete Guide to Non-Surgical Joint Care for Osteoarthritis</div>
+          <p class="blog-excerpt">Surgery is often presented as the inevitable end point for arthritis — but for a large majority of patients, it is not the only option or even the best one. This comprehensive guide covers every non-surgical approach available today, from PRP and viscosupplementation to physiotherapy and lifestyle optimisation.</p>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+              <span class="blog-author-name">Dr. Sarish Sharma</span>
+            </div>
+            <span class="blog-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Blog 5 -->
+      <a href="/blogs/fractures-that-dont-heal-bmi-therapy" class="blog-card">
+        <div class="blog-img-placeholder"><i class="fa-solid fa-bone"></i></div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Fracture Care</span>
+            <span class="blog-num"><i class="fa-solid fa-circle-dot"></i> Article 05</span>
+          </div>
+          <div class="blog-title">Why Some Fractures Don't Heal (And What Bone Marrow Injection Therapy Can Do About It)</div>
+          <p class="blog-excerpt">Most fractures heal within weeks — but delayed union and non-union fractures can leave patients in pain for months or even years, often being told surgery is the only answer. Bone Marrow Injection (BMI) therapy offers a powerful non-surgical alternative that stimulates the body's own healing mechanisms at the fracture site.</p>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+              <span class="blog-author-name">Dr. Sarish Sharma</span>
+            </div>
+            <span class="blog-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA STRIP ═══════ -->
+<div class="blogs-cta-strip">
+  <h2>Have a Question About Your <em>Condition?</em></h2>
+  <p>Book a consultation with Dr. Sarish Sharma — clinical-first assessment, same-day treatment available.</p>
+  <a href="/contact" class="btn-primary">
+    <i class="fa-regular fa-calendar-check"></i> Book Appointment
+  </a>
+</div>
+
+<%- include('../partials/footer') %>

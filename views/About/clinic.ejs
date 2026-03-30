@@ -1,0 +1,1389 @@
+<%- include('../partials/boilerplate') %>
+    <%- include('../partials/navbar') %>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+            :root {
+                --navy: #1A2744;
+                --navy-d: #0F1A30;
+                --teal: #1AAB98;
+                --teal-d: #148A79;
+                --gold: #C6993A;
+                --white: #ffffff;
+                --off-white: #F5F4EF;
+                --gray-lt: #ECEDF2;
+                --gray: #8A97AB;
+                --gray-dk: #3F5264;
+                --text: #171F2D;
+                --text-lt: #4A5F75;
+                --border: #DDE2EC;
+                --font-head: 'Fraunces', Georgia, serif;
+                --font-body: 'Figtree', sans-serif;
+                --radius-sm: 6px;
+                --radius: 14px;
+                --radius-lg: 22px;
+                --shadow-sm: 0 2px 8px rgba(15, 26, 48, 0.06);
+                --shadow: 0 4px 24px rgba(15, 26, 48, 0.09);
+                --shadow-lg: 0 12px 48px rgba(15, 26, 48, 0.13);
+                --transition: 0.25s ease;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0
+            }
+
+            body {
+                font-family: var(--font-body);
+                color: var(--text);
+                background: var(--white);
+                overflow-x: hidden;
+                line-height: 1.7
+            }
+
+            img {
+                max-width: 100%;
+                display: block
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit
+            }
+
+            /* ── HERO ── */
+            .clinic-hero {
+                background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+                padding: 80px 5% 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .clinic-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(-55deg,
+                        transparent 0px, transparent 18px,
+                        rgba(255, 255, 255, 0.018) 18px, rgba(255, 255, 255, 0.018) 20px);
+            }
+
+            .clinic-hero::after {
+                content: '';
+                position: absolute;
+                top: -120px;
+                right: -120px;
+                width: 480px;
+                height: 480px;
+                background: radial-gradient(circle, rgba(26, 171, 152, 0.15) 0%, transparent 65%);
+                pointer-events: none;
+            }
+
+            .clinic-hero-grid {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 480px;
+                gap: 60px;
+                align-items: flex-end;
+                position: relative;
+                z-index: 1;
+            }
+
+            .clinic-hero-content {
+                padding-bottom: 64px
+            }
+
+            .breadcrumb {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 22px;
+                flex-wrap: wrap
+            }
+
+            .breadcrumb a {
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.48);
+                transition: color var(--transition)
+            }
+
+            .breadcrumb a:hover {
+                color: var(--gold)
+            }
+
+            .breadcrumb span {
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.22)
+            }
+
+            .breadcrumb .current {
+                color: var(--gold);
+                font-weight: 500
+            }
+
+            .section-label {
+                font-size: 0.70rem;
+                font-weight: 600;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 14px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .section-label::before {
+                content: '';
+                width: 28px;
+                height: 2px;
+                background: var(--teal);
+                border-radius: 2px;
+                display: inline-block
+            }
+
+            .clinic-hero h1 {
+                font-family: var(--font-head);
+                font-size: clamp(2rem, 4vw, 3.2rem);
+                font-weight: 600;
+                color: var(--white);
+                line-height: 1.18;
+                letter-spacing: -0.02em;
+                margin-bottom: 18px;
+            }
+
+            .clinic-hero h1 em {
+                color: var(--gold);
+                font-style: italic
+            }
+
+            .clinic-hero-desc {
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.58);
+                line-height: 1.80;
+                max-width: 500px;
+                margin-bottom: 36px
+            }
+
+            .hero-pills {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 40px
+            }
+
+            .hero-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                background: rgba(255, 255, 255, 0.07);
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                color: rgba(255, 255, 255, 0.78);
+                font-size: 0.78rem;
+                font-weight: 500;
+                padding: 7px 16px;
+                border-radius: 50px;
+            }
+
+            .hero-pill i {
+                color: var(--teal);
+                font-size: 0.70rem
+            }
+
+            .btn-primary {
+                background: var(--teal);
+                color: var(--white);
+                padding: 14px 30px;
+                border-radius: 50px;
+                font-family: var(--font-body);
+                font-size: 0.88rem;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+                transition: all var(--transition);
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn-primary:hover {
+                background: var(--teal-d);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(26, 171, 152, 0.32);
+                color: var(--white)
+            }
+
+            .btn-ghost {
+                background: transparent;
+                color: var(--white);
+                padding: 13px 26px;
+                border-radius: 50px;
+                font-family: var(--font-body);
+                font-size: 0.88rem;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+                border: 1.5px solid rgba(255, 255, 255, 0.28);
+                transition: all var(--transition);
+            }
+
+            .btn-ghost:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.58);
+                color: var(--white)
+            }
+
+            .hero-btns {
+                display: flex;
+                gap: 14px;
+                flex-wrap: wrap
+            }
+
+            /* Hero image stack */
+            .clinic-hero-imgs {
+                position: relative;
+                align-self: flex-end;
+                height: 420px
+            }
+
+            .hero-img-main {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 83%;
+                height: 436px;
+
+                object-fit: cover;
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+                box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.28);
+            }
+
+            .hero-img-thumb {
+                position: absolute;
+                bottom: 40px;
+                left: 0;
+                width: 46%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+                border: 4px solid var(--white);
+            }
+
+            .hero-badge-float {
+                position: absolute;
+                top: 11px;
+                right: -12%;
+                background: var(--white);
+                border-radius: var(--radius);
+                padding: 14px 18px;
+                box-shadow: var(--shadow-lg);
+                text-align: center;
+                min-width: 120px;
+            }
+
+            .hero-badge-float-num {
+                font-family: var(--font-head);
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: var(--teal);
+                line-height: 1
+            }
+
+            .hero-badge-float-label {
+                font-size: 0.64rem;
+                color: var(--text-lt);
+                margin-top: 4px;
+                line-height: 1.4
+            }
+
+            /* ── TRUST STRIP ── */
+            .trust-strip {
+                background: var(--teal)
+            }
+
+            .trust-strip-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0;
+            }
+
+            .trust-item {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 22px 28px;
+                border-right: 1px solid rgba(255, 255, 255, 0.18);
+            }
+
+            .trust-item:last-child {
+                border-right: none
+            }
+
+            .trust-icon {
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: var(--radius-sm);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0
+            }
+
+            .trust-icon i {
+                color: var(--white);
+                font-size: 0.95rem
+            }
+
+            .trust-text strong {
+                display: block;
+                font-size: 0.86rem;
+                font-weight: 700;
+                color: var(--white);
+                margin-bottom: 2px
+            }
+
+            .trust-text span {
+                font-size: 0.74rem;
+                color: rgba(255, 255, 255, 0.68)
+            }
+
+            /* ── ABOUT CLINIC ── */
+            .clinic-about {
+                padding: 96px 5%;
+                background: var(--white)
+            }
+
+            .clinic-about-grid {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+                align-items: center
+            }
+
+            .clinic-about-text .section-label {
+                color: var(--teal)
+            }
+
+            .clinic-about-text .section-label::before {
+                background: var(--gold)
+            }
+
+            .clinic-about h2 {
+                font-family: var(--font-head);
+                font-size: clamp(1.8rem, 3vw, 2.4rem);
+                color: var(--navy);
+                font-weight: 600;
+                line-height: 1.25;
+                letter-spacing: -0.02em;
+                margin-bottom: 18px
+            }
+
+            .clinic-about h2 em {
+                color: var(--teal);
+                font-style: italic
+            }
+
+            .clinic-about p {
+                font-size: 0.95rem;
+                color: var(--text-lt);
+                line-height: 1.82;
+                margin-bottom: 16px
+            }
+
+            .clinic-about p strong {
+                color: var(--navy)
+            }
+
+            .clinic-highlights {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 28px
+            }
+
+            .clinic-hi {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 13px 16px;
+                background: var(--off-white);
+                border-radius: var(--radius-sm);
+                border: 1px solid var(--border)
+            }
+
+            .clinic-hi i {
+                color: var(--teal);
+                flex-shrink: 0
+            }
+
+            .clinic-hi span {
+                font-size: 0.87rem;
+                color: var(--text)
+            }
+
+            /* About image mosaic */
+            .clinic-about-imgs {
+                position: relative;
+                height: 500px
+            }
+
+            .about-img-a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 80%;
+                height: 320px;
+                object-fit: cover;
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .about-img-b {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+                border: 4px solid var(--white);
+            }
+
+            .about-img-accent {
+                position: absolute;
+                bottom: 20px;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: var(--off-white);
+                border-radius: var(--radius-lg);
+                z-index: -1;
+            }
+
+            /* ── GALLERY ── */
+            .clinic-gallery {
+                padding: 96px 5%;
+                background: var(--off-white)
+            }
+
+            .clinic-gallery-inner {
+                max-width: 1100px;
+                margin: 0 auto
+            }
+
+            .gallery-head {
+                text-align: center;
+                margin-bottom: 52px
+            }
+
+            .gallery-head h2 {
+                font-family: var(--font-head);
+                font-size: clamp(1.8rem, 3vw, 2.4rem);
+                color: var(--navy);
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 12px
+            }
+
+            .gallery-head h2 em {
+                color: var(--teal);
+                font-style: italic
+            }
+
+            .gallery-head p {
+                font-size: 0.95rem;
+                color: var(--text-lt);
+                max-width: 480px;
+                margin: 0 auto;
+                line-height: 1.72
+            }
+
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 240px 240px;
+                gap: 16px;
+            }
+
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: var(--radius-lg);
+                cursor: pointer;
+                box-shadow: var(--shadow-sm);
+            }
+
+            .gallery-item:first-child {
+                grid-column: 1 / 2;
+                grid-row: 1 / 3;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+                display: block;
+            }
+
+            .gallery-item:hover img {
+                transform: scale(1.07)
+            }
+
+            .gallery-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(15, 26, 48, 0.60) 0%, transparent 55%);
+                opacity: 0;
+                transition: opacity var(--transition);
+                display: flex;
+                align-items: flex-end;
+                padding: 20px;
+            }
+
+            .gallery-item:hover .gallery-overlay {
+                opacity: 1
+            }
+
+            .gallery-overlay span {
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: var(--white)
+            }
+
+            .gallery-tag {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                background: rgba(255, 255, 255, 0.92);
+                color: var(--navy);
+                font-size: 0.64rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 4px 10px;
+                border-radius: 50px;
+                backdrop-filter: blur(4px);
+            }
+
+            /* ── LOCATION ── */
+            .clinic-location {
+                padding: 96px 5%;
+                background: var(--white)
+            }
+
+            .clinic-location-inner {
+                max-width: 1100px;
+                margin: 0 auto
+            }
+
+            .location-head {
+                text-align: center;
+                margin-bottom: 52px
+            }
+
+            .location-head h2 {
+                font-family: var(--font-head);
+                font-size: clamp(1.8rem, 3vw, 2.4rem);
+                color: var(--navy);
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 10px
+            }
+
+            .location-head h2 em {
+                color: var(--teal);
+                font-style: italic
+            }
+
+            .location-head p {
+                font-size: 0.95rem;
+                color: var(--text-lt);
+                max-width: 480px;
+                margin: 0 auto
+            }
+
+            .location-grid {
+                display: grid;
+                grid-template-columns: 1fr 360px;
+                gap: 40px;
+                align-items: start
+            }
+
+            .map-frame {
+                width: 100%;
+                height: 420px;
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                border: 1.5px solid var(--border);
+                box-shadow: var(--shadow)
+            }
+
+            .map-frame iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                display: block
+            }
+
+            .location-details {
+                display: flex;
+                flex-direction: column;
+                gap: 16px
+            }
+
+            .location-card {
+                background: var(--off-white);
+                border: 1.5px solid var(--border);
+                border-radius: var(--radius-lg);
+                padding: 24px 22px;
+            }
+
+            .location-card-title {
+                font-family: var(--font-head);
+                font-size: 0.95rem;
+                color: var(--navy);
+                font-weight: 700;
+                margin-bottom: 16px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--border);
+                position: relative
+            }
+
+            .location-card-title::after {
+                content: '';
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                width: 28px;
+                height: 2px;
+                background: var(--gold)
+            }
+
+            .location-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .location-row:last-child {
+                border-bottom: none;
+                padding-bottom: 0
+            }
+
+            .loc-icon {
+                width: 34px;
+                height: 34px;
+                background: var(--white);
+                border: 1.5px solid var(--border);
+                border-radius: var(--radius-sm);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0
+            }
+
+            .loc-icon i {
+                color: var(--teal);
+                font-size: 0.82rem
+            }
+
+            .loc-detail strong {
+                display: block;
+                font-size: 0.80rem;
+                font-weight: 700;
+                color: var(--navy);
+                margin-bottom: 2px
+            }
+
+            .loc-detail span {
+                font-size: 0.80rem;
+                color: var(--text-lt);
+                line-height: 1.5
+            }
+
+            .metro-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(26, 171, 152, 0.08);
+                border: 1px solid rgba(26, 171, 152, 0.20);
+                color: var(--teal-d);
+                font-size: 0.74rem;
+                font-weight: 600;
+                padding: 4px 12px;
+                border-radius: 50px;
+                margin-top: 6px
+            }
+
+            .directions-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 9px;
+                background: var(--navy);
+                color: var(--white);
+                padding: 13px 20px;
+                border-radius: 50px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                transition: all var(--transition);
+                margin-top: 4px;
+            }
+
+            .directions-btn:hover {
+                background: var(--teal);
+                color: var(--white)
+            }
+
+            .directions-btn i {
+                font-size: 0.80rem
+            }
+
+            /* OPD card */
+            .opd-mini {
+                background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+                border-color: var(--navy)
+            }
+
+            .opd-mini .location-card-title {
+                color: var(--white);
+                border-bottom-color: rgba(255, 255, 255, 0.12)
+            }
+
+            .opd-row-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.09)
+            }
+
+            .opd-row-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0
+            }
+
+            .opd-day-label {
+                font-size: 0.82rem;
+                color: rgba(255, 255, 255, 0.55)
+            }
+
+            .opd-time-val {
+                font-size: 0.82rem;
+                font-weight: 700;
+                color: var(--white)
+            }
+
+            .opd-time-val.closed {
+                color: rgba(255, 255, 255, 0.28);
+                font-weight: 400
+            }
+
+            .opd-note {
+                margin-top: 14px;
+                background: rgba(26, 171, 152, 0.14);
+                border: 1px solid rgba(26, 171, 152, 0.28);
+                border-radius: var(--radius-sm);
+                padding: 10px 14px;
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.68);
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                line-height: 1.60
+            }
+
+            .opd-note i {
+                color: var(--teal);
+                flex-shrink: 0;
+                margin-top: 2px
+            }
+
+            /* ── AFFILIATIONS ── */
+            .clinic-affiliations {
+                padding: 80px 5%;
+                background: var(--off-white);
+                border-top: 1px solid var(--border)
+            }
+
+            .clinic-affiliations-inner {
+                max-width: 1100px;
+                margin: 0 auto
+            }
+
+            .aff-head {
+                text-align: center;
+                margin-bottom: 48px
+            }
+
+            .aff-head h2 {
+                font-family: var(--font-head);
+                font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+                color: var(--navy);
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 10px
+            }
+
+            .aff-head h2 em {
+                color: var(--teal);
+                font-style: italic
+            }
+
+            .aff-head p {
+                font-size: 0.92rem;
+                color: var(--text-lt)
+            }
+
+            .aff-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px
+            }
+
+            .aff-card {
+                background: var(--white);
+                border: 1.5px solid var(--border);
+                border-radius: var(--radius-lg);
+                padding: 26px 22px;
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                transition: all var(--transition);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .aff-card::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, var(--teal), var(--gold));
+                transform: scaleX(0);
+                transition: transform var(--transition)
+            }
+
+            .aff-card:hover {
+                box-shadow: var(--shadow);
+                transform: translateY(-4px);
+                border-color: var(--teal)
+            }
+
+            .aff-card:hover::before {
+                transform: scaleX(1)
+            }
+
+            .aff-icon {
+                width: 48px;
+                height: 48px;
+                background: rgba(26, 171, 152, 0.08);
+                border-radius: var(--radius-sm);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                border: 1px solid rgba(26, 171, 152, 0.16)
+            }
+
+            .aff-icon i {
+                color: var(--teal);
+                font-size: 1rem
+            }
+
+            .aff-card h4 {
+                font-family: var(--font-head);
+                font-size: 0.96rem;
+                color: var(--navy);
+                font-weight: 700;
+                margin-bottom: 4px
+            }
+
+            .aff-card p {
+                font-size: 0.80rem;
+                color: var(--text-lt);
+                line-height: 1.60
+            }
+
+            .aff-badge {
+                display: inline-block;
+                font-size: 0.64rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--teal-d);
+                background: rgba(26, 171, 152, 0.08);
+                border: 1px solid rgba(26, 171, 152, 0.18);
+                padding: 3px 9px;
+                border-radius: 50px;
+                margin-top: 6px
+            }
+
+            /* ── CTA ── */
+            .clinic-cta {
+                background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+                padding: 80px 5%;
+                text-align: center;
+                position: relative;
+                overflow: hidden
+            }
+
+            .clinic-cta::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255, 255, 255, 0.015) 18px, rgba(255, 255, 255, 0.015) 20px)
+            }
+
+            .clinic-cta-inner {
+                position: relative;
+                z-index: 1
+            }
+
+            .clinic-cta h2 {
+                font-family: var(--font-head);
+                font-size: clamp(1.8rem, 3vw, 2.6rem);
+                color: var(--white);
+                margin-bottom: 14px;
+                font-weight: 600
+            }
+
+            .clinic-cta h2 em {
+                color: var(--gold);
+                font-style: italic
+            }
+
+            .clinic-cta p {
+                font-size: 0.98rem;
+                color: rgba(255, 255, 255, 0.55);
+                max-width: 480px;
+                margin: 0 auto 36px;
+                line-height: 1.78
+            }
+
+            .cta-btns {
+                display: flex;
+                gap: 14px;
+                justify-content: center;
+                flex-wrap: wrap
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 1024px) {
+                .clinic-hero-grid {
+                    grid-template-columns: 1fr
+                }
+
+                .clinic-hero-imgs {
+                    display: none
+                }
+
+                .clinic-about-grid {
+                    grid-template-columns: 1fr;
+                    gap: 48px
+                }
+
+                .clinic-about-imgs {
+                    height: 320px
+                }
+
+                .about-img-a {
+                    width: 100%;
+                    height: 320px
+                }
+
+                .about-img-b {
+                    display: none
+                }
+
+                .location-grid {
+                    grid-template-columns: 1fr
+                }
+
+                .trust-strip-inner {
+                    grid-template-columns: repeat(2, 1fr)
+                }
+
+                .trust-item:nth-child(2) {
+                    border-right: none
+                }
+
+                .aff-grid {
+                    grid-template-columns: repeat(2, 1fr)
+                }
+
+                .gallery-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: auto
+                }
+
+                .gallery-item:first-child {
+                    grid-column: auto;
+                    grid-row: auto
+                }
+            }
+
+            @media (max-width: 640px) {
+                .trust-strip-inner {
+                    grid-template-columns: 1fr
+                }
+
+                .trust-item {
+                    border-right: none;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.15)
+                }
+
+                .trust-item:last-child {
+                    border-bottom: none
+                }
+
+                .gallery-grid {
+                    grid-template-columns: 1fr
+                }
+
+                .aff-grid {
+                    grid-template-columns: 1fr
+                }
+
+                .cta-btns {
+                    flex-direction: column;
+                    align-items: center
+                }
+            }
+        </style>
+
+        <!-- ═══════ HERO ═══════ -->
+        <section class="clinic-hero">
+            <div class="clinic-hero-grid">
+                <div class="clinic-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="/">Home</a><span>›</span>
+                        <span class="current">Our Clinic</span>
+                    </nav>
+
+                    <div class="section-label">Safdarjung Enclave, New Delhi</div>
+                    <h1>A Clinic Built Around <em>Your Recovery</em></h1>
+                    <p class="clinic-hero-desc">
+                        Modern, welcoming, and equipped for precision non-surgical orthopedic care — Dr. Sarish Sharma's
+                        clinic in Safdarjung Enclave is designed to make every visit comfortable, efficient, and
+                        reassuring.
+                    </p>
+
+                    <div class="hero-pills">
+                        <span class="hero-pill"><i class="fa-solid fa-location-dot"></i> Safdarjung Enclave, New
+                            Delhi</span>
+                        <span class="hero-pill"><i class="fa-solid fa-clock"></i> Mon–Sat: 11AM–2PM & 6PM–8:30PM</span>
+                        <span class="hero-pill"><i class="fa-solid fa-shield-halved"></i> Non-Surgical Specialist</span>
+                    </div>
+
+                    <div class="hero-btns">
+                        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book
+                            Appointment</a>
+                        <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> +91 95606
+                            57964</a>
+                    </div>
+                </div>
+
+                <div class="clinic-hero-imgs">
+                    <img class="hero-img-main" src="/images/fourth image doc.jpeg"
+                        alt="Dr. Sarish Sharma Clinic Interior" loading="eager">
+                    <img class="hero-img-thumb" src="/images/reception corner.jpeg" alt="Clinic consultation room" loading="eager">
+                    <div class="hero-badge-float">
+                        <div class="hero-badge-float-num">15+</div>
+                        <div class="hero-badge-float-label">Years of<br>Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ TRUST STRIP ═══════ -->
+        <div class="trust-strip">
+            <div class="trust-strip-inner">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="trust-text"><strong>8,000+ Patients</strong><span>Treated successfully</span></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="trust-text"><strong>Non-Surgical First</strong><span>Surgery always last resort</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-hospital"></i></div>
+                    <div class="trust-text"><strong>3 Hospital Affiliations</strong><span>Fortis, Manipal &
+                            Amrita</span></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-globe"></i></div>
+                    <div class="trust-text"><strong>International Training</strong><span>Fellowship from London,
+                            UK</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ ABOUT THE CLINIC ═══════ -->
+        <section class="clinic-about">
+            <div class="clinic-about-grid">
+                <div class="clinic-about-text">
+                    <div class="section-label">About the Clinic</div>
+                    <h2>Where Expertise Meets <em>Compassionate Care</em></h2>
+                    <p>Located in the heart of Safdarjung Enclave, Dr. Sarish Sharma's clinic is a dedicated orthopedic
+                        and pain management centre — built around a single principle: <strong>get patients back to
+                            living fully, without surgery wherever possible.</strong></p>
+                    <p>The clinic is equipped for the full spectrum of non-surgical orthopedic interventions — from PRP
+                        and viscosupplementation injections to nerve blocks and traction therapy. Every procedure is
+                        performed in a sterile, clinical environment with the same precision and standards as a hospital
+                        setting.</p>
+                    <p>Whether you are a working professional with chronic back pain, an athlete recovering from a
+                        ligament injury, or an elderly patient managing arthritis — this clinic is designed to serve you
+                        with dignity, efficiency, and clinical excellence.</p>
+
+                    <div class="clinic-highlights">
+                        <div class="clinic-hi"><i class="fa-solid fa-circle-check"></i><span>Dedicated procedure room
+                                for injections and nerve blocks</span></div>
+                        <div class="clinic-hi"><i class="fa-solid fa-circle-check"></i><span>Clean, private consultation
+                                rooms for every patient</span></div>
+                        <div class="clinic-hi"><i class="fa-solid fa-circle-check"></i><span>Comfortable waiting area
+                                with minimal wait times</span></div>
+                        <div class="clinic-hi"><i class="fa-solid fa-circle-check"></i><span>Accessible location near
+                                Ring Road — easy to reach from all of South Delhi</span></div>
+                    </div>
+                </div>
+
+                <div class="clinic-about-imgs">
+                    <img class="about-img-a" src="/images/consult room.jpeg" alt="Clinic consultation room"
+                        loading="lazy">
+                    <img class="about-img-b" src="/images/reception corner.jpeg" alt="Clinic reception area" loading="lazy">
+                    <div class="about-img-accent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ GALLERY ═══════ -->
+        <section class="clinic-gallery">
+            <div class="clinic-gallery-inner">
+                <div class="gallery-head">
+                    <div class="section-label" style="justify-content:center">Clinic Gallery</div>
+                    <h2>A Look <em>Inside the Clinic</em></h2>
+                    <p>Our clinic is designed to be welcoming, hygienic, and fully equipped for all orthopedic
+                        procedures — from first consultation to advanced injection therapy.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="/images/entrance gate.jpeg" alt="Clinic exterior view" loading="lazy">
+                        <span class="gallery-tag">Clinic</span>
+                        <div class="gallery-overlay"><span>Clinic Exterior</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/consult room.jpeg" alt="Consultation room" loading="lazy">
+                        <span class="gallery-tag">Consultation</span>
+                        <div class="gallery-overlay"><span>Consultation Room</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/procedure room.jpeg" alt="Procedure room" loading="lazy">
+                        <span class="gallery-tag">Procedure Room</span>
+                        <div class="gallery-overlay"><span>Procedure Room</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/reception corner.jpeg" alt="Reception area" loading="lazy">
+                        <span class="gallery-tag">Reception</span>
+                        <div class="gallery-overlay"><span>Reception Area</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/waiting area.jpeg" alt="Waiting area" loading="lazy">
+                        <span class="gallery-tag">Waiting Area</span>
+                        <div class="gallery-overlay"><span>Waiting Area</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/clinic-6.jpg" alt="Equipment and facilities" loading="lazy">
+                        <span class="gallery-tag">Facilities</span>
+                        <div class="gallery-overlay"><span>Clinic Facilities</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ LOCATION ═══════ -->
+        <section class="clinic-location">
+            <div class="clinic-location-inner">
+                <div class="location-head">
+                    <div class="section-label" style="justify-content:center">Find Us</div>
+                    <h2>Conveniently Located in <em>Safdarjung Enclave</em></h2>
+                    <p>Easily accessible from all of South Delhi — near Ring Road, opposite Mahindra Showroom.</p>
+                </div>
+
+                <div class="location-grid">
+
+                    <div class="map-frame">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.5!2d77.2090!3d28.5672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d4c6e4d4d4d%3A0x0!2sMatri+Mandir+Rd%2C+Block+B+2%2C+Safdarjung+Enclave%2C+New+Delhi%2C+Delhi+110029!5e0!3m2!1sen!2sin!4v1234567890"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Dr. Sarish Sharma Clinic Location">
+                        </iframe>
+                    </div>
+
+                    <div class="location-details">
+
+                        <!-- Address Card -->
+                        <div class="location-card">
+                            <div class="location-card-title">Clinic Address</div>
+
+                            <div class="location-row">
+                                <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="loc-detail">
+                                    <strong>Address</strong>
+                                    <span>Matri Mandir Rd, Block B 2,<br>Safdarjung Enclave, New Delhi — 110029</span>
+                                </div>
+                            </div>
+
+                            <div class="location-row">
+                                <div class="loc-icon"><i class="fa-solid fa-road"></i></div>
+                                <div class="loc-detail">
+                                    <strong>Landmark</strong>
+                                    <span>Near Ring Road, Bhikaji Cama Place<br>Opposite Mahindra Showroom</span>
+                                </div>
+                            </div>
+
+                            <div class="location-row">
+                                <div class="loc-icon"><i class="fa-solid fa-train-subway"></i></div>
+                                <div class="loc-detail">
+                                    <strong>Nearest Metro</strong>
+                                    <span class="metro-pill">🚇 Bhikaji Cama Place — Pink Line</span>
+                                </div>
+                            </div>
+
+                            <div class="location-row">
+                                <div class="loc-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="loc-detail">
+                                    <strong>Phone</strong>
+                                    <span><a href="tel:+919560657964" style="color:var(--teal);font-weight:600">+91
+                                            95606 57964</a></span>
+                                </div>
+                            </div>
+
+                            <div class="location-row">
+                                <div class="loc-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="loc-detail">
+                                    <strong>Email</strong>
+                                    <span><a href="mailto:drsarish@yahoo.com"
+                                            style="color:var(--teal)">drsarish@yahoo.com</a></span>
+                                </div>
+                            </div>
+
+                            <a href="https://maps.google.com/?q=Matri+Mandir+Rd+Block+B+2+Safdarjung+Enclave+New+Delhi+110029"
+                                target="_blank" class="directions-btn" style="margin-top:16px">
+                                <i class="fa-solid fa-diamond-turn-right"></i> Get Directions on Google Maps
+                            </a>
+                        </div>
+
+                        <!-- OPD Card -->
+                        <div class="location-card opd-mini">
+                            <div class="location-card-title">OPD Timings</div>
+
+                            <div class="opd-row-item">
+                                <span class="opd-day-label">Morning OPD (Mon–Sat)</span>
+                                <span class="opd-time-val">11:00 AM – 2:00 PM</span>
+                            </div>
+                            <div class="opd-row-item">
+                                <span class="opd-day-label">Evening OPD (Mon–Sat)</span>
+                                <span class="opd-time-val">6:00 PM – 8:30 PM</span>
+                            </div>
+                            <div class="opd-row-item">
+                                <span class="opd-day-label">Emergency Slot (Mon–Sat)</span>
+                                <span class="opd-time-val">2:00 PM – 5:00 PM</span>
+                            </div>
+                            <div class="opd-row-item">
+                                <span class="opd-day-label">Sunday</span>
+                                <span class="opd-time-val closed">Closed</span>
+                            </div>
+
+                            <div class="opd-note">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>The 2PM–5PM slot is for <strong style="color:var(--white)">emergencies and prior
+                                        appointments only.</strong> Regular appointments can also be scheduled in this
+                                    slot with prior booking.</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ AFFILIATIONS ═══════ -->
+        <section class="clinic-affiliations">
+            <div class="clinic-affiliations-inner">
+                <div class="aff-head">
+                    <div class="section-label" style="justify-content:center">Hospital Affiliations</div>
+                    <h2>Associated With <em>Leading Hospitals</em></h2>
+                    <p>Dr. Sarish Sharma holds visiting consultant positions at three of Delhi NCR's most respected
+                        hospitals.</p>
+                </div>
+
+                <div class="aff-grid">
+                    <div class="aff-card">
+                        <div class="aff-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <div>
+                            <h4>Fortis Hospital, Okhla</h4>
+                            <p>Visiting Consultant Orthopaedics. One of Delhi's premier multi-specialty hospital
+                                networks.</p>
+                            <span class="aff-badge">Current · Delhi NCR</span>
+                        </div>
+                    </div>
+                    <div class="aff-card">
+                        <div class="aff-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <div>
+                            <h4>Manipal Hospital, Dwarka</h4>
+                            <p>Visiting Consultant Orthopaedics — Training & Education. Part of the Manipal Hospitals
+                                group.</p>
+                            <span class="aff-badge">Current · Dwarka, Delhi</span>
+                        </div>
+                    </div>
+                    <div class="aff-card">
+                        <div class="aff-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <div>
+                            <h4>Amrita Hospital, Faridabad</h4>
+                            <p>Visiting Consultant Orthopaedics. One of the largest private hospitals in the NCR region.
+                            </p>
+                            <span class="aff-badge">Current · Faridabad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ CTA ═══════ -->
+        <section class="clinic-cta">
+            <div class="clinic-cta-inner">
+                <h2>Ready to Visit <em>the Clinic?</em></h2>
+                <p>Book your consultation with Dr. Sarish Sharma today — same-day appointments available during OPD
+                    hours.</p>
+                <div class="cta-btns">
+                    <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book
+                        Appointment</a>
+                    <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606
+                        57964</a>
+                </div>
+            </div>
+        </section>
+
+        <%- include('../partials/footer') %>

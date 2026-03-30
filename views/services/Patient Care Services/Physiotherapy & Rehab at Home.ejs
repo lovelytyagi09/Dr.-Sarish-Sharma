@@ -1,0 +1,1935 @@
+<link rel="stylesheet" a href="/home.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15, 26, 48, 0.06);
+    --shadow: 0 4px 24px rgba(15, 26, 48, 0.09);
+    --shadow-lg: 0 12px 48px rgba(15, 26, 48, 0.13);
+    --transition: 0.25s ease;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--off-white);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV styles removed — using your own navbar ── */
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 55%, #1e3a5f 100%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(26, 171, 152, 0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 80%, rgba(198, 153, 58, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 171, 152, 0.15);
+    border: 1px solid rgba(26, 171, 152, 0.35);
+    color: var(--teal);
+    padding: 0.35rem 1rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.5;
+      transform: scale(1.4);
+    }
+  }
+
+  .hero-h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 480px;
+    margin-bottom: 2.2rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 20px rgba(26, 171, 152, 0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(26, 171, 152, 0.45);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(26, 171, 152, 0.08);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  
+
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-num span {
+    color: var(--teal);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Hero visual panel */
+  .hero-visual {
+    position: relative;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .hero-card-stack {
+    position: relative;
+  }
+
+  .hero-main-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(145deg, rgba(26, 171, 152, 0.15), rgba(26, 39, 68, 0.3));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(26, 171, 152, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(198, 153, 58, 0.1) 0%, transparent 50%);
+  }
+
+  .upload-prompt {
+    position: relative;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .upload-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(26, 171, 152, 0.2);
+    border: 2px dashed rgba(26, 171, 152, 0.4);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+
+  .upload-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .upload-prompt p {
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .upload-prompt strong {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  .hero-img-label {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-img-label-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  .hero-img-label-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+  }
+
+  /* Float badge on card */
+  .hero-float-badge {
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 99px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-modalities-mini {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .mini-tag {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+    padding: 0.28rem 0.8rem;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 400;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 5rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--teal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 22px;
+    height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+
+  .section-h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-lt);
+    max-width: 600px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── MODALITIES SECTION ── */
+  .modalities-bg {
+    background: var(--white);
+  }
+
+  .modalities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .modality-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    cursor: default;
+  }
+
+  .modality-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-d));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+
+  .modality-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(26, 171, 152, 0.2);
+  }
+
+  .modality-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .modality-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-d));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 16px rgba(26, 171, 152, 0.25);
+  }
+
+  .modality-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--white);
+    fill: none;
+    stroke-width: 1.7;
+  }
+
+  .modality-title {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .modality-desc {
+    font-size: 0.88rem;
+    color: var(--text-lt);
+    line-height: 1.65;
+  }
+
+  .modality-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    background: rgba(26, 171, 152, 0.1);
+    color: var(--teal-d);
+    border-radius: 99px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── MOBILISATION SECTION ── */
+  .mobil-section {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-d) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mobil-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 90% 30%, rgba(26, 171, 152, 0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .mobil-section .section-h2 {
+    color: var(--white);
+  }
+
+  .mobil-section .section-sub {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .mobil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .mobil-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: background var(--transition), transform var(--transition);
+  }
+
+  .mobil-card:hover {
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-3px);
+  }
+
+  .mobil-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.4rem;
+  }
+
+  .mobil-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobil-card-icon.active {
+    background: rgba(26, 171, 152, 0.2);
+    border: 1px solid rgba(26, 171, 152, 0.3);
+  }
+
+  .mobil-card-icon.passive {
+    background: rgba(198, 153, 58, 0.2);
+    border: 1px solid rgba(198, 153, 58, 0.3);
+  }
+
+  .mobil-card-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8;
+    stroke: var(--teal);
+    fill: none;
+  }
+
+  .mobil-card-icon.passive svg {
+    stroke: var(--gold);
+  }
+
+  .mobil-card-title {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .mobil-card-subtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+    margin-top: 1px;
+  }
+
+  .mobil-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .mobil-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+  }
+
+  .mobil-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .mobil-card:last-child .mobil-list li::before {
+    background: var(--gold);
+  }
+
+  /* ── REHAB SECTION ── */
+  .rehab-section {
+    background: var(--off-white);
+  }
+
+  .rehab-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .rehab-conditions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .condition-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 1.2rem 1.4rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .condition-item:hover {
+    border-color: rgba(26, 171, 152, 0.3);
+    box-shadow: var(--shadow);
+  }
+
+  .condition-num {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-d));
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .condition-text strong {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .condition-text span {
+    font-size: 0.82rem;
+    color: var(--text-lt);
+    font-weight: 300;
+  }
+
+  .rehab-highlight {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 2.4rem;
+    color: var(--white);
+    position: sticky;
+    top: 88px;
+  }
+
+  .rehab-highlight h3 {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .rehab-highlight p {
+    font-size: 0.87rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .rehab-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .benefit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+  }
+
+  .benefit-row svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+  }
+
+  .divider-gold {
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 2px;
+    margin: 1.4rem 0;
+  }
+
+  /* ── IMAGE GALLERY ── */
+  .gallery-section {
+    background: var(--white);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--gray-lt);
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .gallery-item:hover {
+    border-color: var(--teal);
+    background: rgba(26, 171, 152, 0.04);
+  }
+
+  .gallery-item.featured {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
+
+  .gallery-placeholder-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(26, 171, 152, 0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .gallery-placeholder-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .gallery-placeholder-text {
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 1rem;
+  }
+
+  .gallery-placeholder-text strong {
+    color: var(--teal);
+    font-weight: 500;
+    display: block;
+  }
+
+  .gallery-label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(26, 39, 68, 0.75);
+    backdrop-filter: blur(6px);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+  }
+
+  /* ── PROCESS SECTION ── */
+  .process-section {
+    background: var(--navy-d);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26, 171, 152, 0.08) 0%, transparent 70%);
+  }
+
+  .process-section .section-h2 {
+    color: var(--white);
+  }
+
+  .process-section .section-sub {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 12px);
+    right: calc(12.5% + 12px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal), rgba(26, 171, 152, 0.2), var(--teal));
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-circle {
+    width: 56px;
+    height: 56px;
+    background: rgba(26, 171, 152, 0.15);
+    border: 2px solid var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    position: relative;
+    z-index: 1;
+    transition: background var(--transition);
+  }
+
+  .process-step:hover .step-circle {
+    background: rgba(26, 171, 152, 0.3);
+  }
+
+  .step-circle svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .step-num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-title {
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--off-white);
+    padding: 5rem 2rem;
+  }
+
+  .cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+    border-radius: var(--radius-lg);
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26, 171, 152, 0.18) 0%, transparent 60%);
+  }
+
+  .cta-box h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    position: relative;
+  }
+
+  .cta-box p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .cta-contact-info {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    font-weight: 300;
+  }
+
+  .contact-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--teal);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-d);
+    color: rgba(255, 255, 255, 0.45);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 300;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  footer strong {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    .mobil-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rehab-intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rehab-highlight {
+      position: relative;
+      top: 0;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .process-steps::before {
+      display: none;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-item.featured {
+      grid-column: span 2;
+    }
+
+    .nav-links {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .section {
+      padding: 3.5rem 1.2rem;
+    }
+
+    .hero {
+      padding: 5rem 1.2rem 3rem;
+    }
+
+    nav {
+      padding: 0 1.2rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item.featured {
+      grid-column: span 1;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-name">Dr. Sarish Sharma</span>
+        <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+       <div class="about-dropdown-wrapper">
+  <button class="about-toggle" onclick="toggleAbout(event)">
+    About
+    <svg class="chevron" viewBox="0 0 24 24" width="14" height="14" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </button>
+
+  <div class="about-menu" id="aboutMenu">
+    <a href="/about/doctor">Doctor</a>
+    <a href="/about/clinic">Clinic</a>
+  </div>
+</div>
+        <!-- <a href="/specialities">Specialities</a> -->
+          <!-- SPECIALITIES DROPDOWN -->
+      <div class="nav-dropdown">
+        <a href="/specialities" class="nav-dropdown-toggle">
+          Specialities <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/specialities/precision-diagnostics">
+            <i class="fa-solid fa-microscope"></i>
+            <div>
+              <span>Precision Diagnostics</span>
+              <small>Clinical-first examination approach</small>
+            </div>
+          </a>
+          <a href="/specialities/regenerative-treatment">
+            <i class="fa-solid fa-syringe"></i>
+            <div>
+              <span>Regenerative Treatment</span>
+              <small>PRP, bone marrow & viscosupplementation</small>
+            </div>
+          </a>
+          <a href="/specialities/sports-rehabilitation">
+            <i class="fa-solid fa-person-running"></i>
+            <div>
+              <span>Sports Rehabilitation</span>
+              <small>ACL, ligament & sports injury care</small>
+            </div>
+          </a>
+          <a href="/specialities/pain-science">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <span>Pain Science</span>
+              <small>Nerve blocks & multimodal pain relief</small>
+            </div>
+          </a>
+        </div>
+      </div>
+       <div class="nav-dropdown">
+  <a href="/services" class="nav-dropdown-toggle">
+    Services <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="nav-dropdown-menu">
+    <a href="/services">
+      <i class="fa-solid fa-grid-2"></i>
+      <div>
+        <span>All Services</span>
+        <small>View all orthopedic treatments</small>
+      </div>
+    </a>
+    <a href="/patientcareservice/homephysiotheraphy">
+      <i class="fa-solid fa-house-medical"></i>
+      <div>
+        <span>Home Physiotherapy Delhi</span>
+        <small>Physiotherapy at your doorstep</small>
+      </div>
+    </a>
+    <a href="/patientcareservice/physiotheraphyrehab">
+      <i class="fa-solid fa-person-walking"></i>
+      <div>
+        <span>Physiotherapy & Rehab at Home</span>
+        <small>Rehabilitation from the comfort of home</small>
+      </div>
+    </a>
+  </div>
+</div>
+        <a href="/contact">Contact</a>
+        <a href="/blogs">Blogs</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-cta"><i class="fa-regular fa-calendar-check"></i> Make
+        Appointment</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-mesh"></div>
+    <div class="hero-grid-bg"></div>
+
+    <div class="hero-inner">
+      <div class="hero-content">
+     
+        <h1 class="hero-h1">
+          Expert Physiotherapy &amp;<br>
+          <em>Rehabilitation</em><br>
+          At Your Doorstep
+        </h1>
+
+        <p class="hero-desc">
+          Comprehensive physiotherapy and rehabilitation care delivered in the comfort of your home —
+          from advanced therapeutic modalities to personalised exercise programmes for recovery and mobility.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.2 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z" />
+            </svg>
+            Book a Home Visit
+          </a>
+          <a href="#modalities" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4m0 4h.01" />
+            </svg>
+            Our Services
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">500<span>+</span></div>
+            <div class="stat-label">Patients Treated</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">6<span>+</span></div>
+            <div class="stat-label">Modalities Available</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Home<span>.</span></div>
+            <div class="stat-label">Based Convenience</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-main-card">
+        <img src="/images/consult room.jpeg" alt="Home Physiotherapy Equipment Delhi — Dr. Sarish Sharma"
+          style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;" loading="eager">
+        <div class="hero-img-label">
+          <div class="hero-img-label-dot"></div>
+          <span class="hero-img-label-text">Professional physiotherapy equipment — clinic & home visits</span>
+        </div>
+      </div>
+
+      <div class="hero-modalities-mini">
+        <span class="mini-tag">Shortwave Diathermy</span>
+        <span class="mini-tag">Ultrasonic Therapy</span>
+        <span class="mini-tag">Hot Pads &amp; Infrared</span>
+        <span class="mini-tag">Laser Therapy</span>
+        <span class="mini-tag">Mobilisation</span>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- MODALITIES SECTION -->
+  <section class="section modalities-bg" id="modalities">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Therapeutic Modalities</div>
+        <h2 class="section-h2">Advanced <em>Treatment</em> Technologies</h2>
+        <p class="section-sub">Our range of evidence-based physiotherapy modalities are designed to reduce pain, promote
+          healing, and restore function — all available at home.</p>
+      </div>
+
+      <div class="modalities-grid">
+
+        <div class="modality-card reveal">
+          <div class="modality-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <div class="modality-title">Shortwave Diathermy</div>
+          <p class="modality-desc">
+            Deep heating therapy using high-frequency electromagnetic waves that penetrate deep into muscle and joint
+            tissue. Highly effective for relieving chronic pain, reducing muscle spasm, and improving blood circulation
+            in conditions such as arthritis, sciatica, and musculoskeletal injuries.
+          </p>
+          <span class="modality-tag">Deep Heat Therapy</span>
+        </div>
+
+        <div class="modality-card reveal">
+          <div class="modality-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="2" />
+              <path
+                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+          </div>
+          <div class="modality-title">Ultrasonic Therapy</div>
+          <p class="modality-desc">
+            Therapeutic ultrasound uses sound waves to generate deep tissue heat, accelerate tissue repair, reduce scar
+            tissue formation, and relieve pain. Particularly beneficial for soft tissue injuries, tendinitis, bursitis,
+            and post-surgical recovery to promote faster healing at a cellular level.
+          </p>
+          <span class="modality-tag">Tissue Repair</span>
+        </div>
+
+        <div class="modality-card reveal">
+          <div class="modality-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20M2 12h20" />
+              <path d="M12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5" />
+            </svg>
+          </div>
+          <div class="modality-title">Hot Pads &amp; Infrared Therapy</div>
+          <p class="modality-desc">
+            Moist heat therapy and infrared radiation provide soothing superficial heating to relax tight muscles,
+            increase local blood flow, and prepare soft tissues for exercise and manual therapy. Ideal for muscle
+            stiffness, joint pain, and chronic musculoskeletal conditions as part of a comprehensive treatment session.
+          </p>
+          <span class="modality-tag">Pain Relief</span>
+        </div>
+
+        <div class="modality-card reveal">
+          <div class="modality-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+            </svg>
+          </div>
+          <div class="modality-title">Laser Therapy (LLLT)</div>
+          <p class="modality-desc">
+            Low-Level Laser Therapy (LLLT) uses precise wavelengths of light to stimulate biological processes, reduce
+            inflammation, relieve acute and chronic pain, and accelerate tissue healing. Effective for nerve pain, wound
+            healing, joint disorders, and musculoskeletal conditions — non-invasive with no thermal effect on tissues.
+          </p>
+          <span class="modality-tag">Photobiomodulation</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILISATION SECTION -->
+  <section class="section mobil-section" id="mobilisation">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label" style="color:var(--teal);">Mobilisation Programme</div>
+        <h2 class="section-h2">Active &amp; <em>Passive</em> Mobilisation</h2>
+        <p class="section-sub">A carefully structured combination of active and passive mobilisation techniques to
+          restore joint range of motion, build strength, and prevent complications — carried out safely within your home
+          environment.</p>
+      </div>
+
+      <div class="mobil-grid">
+
+        <div class="mobil-card reveal">
+          <div class="mobil-card-header">
+            <div class="mobil-card-icon active">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <div class="mobil-card-title">Active Exercises</div>
+              <div class="mobil-card-subtitle">Patient-performed movements</div>
+            </div>
+          </div>
+          <ul class="mobil-list">
+            <li>Guided strengthening exercises targeting specific muscle groups</li>
+            <li>Range-of-motion exercises to improve joint flexibility and mobility</li>
+            <li>Balance and coordination training for functional independence</li>
+            <li>Progressive resistive exercises for muscle rebuilding post-surgery</li>
+            <li>Functional movement retraining for daily activities (walking, transfers)</li>
+            <li>Breathing and postural correction exercises</li>
+          </ul>
+        </div>
+
+        <div class="mobil-card reveal">
+          <div class="mobil-card-header">
+            <div class="mobil-card-icon passive">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
+              </svg>
+            </div>
+            <div>
+              <div class="mobil-card-title">Passive Mobilisation</div>
+              <div class="mobil-card-subtitle">Therapist-assisted movement</div>
+            </div>
+          </div>
+          <ul class="mobil-list">
+            <li>Manual joint mobilisation to restore full range of movement</li>
+            <li>Passive stretching of tight or contracted muscle groups</li>
+            <li>Soft tissue and myofascial release techniques</li>
+            <li>Prevention of joint contractures through regular assisted movement</li>
+            <li>Limb positioning and splinting advice to prevent deformities</li>
+            <li>Circulatory massage to prevent deep vein complications in bed-bound patients</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REHAB SECTION -->
+  <section class="section rehab-section" id="rehab">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Rehabilitation at Home</div>
+        <h2 class="section-h2">Who Benefits from <em>Home Rehab?</em></h2>
+        <p class="section-sub">Our home rehabilitation programme is designed for patients across a wide range of
+          neurological conditions, musculoskeletal injuries, and post-surgical recoveries — bringing clinical-quality
+          rehab directly to you.</p>
+      </div>
+
+      <div class="rehab-intro-grid">
+        <div class="rehab-conditions reveal">
+
+          <div class="condition-item">
+            <div class="condition-num">01</div>
+            <div class="condition-text">
+              <strong>Paraparesis</strong>
+              <span>Targeted strengthening exercises to improve motor function and independence in patients with partial
+                lower limb weakness due to neurological conditions or spinal cord involvement.</span>
+            </div>
+          </div>
+
+          <div class="condition-item">
+            <div class="condition-num">02</div>
+            <div class="condition-text">
+              <strong>Paraplegia</strong>
+              <span>Passive and assisted mobilisation to prevent joint stiffness, contractures, pressure sores, and
+                muscle wasting; maintaining circulation and overall wellbeing in fully paralysed patients.</span>
+            </div>
+          </div>
+
+          <div class="condition-item">
+            <div class="condition-num">03</div>
+            <div class="condition-text">
+              <strong>Post-Fracture Rehabilitation</strong>
+              <span>Gradual and progressive mobilisation, strengthening, and functional retraining following fractures
+                of the hip, knee, shoulder, spine, or other bones — after surgical fixation or conservative
+                management.</span>
+            </div>
+          </div>
+
+          <div class="condition-item">
+            <div class="condition-num">04</div>
+            <div class="condition-text">
+              <strong>Degenerative Conditions</strong>
+              <span>Exercise therapy and joint mobilisation for osteoarthritis, degenerative disc disease, spondylosis,
+                and other age-related musculoskeletal conditions to maintain function and reduce pain long-term.</span>
+            </div>
+          </div>
+
+          <div class="condition-item">
+            <div class="condition-num">05</div>
+            <div class="condition-text">
+              <strong>Post-Surgical Recovery</strong>
+              <span>Structured rehabilitation following orthopaedic surgeries including knee replacements, hip
+                replacements, spine surgeries, and joint reconstructions to ensure optimal recovery outcomes at
+                home.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="rehab-highlight reveal">
+          <h3>Our Core Rehabilitation Goals</h3>
+          <p>Every patient receives a personalised programme tailored to their specific diagnosis, functional level, and
+            recovery goals.</p>
+
+          <div class="rehab-benefits">
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Prevent joint stiffness and contracture formation
+            </div>
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Restore strength and muscular endurance
+            </div>
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Improve balance, gait, and functional mobility
+            </div>
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Reduce pain and swelling through targeted therapy
+            </div>
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Promote neurological recovery and motor relearning
+            </div>
+            <div class="benefit-row">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Maximise independence in daily activities
+            </div>
+          </div>
+
+          <div class="divider-gold"></div>
+
+          <div class="benefit-row" style="color:var(--gold);">
+            <svg viewBox="0 0 24 24" style="stroke:var(--gold)">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span style="font-weight:500;">100% home-based — no travel stress for patients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLINIC GALLERY SECTION -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Our Clinic &amp; Equipment</div>
+        <h2 class="section-h2">Professional <em>Setup</em>, Brought to You</h2>
+        <p class="section-sub">We use the same professional-grade equipment at your home that we use in our clinic. Add
+          photos of your clinic and equipment below to showcase your facilities.</p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item featured reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Clinic / Treatment Room Photo</strong>
+            Paste your main clinic image here — reception, treatment room, or full setup
+          </div>
+          <span class="gallery-label">Main Clinic View</span>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Equipment Photo</strong>
+            Shortwave diathermy / ultrasonic unit
+          </div>
+          <span class="gallery-label">Diathermy Unit</span>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Equipment Photo</strong>
+            Infrared / hot pads / laser unit
+          </div>
+          <span class="gallery-label">Laser &amp; Infrared</span>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Home Visit Photo</strong>
+            Therapist conducting a home session
+          </div>
+          <span class="gallery-label">Home Session</span>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Rehab Exercise Photo</strong>
+            Patient rehabilitation or exercise session
+          </div>
+          <span class="gallery-label">Rehab Session</span>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+          <div class="gallery-placeholder-text">
+            <strong>Additional Photo</strong>
+            Team, clinic exterior, or any other image
+          </div>
+          <span class="gallery-label">Our Team</span>
+        </div>
+
+      </div>
+      <p style="text-align:center; color:var(--gray); font-size:0.82rem; margin-top:1.2rem; font-weight:300;">
+        💡 <em>To add images: right-click any placeholder → edit the HTML and replace the placeholder content with an
+          &lt;img&gt; tag pointing to your photo.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section class="section process-section" id="process">
+    <div class="section-inner">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-label" style="justify-content:center;">How It Works</div>
+        <h2 class="section-h2" style="text-align:center;">Simple Steps to <em>Get Started</em></h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">From first contact to your first home session
+          in just a few steps.</p>
+      </div>
+
+      <div class="process-steps">
+
+        <div class="process-step reveal">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 18.69 19.5 19.5 0 015.31 12 19.79 19.79 0 013.09 3.18 2 2 0 015.07 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z" />
+            </svg>
+            <div class="step-num">1</div>
+          </div>
+          <div class="step-title">Contact Us</div>
+          <div class="step-desc">Call or message us to discuss your condition and requirements</div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+            </svg>
+            <div class="step-num">2</div>
+          </div>
+          <div class="step-title">Assessment</div>
+          <div class="step-desc">Our therapist conducts a thorough initial assessment at your home</div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+            <div class="step-num">3</div>
+          </div>
+          <div class="step-title">Custom Plan</div>
+          <div class="step-desc">A personalised treatment and rehabilitation plan is designed for you</div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            <div class="step-num">4</div>
+          </div>
+          <div class="step-title">Treatment Begins</div>
+          <div class="step-desc">Regular home sessions with full modalities and rehabilitation exercises</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner reveal">
+      <div class="cta-box">
+        <h2>Ready to Start Your Recovery Journey?</h2>
+        <p>Our experienced physiotherapists are ready to visit you at home. Book your initial assessment today and take
+          the first step toward pain-free living.</p>
+
+        <div class="cta-actions">
+          <a href="tel:+" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.2 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z" />
+            </svg>
+            Call for Appointment
+          </a>
+          <a href="https://wa.me/" class="btn-outline" style="color:rgba(255,255,255,0.85);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+
+        <div class="cta-contact-info">
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="10" r="3" />
+              <path d="M12 2a8 8 0 00-8 8c0 5.25 8 14 8 14s8-8.75 8-14a8 8 0 00-8-8z" />
+            </svg>
+            Home visits across the region
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Flexible appointment timings
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Qualified &amp; registered physiotherapists
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>PhysioRestore — Physiotherapy &amp; Rehabilitation at Home</strong> &nbsp;·&nbsp; All rights
+      reserved</p>
+    <p style="margin-top:6px;">Providing professional physiotherapy, rehabilitation, and therapeutic modality services
+      at your home.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger siblings
+          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, Math.min(idx * 80, 300));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+      });
+    });
+  </script>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:0">
+            <span class="logo-name" style="color:var(--white)">Dr. Sarish Sharma</span>
+            <span class="logo-tag">Orthopedic Specialist</span>
+          </div>
+          <p>Providing exceptional non-surgical orthopedic care to patients across South Delhi. Healing bones, joints,
+            and lives — one patient at a time.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/people/Sarish-Sharma/61587634580555/?rdid=hGmqjSYYcimf5gGM&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18VQyBmyT8%2F" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/drsarish0910?utm_source=qr&igsh=MTVvNTdyanVwa3kycA%3D%3D" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@drsarish" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/dr-sarish-sharma-41098175/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fa-solid fa-chevron-right"></i> About Dr. Sharma</a></li>
+            <li><a href="/specialities"><i class="fa-solid fa-chevron-right"></i> Specialities</a></li>
+            <li><a href="/services"><i class="fa-solid fa-chevron-right"></i> All Services</a></li>
+            <li><a href="/faqs"><i class="fa-solid fa-chevron-right"></i>FAQS</a></li>
+            <li><a href="/blogs"><i class="fa-solid fa-chevron-right"></i> Health Blog</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-chevron-right"></i> Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Treatments</h4>
+          <ul>
+            <li><a href="/services/pain-management"><i class="fa-solid fa-chevron-right"></i> Pain Management</a></li>
+            <li><a href="/services/fracture-treatment"><i class="fa-solid fa-chevron-right"></i>Fracture Treatment</a></li>
+            <li><a href="/services/joint-lubrication"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a></li>
+            <li><a href="/services/knee-hip-spine"><i class="fa-solid fa-chevron-right"></i> Knee, Hip & Spine</a></li>
+            <li><a href="/services/joint-trauma"><i class="fa-solid fa-chevron-right"></i>Joint Trauma</a></li>
+            <li><a href="/services/sports-injury-vitamin-balance"><i class="fa-solid fa-chevron-right"></i>Sports Injury & Vitamin Balance</a></li>
+            <li><a href="/services/disc-treatment"><i class="fa-solid fa-chevron-right"></i>Disc Treatment</a></li>
+           
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Matri Mandir Rd, Block B 2, Safdarjung Enclave<br>New Delhi – 110029</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span><a href="tel:+919876543210" style="color:rgba(255,255,255,0.48)">+91 9560657964</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span><a href="mailto:dr.sarish@example.com"
+                style="color:rgba(255,255,255,0.48)">drsarish@yahoo.com</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <!-- <i class="fa-solid fa-clock"></i>
+            <span>Mon – Sat: 9:00 AM – 7:00 PM<br>Sunday: By Appointment</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Dr. Sarish Sharma. All Rights Reserved. | Designed by Lovely Tyagi</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

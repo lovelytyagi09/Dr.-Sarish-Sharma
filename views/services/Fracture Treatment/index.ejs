@@ -1,0 +1,906 @@
+<%- include('../../partials/boilerplate') %>
+<%- include('../../partials/navbar') %>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+    --shadow: 0 4px 24px rgba(15,26,48,0.09);
+    --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7 }
+  img { max-width: 100%; display: block }
+  a { text-decoration: none; color: inherit }
+
+  /* ── HERO ── */
+  .service-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 0; position: relative; overflow: hidden;
+  }
+  .service-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .service-hero::after {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(26,171,152,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .service-hero-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 56px; align-items: flex-end; position: relative; z-index: 1;
+  }
+  .service-hero-content { padding-bottom: 56px }
+
+  .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap }
+  .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.48); transition: color var(--transition) }
+  .breadcrumb a:hover { color: var(--gold) }
+  .breadcrumb span { font-size: 0.78rem; color: rgba(255,255,255,0.22) }
+  .breadcrumb .current { color: var(--gold); font-weight: 500 }
+
+  .section-label {
+    font-size: 0.70rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 28px; height: 2px; background: var(--teal); border-radius: 2px; display: inline-block }
+
+  .service-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 18px;
+  }
+  .service-hero h1 em { color: var(--gold); font-style: italic }
+  .service-hero-desc { font-size: 1rem; color: rgba(255,255,255,0.58); line-height: 1.80; max-width: 520px; margin-bottom: 32px }
+
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px }
+  .hero-badge-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.78); font-size: 0.78rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 50px;
+  }
+  .hero-badge-pill i { color: var(--teal); font-size: 0.70rem }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap }
+
+  .btn-primary {
+    background: var(--teal); color: var(--white); padding: 13px 28px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,171,152,0.32); color: var(--white) }
+  .btn-ghost {
+    background: transparent; color: var(--white); padding: 12px 26px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    border: 1.5px solid rgba(255,255,255,0.28); transition: all var(--transition);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: var(--white) }
+
+  .service-hero-img-wrap { position: relative; align-self: flex-end }
+  .service-hero-img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block; box-shadow: 0 -8px 48px rgba(0,0,0,0.28) }
+  .hero-img-badge { position: absolute; top: 20px; left: -16px; background: var(--white); border-radius: var(--radius); padding: 14px 18px; box-shadow: var(--shadow-lg); text-align: center; min-width: 110px }
+  .hero-img-badge-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--teal); line-height: 1 }
+  .hero-img-badge-label { font-size: 0.65rem; color: var(--text-lt); margin-top: 3px; line-height: 1.4 }
+
+  /* ── 4 FRACTURE TYPES STRIP ── */
+  .frac-strip { background: var(--navy) }
+  .frac-strip-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  }
+  .frac-type {
+    display: flex; align-items: center; gap: 14px;
+    padding: 24px 22px; border-right: 1px solid rgba(255,255,255,0.08);
+    transition: background var(--transition);
+  }
+  .frac-type:last-child { border-right: none }
+  .frac-type:hover { background: rgba(255,255,255,0.04) }
+  .frac-type-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .frac-type-icon.undis  { background: rgba(26,171,152,0.18) }
+  .frac-type-icon.mildis { background: rgba(198,153,58,0.18) }
+  .frac-type-icon.majdis { background: rgba(226,75,74,0.18) }
+  .frac-type-icon.delayed { background: rgba(139,101,200,0.18) }
+  .frac-type-icon.undis i   { color: var(--teal) }
+  .frac-type-icon.mildis i  { color: var(--gold) }
+  .frac-type-icon.majdis i  { color: #e24b4a }
+  .frac-type-icon.delayed i { color: #8b65c8 }
+  .frac-type-icon i { font-size: 1rem }
+  .frac-type strong { display: block; font-size: 0.86rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .frac-type span { font-size: 0.73rem; color: rgba(255,255,255,0.46) }
+
+  /* ── QUICK FACTS ── */
+  .quick-facts { background: var(--teal) }
+  .quick-facts-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr) }
+  .fact-item { display: flex; align-items: center; gap: 14px; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.18) }
+  .fact-item:last-child { border-right: none }
+  .fact-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .fact-icon i { color: var(--white); font-size: 0.95rem }
+  .fact-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .fact-text span { font-size: 0.74rem; color: rgba(255,255,255,0.70) }
+
+  /* ── MAIN CONTENT ── */
+  .service-main { padding: 80px 5%; background: var(--white) }
+  .service-main-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 56px; align-items: flex-start }
+
+  .content-section { margin-bottom: 52px }
+  .content-section:last-child { margin-bottom: 0 }
+  .content-label {
+    font-size: 0.70rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .content-label::before { content: ''; width: 20px; height: 2px; background: var(--gold); display: inline-block; border-radius: 2px }
+  .content-h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.3 }
+  .content-h2 em { color: var(--teal); font-style: italic }
+  .content-p { font-size: 0.95rem; color: var(--text-lt); line-height: 1.82; margin-bottom: 16px }
+  .content-p:last-child { margin-bottom: 0 }
+  .content-p strong { color: var(--navy) }
+
+  /* ── FRACTURE TYPE CARDS ── */
+  .frac-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px }
+  .frac-card {
+    background: var(--off-white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px 20px;
+    position: relative; overflow: hidden; transition: all var(--transition);
+  }
+  .frac-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 4px 4px 0 0 }
+  .frac-card.undis::before   { background: var(--teal) }
+  .frac-card.mildis::before  { background: var(--gold) }
+  .frac-card.majdis::before  { background: #e24b4a }
+  .frac-card.delayed::before { background: #8b65c8 }
+  .frac-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: var(--teal) }
+  .frac-card-num { font-family: var(--font-head); font-size: 3rem; font-weight: 700; color: rgba(26,39,68,0.04); position: absolute; top: 8px; right: 14px; line-height: 1 }
+  .frac-card-icon { width: 42px; height: 42px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 14px }
+  .frac-card.undis .frac-card-icon   { background: rgba(26,171,152,0.10); color: var(--teal) }
+  .frac-card.mildis .frac-card-icon  { background: rgba(198,153,58,0.10); color: var(--gold) }
+  .frac-card.majdis .frac-card-icon  { background: rgba(226,75,74,0.10); color: #e24b4a }
+  .frac-card.delayed .frac-card-icon { background: rgba(139,101,200,0.10); color: #8b65c8 }
+  .frac-card-icon i { font-size: 1rem }
+  .frac-card h4 { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 8px }
+  .frac-card p { font-size: 0.82rem; color: var(--text-lt); line-height: 1.68 }
+  .frac-card ul { margin-top: 10px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 5px }
+  .frac-card ul li { font-size: 0.79rem; color: var(--text-lt); display: flex; align-items: center; gap: 8px }
+  .frac-card ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0 }
+  .frac-card.undis ul li::before   { background: var(--teal) }
+  .frac-card.mildis ul li::before  { background: var(--gold) }
+  .frac-card.majdis ul li::before  { background: #e24b4a }
+  .frac-card.delayed ul li::before { background: #8b65c8 }
+
+  /* ── IMMOBILISATION GRID ── */
+  .immob-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px }
+  .immob-item {
+    background: var(--navy); border-radius: var(--radius);
+    padding: 22px 14px; text-align: center;
+    position: relative; overflow: hidden; transition: all var(--transition);
+  }
+  .immob-item::before { content: ''; position: absolute; top: -24px; right: -24px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(26,171,152,0.22) 0%, transparent 65%) }
+  .immob-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,26,48,0.22) }
+  .immob-icon { width: 46px; height: 46px; background: rgba(26,171,152,0.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid rgba(26,171,152,0.28) }
+  .immob-icon i { color: var(--teal); font-size: 1rem }
+  .immob-item h4 { font-family: var(--font-head); font-size: 0.88rem; color: var(--white); font-weight: 700; margin-bottom: 5px }
+  .immob-item p { font-size: 0.74rem; color: rgba(255,255,255,0.48); line-height: 1.55 }
+
+  /* ── TREATMENT APPROACH CARDS ── */
+  .approach-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 24px }
+  .approach-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px 22px;
+    display: grid; grid-template-columns: 52px 1fr; gap: 18px;
+    align-items: flex-start; transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .approach-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--teal), var(--gold)); transform: scaleY(0); transition: transform 0.35s ease }
+  .approach-card:hover { box-shadow: var(--shadow); border-color: var(--teal); transform: translateX(4px) }
+  .approach-card:hover::after { transform: scaleY(1) }
+  .approach-icon { width: 52px; height: 52px; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .approach-icon i { color: var(--gold); font-size: 1.1rem }
+  .approach-tag { display: inline-flex; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--teal); background: rgba(26,171,152,0.08); border: 1px solid rgba(26,171,152,0.18); padding: 3px 10px; border-radius: 50px; margin-bottom: 8px; width: fit-content }
+  .approach-card h3 { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 8px }
+  .approach-card p { font-size: 0.84rem; color: var(--text-lt); line-height: 1.72 }
+  .approach-card p strong { color: var(--navy) }
+
+  /* ── BMI HIGHLIGHT BOX ── */
+  .bmi-highlight {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    border-radius: var(--radius-lg); padding: 32px 28px; margin-top: 28px;
+    position: relative; overflow: hidden;
+  }
+  .bmi-highlight::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(26,171,152,0.20) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .bmi-highlight-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center }
+  .bmi-highlight-content {}
+  .bmi-highlight-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 8px }
+  .bmi-highlight-label::before { content: ''; width: 20px; height: 2px; background: var(--teal); display: inline-block; border-radius: 2px }
+  .bmi-highlight h3 { font-family: var(--font-head); font-size: 1.4rem; color: var(--white); font-weight: 600; margin-bottom: 12px; line-height: 1.3 }
+  .bmi-highlight h3 em { color: var(--gold); font-style: italic }
+  .bmi-highlight p { font-size: 0.88rem; color: rgba(255,255,255,0.60); line-height: 1.75 }
+  .bmi-stats { display: flex; flex-direction: column; gap: 14px }
+  .bmi-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius); padding: 16px 18px; display: flex; align-items: center; gap: 14px }
+  .bmi-stat-icon { width: 38px; height: 38px; background: rgba(26,171,152,0.18); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .bmi-stat-icon i { color: var(--teal); font-size: 0.95rem }
+  .bmi-stat-text strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .bmi-stat-text span { font-size: 0.75rem; color: rgba(255,255,255,0.48) }
+
+  /* ── CHECKLIST ── */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: var(--off-white); border-radius: var(--radius-sm); border: 1px solid var(--border) }
+  .check-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0 }
+  .check-item span { font-size: 0.87rem; color: var(--text); line-height: 1.5 }
+  .check-item span strong { color: var(--navy) }
+
+  /* ── WARNING BOX ── */
+  .warning-box { background: rgba(226,75,74,0.05); border: 1.5px solid rgba(226,75,74,0.18); border-radius: var(--radius); padding: 20px 22px; margin-top: 20px; display: flex; gap: 14px; align-items: flex-start }
+  .warning-box i { color: #e24b4a; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px }
+  .warning-box h4 { font-family: var(--font-head); font-size: 0.92rem; color: #c93535; font-weight: 700; margin-bottom: 6px }
+  .warning-box p { font-size: 0.83rem; color: var(--text-lt); line-height: 1.65 }
+
+  /* ── RECOVERY TIMELINE ── */
+  .steps-grid { display: flex; flex-direction: column; gap: 0; margin-top: 20px; position: relative }
+  .steps-grid::before { content: ''; position: absolute; left: 19px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--teal), rgba(26,171,152,0.08)) }
+  .step-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); position: relative }
+  .step-item:last-child { border-bottom: none }
+  .step-num { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-head); font-size: 0.88rem; font-weight: 700; color: var(--gold); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--navy); z-index: 1 }
+  .step-body h4 { font-family: var(--font-head); font-size: 0.95rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .step-body p { font-size: 0.83rem; color: var(--text-lt); line-height: 1.65 }
+  .step-badge { display: inline-block; font-size: 0.70rem; font-weight: 600; color: var(--teal-d); background: rgba(26,171,152,0.08); border: 1px solid rgba(26,171,152,0.18); padding: 2px 10px; border-radius: 50px; margin-bottom: 5px }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .faq-item { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition) }
+  .faq-item:hover { border-color: var(--teal) }
+  .faq-q { width: 100%; background: none; border: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--navy); transition: color var(--transition) }
+  .faq-q:hover, .faq-q.open { color: var(--teal) }
+  .faq-icon { width: 26px; height: 26px; background: var(--gray-lt); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 0.72rem; flex-shrink: 0; transition: all var(--transition) }
+  .faq-q.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+  .faq-a { display: none; padding: 14px 20px 18px; font-size: 0.87rem; color: var(--text-lt); line-height: 1.75; border-top: 1px solid var(--border) }
+  .faq-a.open { display: block }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 26px 24px }
+  .sidebar-card-title { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); position: relative }
+  .sidebar-card-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 30px; height: 2px; background: var(--gold) }
+  .appt-sidebar { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); border-color: var(--navy) }
+  .appt-sidebar .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-sidebar p { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 20px }
+  .appt-sidebar .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px }
+  .appt-sidebar .btn-call { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.22); color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition) }
+  .appt-sidebar .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.50) }
+  .appt-sidebar .btn-call i { color: var(--teal); font-size: 0.80rem }
+  .related-link { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); transition: all var(--transition); font-size: 0.87rem; color: var(--text); font-weight: 500 }
+  .related-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .related-link:hover { color: var(--teal); padding-left: 4px }
+  .related-link i { color: var(--teal); font-size: 0.62rem; flex-shrink: 0 }
+  .doc-card { display: flex; align-items: center; gap: 14px; margin-bottom: 16px }
+  .doc-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; border: 2px solid var(--teal) }
+  .doc-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 2px }
+  .doc-spec { font-size: 0.75rem; color: var(--teal) }
+  .doc-creds { display: flex; flex-direction: column; gap: 6px }
+  .doc-cred { display: flex; align-items: center; gap: 8px; font-size: 0.80rem; color: var(--text-lt) }
+  .doc-cred i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0 }
+
+  /* ── OTHER SERVICES ── */
+  .other-services { padding: 72px 5%; background: var(--off-white); border-top: 1px solid var(--border) }
+  .other-services-inner { max-width: 1100px; margin: 0 auto }
+  .other-services h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 600; margin-bottom: 32px; letter-spacing: -0.02em }
+  .other-services h2 em { color: var(--teal); font-style: italic }
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px }
+  .other-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 18px; display: flex; align-items: flex-start; gap: 14px; transition: all var(--transition) }
+  .other-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px); color: inherit }
+  .other-card-icon { width: 40px; height: 40px; background: rgba(26,171,152,0.08); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(26,171,152,0.14) }
+  .other-card-icon i { color: var(--teal); font-size: 0.88rem }
+  .other-card h4 { font-family: var(--font-head); font-size: 0.90rem; color: var(--navy); font-weight: 700; margin-bottom: 4px }
+  .other-card p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .service-cta { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); padding: 72px 5%; text-align: center; position: relative; overflow: hidden }
+  .service-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px) }
+  .service-cta-inner { position: relative; z-index: 1 }
+  .service-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; font-weight: 600 }
+  .service-cta h2 em { color: var(--gold); font-style: italic }
+  .service-cta p { font-size: 0.98rem; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 32px; line-height: 1.78 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .service-hero-grid { grid-template-columns: 1fr }
+    .service-hero-img-wrap { display: none }
+    .service-main-grid { grid-template-columns: 1fr }
+    .sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 280px }
+    .frac-strip-inner { grid-template-columns: repeat(2, 1fr) }
+    .frac-type:nth-child(2) { border-right: none }
+    .quick-facts-inner { grid-template-columns: repeat(2, 1fr) }
+    .fact-item:nth-child(2) { border-right: none }
+    .immob-grid { grid-template-columns: repeat(2, 1fr) }
+    .bmi-highlight-inner { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  @media (max-width: 640px) {
+    .frac-strip-inner { grid-template-columns: 1fr }
+    .frac-type { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08) }
+    .frac-type:last-child { border-bottom: none }
+    .quick-facts-inner { grid-template-columns: 1fr }
+    .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.16) }
+    .fact-item:last-child { border-bottom: none }
+    .frac-cards { grid-template-columns: 1fr }
+    .immob-grid { grid-template-columns: repeat(2, 1fr) }
+    .approach-card { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+    .sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="service-hero">
+  <div class="service-hero-grid">
+    <div class="service-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <a href="/services">Services</a><span>›</span>
+        <span class="current">Fracture Treatment</span>
+      </nav>
+
+      <div class="section-label">Undisplaced · Displaced · Non-Union</div>
+      <h1>Fracture <em>Treatment</em></h1>
+      <p class="service-hero-desc">
+        Comprehensive care for all fracture types — from undisplaced fractures managed with advanced immobilisation through to surgical fixation with titanium implants, and specialised Bone Marrow Injection (BMI) therapy for delayed union and non-union fractures.
+      </p>
+
+      <div class="hero-badges">
+        <span class="hero-badge-pill"><i class="fa-solid fa-shield-halved"></i> Non-Surgical First</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-syringe"></i> BMI Therapy Available</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-clock"></i> Same-Day Assessment</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+        <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call Now</a>
+      </div>
+    </div>
+
+    <div class="service-hero-img-wrap">
+      <img class="service-hero-img"
+        src="/images/Fracture Treatment.jfif"
+        alt="Fracture Treatment — Dr. Sarish Sharma South Delhi"
+        loading="eager">
+      <div class="hero-img-badge">
+        <div class="hero-img-badge-num">4</div>
+        <div class="hero-img-badge-label">Fracture Types<br>Managed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FRACTURE TYPES STRIP ═══════ -->
+<div class="frac-strip">
+  <div class="frac-strip-inner">
+    <div class="frac-type">
+      <div class="frac-type-icon undis"><i class="fa-solid fa-bone"></i></div>
+      <div><strong>Undisplaced</strong><span>Bone in position — immobilised</span></div>
+    </div>
+    <div class="frac-type">
+      <div class="frac-type-icon mildis"><i class="fa-solid fa-arrows-left-right"></i></div>
+      <div><strong>Mildly Displaced</strong><span>Closed reduction under anaesthesia</span></div>
+    </div>
+    <div class="frac-type">
+      <div class="frac-type-icon majdis"><i class="fa-solid fa-scalpel"></i></div>
+      <div><strong>Majorly Displaced</strong><span>Open reduction with implant fixation</span></div>
+    </div>
+    <div class="frac-type">
+      <div class="frac-type-icon delayed"><i class="fa-solid fa-hourglass-half"></i></div>
+      <div><strong>Delayed / Non-Union</strong><span>BMI therapy for stalled healing</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ QUICK FACTS ═══════ -->
+<div class="quick-facts">
+  <div class="quick-facts-inner">
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="fact-text"><strong>Same-Day Assessment</strong><span>Clinical diagnosis without delay</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="fact-text"><strong>Non-Surgical Priority</strong><span>Surgery only when truly necessary</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-syringe"></i></div>
+      <div class="fact-text"><strong>BMI Therapy</strong><span>Stem cells stimulate bone healing</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-person-walking"></i></div>
+      <div class="fact-text"><strong>Full Rehab Protocol</strong><span>Structured return to function</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN CONTENT + SIDEBAR ═══════ -->
+<section class="service-main">
+  <div class="service-main-grid">
+
+    <div class="service-content">
+
+      <!-- Overview -->
+      <div class="content-section">
+        <div class="content-label">Overview</div>
+        <h2 class="content-h2">Comprehensive Care for <em>Every Fracture</em></h2>
+        <p class="content-p">
+          A fracture is a break in the continuity of bone — ranging from a hairline stress fracture to a severely displaced break requiring surgical reconstruction. No two fractures are the same, and the right treatment depends entirely on <strong>which bone is affected, how much the fragments are displaced, the patient's age and activity level, and their underlying bone health.</strong>
+        </p>
+        <p class="content-p">
+          Dr. Sarish Sharma provides end-to-end fracture management across all four categories: undisplaced fractures managed conservatively with immobilisation, mildly displaced fractures corrected with closed reduction under anaesthesia, majorly displaced fractures fixed surgically with precision implants, and complex cases of delayed or non-union fractures treated with pioneering Bone Marrow Injection (BMI) therapy to reactivate natural bone healing.
+        </p>
+      </div>
+
+      <!-- 4 Fracture Types -->
+      <div class="content-section">
+        <div class="content-label">Types of Fractures</div>
+        <h2 class="content-h2">Four Categories of Fractures <em>We Treat</em></h2>
+
+        <div class="frac-cards">
+          <div class="frac-card undis">
+            <div class="frac-card-num">01</div>
+            <div class="frac-card-icon"><i class="fa-solid fa-bone"></i></div>
+            <h4>Undisplaced Fractures</h4>
+            <p>The bone is cracked or broken but remains in its correct anatomical position — the fragments have not shifted. These fractures do not require surgical intervention and heal well with appropriate immobilisation, protecting the fracture from the forces that would cause displacement.</p>
+            <ul>
+              <li>POP (plaster of Paris) cast</li>
+              <li>Slab — one-sided cast for swollen limbs</li>
+              <li>Aircast — removable, adjustable brace</li>
+              <li>Scotch cast — lightweight, hard fibre material</li>
+            </ul>
+          </div>
+
+          <div class="frac-card mildis">
+            <div class="frac-card-num">02</div>
+            <div class="frac-card-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <h4>Mildly Displaced Fractures</h4>
+            <p>The bone fragments have shifted but not severely enough to require open surgery. A <strong>closed reduction</strong> is performed — the fracture is manipulated back into alignment externally under local or regional anaesthesia, without making any incision. Once reduced, the fracture is immobilised in a cast or brace to maintain position during healing.</p>
+            <ul>
+              <li>Closed reduction under local / regional anaesthesia</li>
+              <li>No surgical incision required</li>
+              <li>Immobilisation post-reduction</li>
+              <li>Serial X-ray monitoring to confirm maintained alignment</li>
+            </ul>
+          </div>
+
+          <div class="frac-card majdis">
+            <div class="frac-card-num">03</div>
+            <div class="frac-card-icon"><i class="fa-solid fa-scalpel"></i></div>
+            <h4>Majorly Displaced Fractures</h4>
+            <p>Severely displaced or unstable fractures cannot be held in alignment through external immobilisation alone. An <strong>open reduction</strong> — surgical exposure of the fracture under general anaesthesia — is performed to precisely restore anatomical alignment, followed by fixation with implants that hold the bone firmly during healing.</p>
+            <ul>
+              <li>Open reduction under general anaesthesia</li>
+              <li>Stainless steel or titanium implant fixation</li>
+              <li>Plates, screws, intramedullary nails or wires</li>
+              <li>Early mobilisation post-fixation where possible</li>
+            </ul>
+          </div>
+
+          <div class="frac-card delayed">
+            <div class="frac-card-num">04</div>
+            <div class="frac-card-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+            <h4>Delayed Union & Non-Union</h4>
+            <p>Some fractures fail to heal within the expected timeframe — either healing abnormally slowly (delayed union) or failing to heal at all (non-union). This is more common in patients with Vitamin D3 deficiency, low bone mineral density, diabetes, or poor circulation. Treated with specialised <strong>Bone Marrow Injection (BMI) therapy</strong> to stimulate natural bone regeneration without re-operation.</p>
+            <ul>
+              <li>Intra-fracture bone marrow injection (BMI)</li>
+              <li>Stem cells and growth factors delivered to fracture site</li>
+              <li>Vitamin D3 and B12 supplementation</li>
+              <li>Combined with nutritional deficiency correction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Immobilisation Methods -->
+      <div class="content-section">
+        <div class="content-label">Immobilisation Options</div>
+        <h2 class="content-h2">Choosing the Right <em>Cast or Brace</em></h2>
+        <p class="content-p">Not all casts are equal. Dr. Sarish Sharma selects the most appropriate immobilisation method based on fracture type, location, swelling, and the patient's activity requirements — avoiding unnecessary restriction and maximising comfort.</p>
+
+        <div class="immob-grid">
+          <div class="immob-item">
+            <div class="immob-icon"><i class="fa-solid fa-hand-fist"></i></div>
+            <h4>POP Cast</h4>
+            <p>Traditional plaster of Paris — solid, conforming, and highly effective for most undisplaced fractures</p>
+          </div>
+          <div class="immob-item">
+            <div class="immob-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h4>Slab</h4>
+            <p>One-sided cast applied to fresh or swollen fractures — allows swelling to subside before full casting</p>
+          </div>
+          <div class="immob-item">
+            <div class="immob-icon"><i class="fa-solid fa-wind"></i></div>
+            <h4>Aircast</h4>
+            <p>Removable, pneumatic brace — adjustable compression, ideal for ankle fractures and during rehab transition</p>
+          </div>
+          <div class="immob-item">
+            <div class="immob-icon"><i class="fa-solid fa-feather"></i></div>
+            <h4>Scotch Cast</h4>
+            <p>Lightweight fibre casting material — the hardest and lightest option, preferred for long-term wear and active patients</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMI Therapy Deep Dive -->
+      <div class="content-section">
+        <div class="content-label">Specialised Treatment</div>
+        <h2 class="content-h2">Bone Marrow Injection <em>(BMI) Therapy</em></h2>
+        <p class="content-p">
+          One of the most significant advances in non-surgical fracture management, BMI therapy offers patients with delayed union or non-union fractures an effective alternative to repeat surgery. It is particularly relevant in India given the extremely high prevalence of Vitamin D3 deficiency — a major contributing factor to impaired bone healing.
+        </p>
+
+        <div class="bmi-highlight">
+          <div class="bmi-highlight-inner">
+            <div class="bmi-highlight-content">
+              <div class="bmi-highlight-label">How BMI Works</div>
+              <h3>Delivering Stem Cells <em>Directly</em> to the Fracture</h3>
+              <p>Bone marrow is aspirated from the patient's own iliac crest (hip bone) — a rich source of mesenchymal stem cells and growth factors. This concentrate is then injected precisely into the fracture gap under imaging guidance, delivering the biological signals needed to restart the healing cascade at the site where it has stalled.</p>
+            </div>
+            <div class="bmi-stats">
+              <div class="bmi-stat">
+                <div class="bmi-stat-icon"><i class="fa-solid fa-dna"></i></div>
+                <div class="bmi-stat-text"><strong>Patient's Own Cells</strong><span>No rejection risk — autologous therapy</span></div>
+              </div>
+              <div class="bmi-stat">
+                <div class="bmi-stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="bmi-stat-text"><strong>Avoids Re-Operation</strong><span>Non-surgical solution for non-union</span></div>
+              </div>
+              <div class="bmi-stat">
+                <div class="bmi-stat-icon"><i class="fa-solid fa-capsules"></i></div>
+                <div class="bmi-stat-text"><strong>Combined with Vitamin Correction</strong><span>D3 & B12 deficiencies addressed together</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treatment Approach -->
+      <div class="content-section">
+        <div class="content-label">Treatment Approach</div>
+        <h2 class="content-h2">How We <em>Manage Each Fracture</em></h2>
+
+        <div class="approach-cards">
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div>
+              <div class="approach-tag">Diagnosis</div>
+              <h3>Clinical-First Assessment</h3>
+              <p>Dr. Sarish Sharma diagnoses fractures through <strong>clinical examination and focused imaging</strong> — plain X-rays in most cases, with CT or MRI ordered only when genuinely needed to assess fracture complexity or soft tissue injury. You do not need to arrive with a full scan — assessment starts immediately on the day of consultation.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-kit-medical"></i></div>
+            <div>
+              <div class="approach-tag">Acute Management</div>
+              <h3>Immobilisation & Reduction</h3>
+              <p>Undisplaced fractures are immobilised immediately on the day of assessment with the most appropriate cast or brace. Mildly displaced fractures undergo <strong>closed reduction under local or regional anaesthesia</strong> — a precise, non-surgical manipulation to restore bone alignment — followed by cast application. No general anaesthesia, no overnight admission required in most cases.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-scalpel"></i></div>
+            <div>
+              <div class="approach-tag">Surgical Fixation</div>
+              <h3>Open Reduction & Internal Fixation (ORIF)</h3>
+              <p>For majorly displaced or unstable fractures, <strong>open reduction under general anaesthesia</strong> allows precise restoration of the fracture's anatomical position. The fragments are held in place with stainless steel or titanium implants — plates, screws, intramedullary nails, or tension band wires — chosen based on the specific bone and fracture pattern. Titanium implants are preferred for their superior biocompatibility and reduced long-term implant reaction.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-syringe"></i></div>
+            <div>
+              <div class="approach-tag">Delayed / Non-Union</div>
+              <h3>Bone Marrow Injection (BMI) Therapy</h3>
+              <p>For fractures that have failed to heal — delayed union or non-union — <strong>intra-fracture BMI therapy</strong> delivers autologous stem cells and growth factors directly into the fracture site. Combined with Vitamin D3 and B12 correction, this approach restimulates the biological healing process without the risks and recovery of repeat surgery. Particularly effective in nutritionally deficient patients.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <div>
+              <div class="approach-tag">Rehabilitation</div>
+              <h3>Structured Recovery & Return to Function</h3>
+              <p>Fracture healing is only half the story. <strong>Targeted physiotherapy</strong> restores the muscle strength, joint range of motion, and proprioception lost during immobilisation — ensuring patients return to their full level of activity, not just to a pain-free state. Dr. Sarish Sharma coordinates personalised rehab programmes with clear milestones tied to X-ray evidence of healing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- When to Seek Care -->
+      <div class="content-section">
+        <div class="content-label">Signs & Symptoms</div>
+        <h2 class="content-h2">When Should You <em>Seek Assessment?</em></h2>
+        <div class="check-list">
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Severe pain at the site of injury</strong> following a fall, collision, or impact — especially if it worsens with movement</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Visible swelling, bruising, or deformity</strong> around a limb or joint after trauma</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Inability to bear weight</strong> on a leg or foot, or to use an arm normally</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Persistent bone pain</strong> at a specific site after repetitive activity — may indicate a stress fracture</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>A fracture that has been in a cast for <strong>6–8 weeks without healing</strong> — possible delayed union requiring further assessment</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Known osteoporosis or low BMD</strong> — fragility fractures from minor falls or activities require specialist assessment</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Pain, warmth, or abnormal movement <strong>at a previous fracture site</strong> that was thought to have healed</span></div>
+        </div>
+
+        <div class="warning-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <h4>Seek Emergency Care Immediately If:</h4>
+            <p>The bone is visibly breaking through the skin (open fracture), you notice numbness or loss of circulation below the injury, the limb appears severely angulated or shortened, or there was a high-energy injury such as a road traffic accident or fall from height. These require urgent assessment and may need emergency fixation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recovery Timeline -->
+      <div class="content-section">
+        <div class="content-label">Recovery</div>
+        <h2 class="content-h2">The Road to <em>Full Bone Healing</em></h2>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <span class="step-badge">Day 1</span>
+              <h4>Assessment, X-Ray & Immediate Treatment</h4>
+              <p>Clinical examination, targeted imaging, and same-day initiation of treatment — casting, reduction, or surgical planning. No unnecessary delays.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <span class="step-badge">Week 1–3</span>
+              <h4>Protection & Swelling Management</h4>
+              <p>Immobilisation in cast or brace, elevation, pain management, and monitoring. Vitamin D3 and B12 supplementation initiated if deficiencies are identified.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <span class="step-badge">Week 3–8</span>
+              <h4>Bone Consolidation</h4>
+              <p>X-rays confirm progressive callus formation and fracture healing. Cast or brace may be changed or adjusted as swelling reduces. BMI therapy given if healing is delayed.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <span class="step-badge">Week 6–12</span>
+              <h4>Rehabilitation Begins</h4>
+              <p>Once X-ray shows adequate fracture union, immobilisation is removed and structured physiotherapy begins — restoring range of motion, strength, and balance.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <span class="step-badge">Month 3–6</span>
+              <h4>Return to Full Activity</h4>
+              <p>Progressive return to work, sport, and daily activity with functional milestones — determined by clinical and radiological assessment, not just symptom resolution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <div class="content-label">Common Questions</div>
+        <h2 class="content-h2">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How do I know if I have a fracture or just a sprain?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It is often impossible to tell without a clinical examination and X-ray. Signs more suggestive of a fracture include pinpoint tenderness directly over bone, significant swelling within the first hour, visible deformity, and inability to bear any weight at all. However, a severe sprain can mimic a fracture in presentation. If in doubt — particularly after a significant mechanism of injury — come in for assessment. Dr. Sarish Sharma can diagnose most injuries clinically and will use targeted imaging where needed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">What is a scotch cast and why is it better than plaster?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">A scotch cast (fibreglass cast) is made from a synthetic woven material impregnated with polyurethane resin. It is significantly lighter than traditional plaster of Paris (POP) — roughly half the weight — yet harder and more durable. It is water-resistant, sets in minutes rather than hours, and is more comfortable for long-term wear. Dr. Sarish Sharma uses scotch cast for patients who need a long immobilisation period or who are active and need a robust but lightweight option. POP slabs and traditional plaster still have their place — particularly in the acute setting when swelling is still changing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">My fracture has been in a cast for 3 months and still hasn't healed — what are my options?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">A fracture that has not healed after 3 months is classified as a delayed union — and after 6 months without healing, it is a non-union. This is more common in patients with Vitamin D3 deficiency (extremely prevalent in India), low bone mineral density, diabetes, or poor nutrition. Before considering revision surgery, Bone Marrow Injection (BMI) therapy — delivering autologous stem cells directly into the fracture — is a highly effective non-surgical option that can restart the healing cascade. Combined with vitamin deficiency correction, many non-union fractures heal successfully without the need for further surgery.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Will the metal implants need to be removed after surgery?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">In most cases, implants do not need to be removed once the fracture has healed. Modern titanium and stainless steel implants are designed to remain in the body permanently without causing problems for the vast majority of patients. Removal may be considered if the implant causes local irritation, prominent hardware beneath the skin, or limits future treatment options. Dr. Sarish Sharma discusses implant choice and the question of removal individually with each patient before surgery.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can Vitamin D3 deficiency really cause fractures or delayed healing?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes — absolutely. Vitamin D3 is essential for calcium absorption and bone mineralisation. Severe D3 deficiency leads to osteomalacia (soft bone), significantly increases the risk of stress fractures and fragility fractures, and dramatically impairs fracture healing once it occurs. India has one of the highest rates of Vitamin D3 deficiency in the world — affecting up to 70–90% of the urban population due to indoor lifestyles, pollution reducing sunlight exposure, and low dietary intake. Dr. Sarish Sharma routinely checks and corrects D3 levels as part of fracture management — particularly in delayed union cases.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Do I need to arrive with an X-ray or MRI for a fracture consultation?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Bring any imaging you have — it is helpful. However, do not delay your appointment waiting to get a scan. Dr. Sarish Sharma uses a clinical-first approach: he assesses the injury through examination and directs targeted imaging where needed. For acute fractures, plain X-rays are sufficient in most cases and can be arranged on the same day. You will not be sent away without a diagnosis or treatment plan.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card appt-sidebar">
+        <div class="sidebar-card-title">Book a Consultation</div>
+        <p>Same-day assessment for acute fractures — clinical-first diagnosis, treatment begins immediately.</p>
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+        <a href="tel:+919560657964" class="btn-call"><i class="fa-solid fa-phone"></i> +91 95606 57964</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Your Doctor</div>
+        <div class="doc-card">
+          <img class="doc-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+          <div>
+            <div class="doc-name">Dr. Sarish Sharma</div>
+            <div class="doc-spec">Orthopedics & Pain Management</div>
+          </div>
+        </div>
+        <div class="doc-creds">
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> MBBS, D.Orth, DNB Ortho</div>
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> Fellow — Sports Injury & Pain Management, London UK</div>
+          <div class="doc-cred"><i class="fa-solid fa-award"></i> 15 Years Clinical Experience</div>
+          <div class="doc-cred"><i class="fa-solid fa-users"></i> 8,000+ Patients Treated</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related Services</div>
+        <a href="/services/joint-trauma" class="related-link"><i class="fa-solid fa-chevron-right"></i> Joint Trauma Care</a>
+        <a href="/services/pain-management" class="related-link"><i class="fa-solid fa-chevron-right"></i> Pain Management</a>
+        <a href="/services/sports-injury-vitamin-balance" class="related-link"><i class="fa-solid fa-chevron-right"></i> Sports Injury & Vitamin Balance</a>
+        <a href="/services/acl-reconstruction" class="related-link"><i class="fa-solid fa-chevron-right"></i> ACL Reconstruction</a>
+        <a href="/services/knee-hip-spine" class="related-link"><i class="fa-solid fa-chevron-right"></i> Knee, Hip & Spine</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Morning (Mon–Sat)</span>
+            <span style="font-weight:700;color:var(--navy)">11AM – 2PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Evening (Mon–Sat)</span>
+            <span style="font-weight:700;color:var(--navy)">6PM – 8:30PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Emergency Slot</span>
+            <span style="font-weight:700;color:var(--navy)">2PM – 5PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0">
+            <span style="color:var(--text-lt)">Sunday</span>
+            <span style="font-weight:700;color:#e24b4a">Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════ OTHER SERVICES ═══════ -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <h2>Explore <em>Other Services</em></h2>
+    <div class="other-grid">
+      <a href="/services/joint-trauma" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-falling"></i></div>
+        <div><h4>Joint Trauma Care</h4><p>Sprains, strains, dislocations and cartilage tears — non-surgical first.</p></div>
+      </a>
+      <a href="/services/pain-management" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div><h4>Pain Management</h4><p>Multi-modal protocols for chronic, neuropathic and bone pain.</p></div>
+      </a>
+      <a href="/services/acl-reconstruction" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-running"></i></div>
+        <div><h4>ACL Reconstruction</h4><p>Conservative and surgical management for ACL tears.</p></div>
+      </a>
+      <a href="/services/sports-injury-vitamin-balance" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div><h4>Sports Injury & Vitamin Balance</h4><p>Four-aspect injection therapy in a single session.</p></div>
+      </a>
+      <a href="/services/knee-hip-spine" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-arrows-to-dot"></i></div>
+        <div><h4>Knee, Hip & Spine</h4><p>Holistic joint preservation for arthritis and degeneration.</p></div>
+      </a>
+      <a href="/services/joint-lubrication" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-vial"></i></div>
+        <div><h4>Joint Lubrication</h4><p>HA injections to restore natural joint fluid.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="service-cta">
+  <div class="service-cta-inner">
+    <h2>Fractured Bone? Get the Right <em>Care Today</em></h2>
+    <p>Early, accurate fracture assessment makes all the difference in recovery. Book a same-day consultation with Dr. Sarish Sharma — treatment begins on day one.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false') });
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true') }
+  }
+</script>
+
+<%- include('../../partials/footer') %>

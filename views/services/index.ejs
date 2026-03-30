@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sarish Sharma – Orthopedic Specialist | South Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/about.css">
+  <link rel="stylesheet" href="/home.css">
+<!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-name">Dr. Sarish Sharma</span>
+        <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <!-- <a href="/specialities">Specialities</a> -->
+          <!-- SPECIALITIES DROPDOWN -->
+      <div class="nav-dropdown">
+        <a href="/specialities" class="nav-dropdown-toggle">
+          Specialities <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/specialities/precision-diagnostics">
+            <i class="fa-solid fa-microscope"></i>
+            <div>
+              <span>Precision Diagnostics</span>
+              <small>Clinical-first examination approach</small>
+            </div>
+          </a>
+          <a href="/specialities/regenerative-treatment">
+            <i class="fa-solid fa-syringe"></i>
+            <div>
+              <span>Regenerative Treatment</span>
+              <small>PRP, bone marrow & viscosupplementation</small>
+            </div>
+          </a>
+          <a href="/specialities/sports-rehabilitation">
+            <i class="fa-solid fa-person-running"></i>
+            <div>
+              <span>Sports Rehabilitation</span>
+              <small>ACL, ligament & sports injury care</small>
+            </div>
+          </a>
+          <a href="/specialities/pain-science">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <span>Pain Science</span>
+              <small>Nerve blocks & multimodal pain relief</small>
+            </div>
+          </a>
+        </div>
+      </div>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+        <a href="/blogs">Blogs</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-cta"><i class="fa-regular fa-calendar-check"></i> Make
+        Appointment</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+<style>
+  :root {
+    --navy: #0A2342;
+    --navy-d: #061629;
+    --teal: #1B998B;
+    --teal-d: #147a6e;
+    --gold: #C9A84C;
+    --white: #ffffff;
+    --off-white: #F5F7FA;
+    --gray-lt: #EEF1F6;
+    --gray: #8899AA;
+    --gray-dk: #455A6E;
+    --text: #1A2B3C;
+    --text-lt: #546E82;
+    --border: #DDE4EE;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(10,35,66,0.06);
+    --shadow: 0 4px 24px rgba(10,35,66,0.09);
+    --shadow-lg: 0 12px 48px rgba(10,35,66,0.12);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
+  body { font-family:var(--font-body); color:var(--text); background:var(--white); overflow-x:hidden; line-height:1.7 }
+  img { max-width:100%; display:block }
+  a { text-decoration:none; color:inherit }
+
+  /* ── HERO ── */
+  .service-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .service-hero::after {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(27,153,139,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .service-hero-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .service-hero-content { padding-bottom: 56px }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.50); transition: color var(--transition) }
+  .breadcrumb a:hover { color: var(--gold) }
+  .breadcrumb span { font-size: 0.78rem; color: rgba(255,255,255,0.25) }
+  .breadcrumb .current { font-size: 0.78rem; color: var(--gold); font-weight: 500 }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+
+  .service-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .service-hero h1 em { color: var(--gold); font-style: italic }
+  .service-hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.78;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px }
+  .hero-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.82);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 50px;
+  }
+  .hero-badge-pill i { color: var(--teal); font-size: 0.72rem }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap }
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    transition: all var(--transition);
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: var(--teal-d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,153,139,0.35);
+    color: var(--white);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 12px 26px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(255,255,255,0.32);
+    transition: all var(--transition);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.60); color: var(--white) }
+
+  .service-hero-img-wrap { position: relative; align-self: flex-end }
+  .service-hero-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: block;
+    box-shadow: 0 -8px 48px rgba(0,0,0,0.25);
+  }
+  .hero-img-badge {
+    position: absolute;
+    top: 20px; left: -16px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    min-width: 110px;
+  }
+  .hero-img-badge-num {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .hero-img-badge-label { font-size: 0.65rem; color: var(--text-lt); margin-top: 3px; line-height: 1.4 }
+
+  /* ── 4 PILLARS STRIP ── */
+  .pillars-strip { background: var(--teal); padding: 0 }
+  .pillars-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 26px 24px;
+    border-right: 1px solid rgba(255,255,255,0.18);
+    position: relative;
+  }
+  .pillar-item:last-child { border-right: none }
+  .pillar-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .pillar-icon i { color: var(--white); font-size: 1rem }
+  .pillar-text strong {
+    display: block;
+    font-size: 0.90rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .pillar-text span { font-size: 0.75rem; color: rgba(255,255,255,0.70) }
+
+  /* ── MAIN CONTENT ── */
+  .service-main { padding: 80px 5%; background: var(--white) }
+  .service-main-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 56px;
+    align-items: flex-start;
+  }
+
+  .content-section { margin-bottom: 52px }
+  .content-section:last-child { margin-bottom: 0 }
+  .content-label {
+    font-size: 0.70rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content-label::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--gold);
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .content-h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .content-h2 em { color: var(--teal); font-style: italic }
+  .content-p {
+    font-size: 0.95rem;
+    color: var(--text-lt);
+    line-height: 1.82;
+    margin-bottom: 16px;
+  }
+  .content-p:last-child { margin-bottom: 0 }
+  .content-p strong { color: var(--navy) }
+
+  /* 4 Aspect Cards */
+  .aspect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .aspect-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .aspect-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+  .aspect-card.inflammation::before { background: #e24b4a }
+  .aspect-card.vitd::before { background: var(--gold) }
+  .aspect-card.vitb::before { background: var(--teal) }
+  .aspect-card.bmd::before { background: var(--navy) }
+  .aspect-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: var(--teal) }
+  .aspect-num {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: rgba(10,35,66,0.06);
+    position: absolute;
+    top: 10px; right: 16px;
+    line-height: 1;
+  }
+  .aspect-icon {
+    width: 40px; height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  .aspect-card.inflammation .aspect-icon { background: rgba(226,75,74,0.10); color: #e24b4a }
+  .aspect-card.vitd .aspect-icon { background: rgba(201,168,76,0.12); color: var(--gold-d, #a88a4e) }
+  .aspect-card.vitb .aspect-icon { background: rgba(27,153,139,0.10); color: var(--teal) }
+  .aspect-card.bmd .aspect-icon { background: rgba(10,35,66,0.08); color: var(--navy) }
+  .aspect-card h4 {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .aspect-card p { font-size: 0.82rem; color: var(--text-lt); line-height: 1.65 }
+
+  /* Why India stat cards */
+  .india-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .india-stat {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .india-stat-num {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .india-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.60); line-height: 1.4 }
+
+  /* Checklist */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--off-white);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+  .check-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0 }
+  .check-item span { font-size: 0.88rem; color: var(--text); line-height: 1.5 }
+  .check-item span strong { color: var(--navy) }
+
+  /* Process Steps */
+  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px }
+  .process-step {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    text-align: center;
+    position: relative;
+    transition: all var(--transition);
+  }
+  .process-step:hover { border-color: var(--teal); box-shadow: var(--shadow-sm) }
+  .process-step::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--teal);
+    font-size: 1.2rem;
+    font-weight: 700;
+    z-index: 1;
+  }
+  .process-step:last-child::after { display: none }
+  .process-step-num {
+    width: 36px; height: 36px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0 auto 12px;
+  }
+  .process-step h4 {
+    font-family: var(--font-head);
+    font-size: 0.90rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .process-step p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .faq-item {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color var(--transition);
+  }
+  .faq-item:hover { border-color: var(--teal) }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy);
+    transition: color var(--transition);
+  }
+  .faq-q:hover, .faq-q.open { color: var(--teal) }
+  .faq-icon {
+    width: 26px; height: 26px;
+    background: var(--gray-lt);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy);
+    font-size: 0.72rem;
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .faq-q.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+  .faq-a {
+    display: none;
+    padding: 14px 20px 18px;
+    font-size: 0.87rem;
+    color: var(--text-lt);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+  }
+  .faq-a.open { display: block }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 26px 24px;
+  }
+  .sidebar-card-title {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .sidebar-card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 32px; height: 2px;
+    background: var(--gold);
+  }
+  .appt-sidebar {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    border-color: var(--navy);
+  }
+  .appt-sidebar .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-sidebar p { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.65; margin-bottom: 20px }
+  .appt-sidebar .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px }
+  .appt-sidebar .btn-call {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 12px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all var(--transition);
+  }
+  .appt-sidebar .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55) }
+  .appt-sidebar .btn-call i { color: var(--teal); font-size: 0.8rem }
+
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all var(--transition);
+    font-size: 0.87rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .related-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .related-link:hover { color: var(--teal); padding-left: 4px }
+  .related-link i { color: var(--teal); font-size: 0.62rem; flex-shrink: 0 }
+
+  .doc-card { display: flex; align-items: center; gap: 14px; margin-bottom: 16px }
+  .doc-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; border: 2px solid var(--teal) }
+  .doc-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 2px }
+  .doc-spec { font-size: 0.75rem; color: var(--teal) }
+  .doc-creds { display: flex; flex-direction: column; gap: 6px }
+  .doc-cred { display: flex; align-items: center; gap: 8px; font-size: 0.80rem; color: var(--text-lt) }
+  .doc-cred i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0 }
+
+  /* ── OTHER SERVICES ── */
+  .other-services { padding: 72px 5%; background: var(--off-white); border-top: 1px solid var(--border) }
+  .other-services-inner { max-width: 1100px; margin: 0 auto }
+  .other-services h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+  .other-services h2 em { color: var(--teal); font-style: italic }
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+  .other-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all var(--transition);
+  }
+  .other-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px); color: inherit }
+  .other-card-icon {
+    width: 42px; height: 42px;
+    background: rgba(27,153,139,0.08);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(27,153,139,0.15);
+  }
+  .other-card-icon i { color: var(--teal); font-size: 0.9rem }
+  .other-card h4 { font-family: var(--font-head); font-size: 0.92rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .other-card p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .service-cta {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px);
+  }
+  .service-cta-inner { position: relative; z-index: 1 }
+  .service-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; font-weight: 700 }
+  .service-cta h2 em { color: var(--gold); font-style: italic }
+  .service-cta p { font-size: 0.98rem; color: rgba(255,255,255,0.58); max-width: 480px; margin: 0 auto 32px; line-height: 1.75 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .service-hero-grid { grid-template-columns: 1fr; gap: 40px }
+    .service-hero-img-wrap { display: none }
+    .service-main-grid { grid-template-columns: 1fr }
+    .sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 280px }
+    .pillars-inner { grid-template-columns: repeat(2, 1fr) }
+    .pillar-item:nth-child(2) { border-right: none }
+    .other-grid { grid-template-columns: repeat(2, 1fr) }
+    .india-stats { grid-template-columns: repeat(3, 1fr) }
+  }
+  @media (max-width: 640px) {
+    .pillars-inner { grid-template-columns: 1fr }
+    .pillar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15) }
+    .pillar-item:last-child { border-bottom: none }
+    .aspect-grid { grid-template-columns: 1fr }
+    .process-grid { grid-template-columns: 1fr }
+    .process-step::after { display: none }
+    .india-stats { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+    .sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="service-hero">
+  <div class="service-hero-grid">
+    <div class="service-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/services">Services</a>
+        <span>›</span>
+        <span class="current">Sports Injury & Vitamin Balance</span>
+      </nav>
+
+      <div class="section-label">Sports · Nutrition · Regenerative</div>
+      <h1>Sports Injury & <em>Vitamin Balance</em></h1>
+      <p class="service-hero-desc">
+        We address all four aspects — Inflammation, Vitamin D3, Vitamin B12 and Bone Mineral Density — using multiple injections in a single session to give the best result. Low BMD and B12 deficiency are common in India and are leading causes of stress fractures, osteoporosis and nerve inflammation.
+      </p>
+
+      <div class="hero-badges">
+        <span class="hero-badge-pill"><i class="fa-solid fa-syringe"></i> Single Session, 4 Aspects</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-shield-halved"></i> Non-Surgical</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-indian-rupee-sign"></i> Cost Effective</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> Book Consultation
+        </a>
+        <a href="tel:+919560657964" class="btn-ghost">
+          <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+      </div>
+    </div>
+
+    <div class="service-hero-img-wrap">
+      <img class="service-hero-img"
+        src="/images/Sports Injury & Vitamin Balance.jpg"
+        alt="Sports Injury and Vitamin Balance treatment South Delhi"
+        loading="eager"
+      >
+      <div class="hero-img-badge">
+        <div class="hero-img-badge-num">4-in-1</div>
+        <div class="hero-img-badge-label">Aspects in<br>One Session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 4 PILLARS STRIP ═══════ -->
+<div class="pillars-strip">
+  <div class="pillars-inner">
+    <div class="pillar-item">
+      <div class="pillar-icon"><i class="fa-solid fa-fire"></i></div>
+      <div class="pillar-text">
+        <strong>Inflammation</strong>
+        <span>Anti-inflammatory injections</span>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon"><i class="fa-solid fa-sun"></i></div>
+      <div class="pillar-text">
+        <strong>Vitamin D3</strong>
+        <span>Bone health & immunity</span>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon"><i class="fa-solid fa-capsules"></i></div>
+      <div class="pillar-text">
+        <strong>Vitamin B12</strong>
+        <span>Nerve health & energy</span>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon"><i class="fa-solid fa-bone"></i></div>
+      <div class="pillar-text">
+        <strong>Bone Mineral Density</strong>
+        <span>Prevent fractures & osteoporosis</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN CONTENT + SIDEBAR ═══════ -->
+<section class="service-main">
+  <div class="service-main-grid">
+
+    <!-- LEFT: Content -->
+    <div class="service-content">
+
+      <!-- Overview -->
+      <div class="content-section">
+        <div class="content-label">Overview</div>
+        <h2 class="content-h2">Why <em>Four Aspects</em> Matter Together</h2>
+        <p class="content-p">
+          Most orthopedic treatments focus only on the injury itself — the torn ligament, the inflamed joint, the stress fracture. But Dr. Sarish Sharma's approach goes deeper. He addresses the <strong>underlying nutritional and metabolic deficiencies</strong> that are silently making injuries worse, delaying recovery, and causing new injuries to occur.
+        </p>
+        <p class="content-p">
+          In a single injection session, all four critical aspects are addressed simultaneously — saving time, reducing clinic visits, and delivering superior outcomes compared to treating each deficiency separately over multiple weeks.
+        </p>
+      </div>
+
+      <!-- 4 Aspects -->
+      <div class="content-section">
+        <div class="content-label">The Four Pillars</div>
+        <h2 class="content-h2">What We <em>Address in One Session</em></h2>
+        <div class="aspect-grid">
+
+          <div class="aspect-card inflammation">
+            <div class="aspect-num">01</div>
+            <div class="aspect-icon"><i class="fa-solid fa-fire"></i></div>
+            <h4>Inflammation Control</h4>
+            <p>Chronic low-grade inflammation is present in most musculoskeletal injuries and significantly impairs healing. Targeted anti-inflammatory injections reduce inflammatory markers, relieve pain, and create the right environment for tissue repair.</p>
+          </div>
+
+          <div class="aspect-card vitd">
+            <div class="aspect-num">02</div>
+            <div class="aspect-icon"><i class="fa-solid fa-sun"></i></div>
+            <h4>Vitamin D3</h4>
+            <p>Vitamin D3 deficiency affects over 70% of Indians due to limited sun exposure and dietary gaps. It plays a critical role in calcium absorption, bone mineralisation, muscle function, and immune regulation. Deficiency directly leads to weak bones and increased fracture risk.</p>
+          </div>
+
+          <div class="aspect-card vitb">
+            <div class="aspect-num">03</div>
+            <div class="aspect-icon"><i class="fa-solid fa-capsules"></i></div>
+            <h4>Vitamin B12</h4>
+            <p>B12 deficiency is extremely common in India — particularly in vegetarians — and causes nerve inflammation, fatigue, and impaired motor function. In athletes and active individuals, B12 deficiency slows muscle recovery, causes unexplained pain, and contributes to stress fractures.</p>
+          </div>
+
+          <div class="aspect-card bmd">
+            <div class="aspect-num">04</div>
+            <div class="aspect-icon"><i class="fa-solid fa-bone"></i></div>
+            <h4>Bone Mineral Density</h4>
+            <p>Low BMD is the silent cause of stress fractures, recurring joint pain, and osteoporosis — often undetected until a fracture occurs. Correcting BMD through targeted therapy prevents future injuries and strengthens the skeletal framework that supports all physical activity.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- India Context -->
+      <div class="content-section">
+        <div class="content-label">The India Problem</div>
+        <h2 class="content-h2">Why This is <em>Critical in India</em></h2>
+        <p class="content-p">
+          Despite India being a sun-rich country, nutritional deficiencies are alarmingly common. The combination of predominantly vegetarian diets, indoor lifestyles, and limited awareness means millions of Indians are walking around with deficiencies that directly cause pain, injury, and slow recovery — without even knowing it.
+        </p>
+        <div class="india-stats">
+          <div class="india-stat">
+            <div class="india-stat-num">70%</div>
+            <div class="india-stat-label">Indians have Vitamin D3 deficiency</div>
+          </div>
+          <div class="india-stat">
+            <div class="india-stat-num">47%</div>
+            <div class="india-stat-label">Vegetarians have B12 deficiency</div>
+          </div>
+          <div class="india-stat">
+            <div class="india-stat-num">3x</div>
+            <div class="india-stat-label">Higher stress fracture risk with low BMD</div>
+          </div>
+        </div>
+        <p class="content-p" style="margin-top:20px">
+          <strong>Low BMD and B12 deficiency</strong> together create a perfect storm — weakened bones that fracture under normal training loads, nerves that inflame and cause chronic pain, and muscles that cannot recover properly. Dr. Sarish Sharma's single-session approach addresses all of this at once.
+        </p>
+      </div>
+
+      <!-- Who Needs This -->
+      <div class="content-section">
+        <div class="content-label">Who Should Consider This</div>
+        <h2 class="content-h2">Is This <em>Right for You?</em></h2>
+        <div class="check-list">
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Athletes and active individuals with <strong>recurring sports injuries</strong> or slow recovery</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>People experiencing <strong>unexplained bone or joint pain</strong> not responding to standard treatment</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Patients with <strong>stress fractures</strong> or a history of frequent fractures</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Individuals with <strong>nerve pain, tingling, or numbness</strong> in limbs (possible B12 deficiency)</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Vegetarians and vegans at <strong>higher risk</strong> of B12 and D3 deficiency</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Older adults at risk of <strong>osteoporosis</strong> or low bone density</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Post-injury patients needing <strong>accelerated recovery</strong> alongside physiotherapy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Process -->
+      <div class="content-section">
+        <div class="content-label">How It Works</div>
+        <h2 class="content-h2">The <em>Single Session</em> Process</h2>
+        <p class="content-p">The entire treatment is completed in one clinic visit — no lengthy hospital stay, no surgery, no lengthy recovery.</p>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="process-step-num">1</div>
+            <h4>Clinical Assessment</h4>
+            <p>Dr. Sarish Sharma examines your symptoms, movement and medical history — no unnecessary tests.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">2</div>
+            <h4>Targeted Injections</h4>
+            <p>Multiple injections in one session covering all four aspects — inflammation, D3, B12 and BMD.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">3</div>
+            <h4>Recovery Plan</h4>
+            <p>A personalised physiotherapy and nutrition plan to consolidate the injection therapy results.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <div class="content-label">Common Questions</div>
+        <h2 class="content-h2">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Why injections instead of oral supplements?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Injections deliver nutrients directly into the bloodstream, bypassing the digestive system entirely. This gives 100% bioavailability compared to oral supplements which may only absorb 30–50% depending on gut health. For patients with deficiencies causing symptoms, injections produce faster, more reliable results — particularly for B12 which requires a functioning intrinsic factor for oral absorption.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How many sessions are needed?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Most patients see significant improvement after a single session. Depending on the severity of deficiency and the nature of the sports injury, Dr. Sarish Sharma may recommend a follow-up session after 4–6 weeks. Each patient receives a personalised plan after the initial clinical assessment.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Is this treatment painful?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">The injections involve minimal discomfort — similar to a standard blood test. Local anaesthetic may be applied if needed. Most patients leave the clinic the same day and return to light activity immediately. There is no recovery period required after the injections.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can this be combined with physiotherapy?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes — and it is recommended. The injection therapy addresses the nutritional and inflammatory foundation, while physiotherapy rebuilds strength and movement patterns. Combined, they produce significantly better outcomes than either approach alone. Dr. Sarish Sharma coordinates both as part of an integrated recovery plan.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- END left content -->
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card appt-sidebar">
+        <div class="sidebar-card-title">Book a Consultation</div>
+        <p>Get a personalised assessment from Dr. Sarish Sharma. No unnecessary tests — clinical-first diagnosis.</p>
+        <a href="/contact" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> Book Appointment
+        </a>
+        <a href="tel:+919560657964" class="btn-call">
+          <i class="fa-solid fa-phone"></i> +91 95606 57964
+        </a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Your Doctor</div>
+        <div class="doc-card">
+          <img class="doc-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+          <div>
+            <div class="doc-name">Dr. Sarish Sharma</div>
+            <div class="doc-spec">Orthopedics & Sports Medicine</div>
+          </div>
+        </div>
+        <div class="doc-creds">
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> MBBS, MS (Ortho), DNB</div>
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> Fellow — Sports Injury & Pain Management</div>
+          <div class="doc-cred"><i class="fa-solid fa-award"></i> 15+ Years Experience</div>
+          <div class="doc-cred"><i class="fa-solid fa-users"></i> 8,000+ Patients Treated</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related Services</div>
+        <a href="/services/acl-reconstruction" class="related-link">
+          <i class="fa-solid fa-chevron-right"></i> ACL Reconstruction
+        </a>
+        <a href="/services/pain-management" class="related-link">
+          <i class="fa-solid fa-chevron-right"></i> Pain Management
+        </a>
+        <a href="/services/joint-lubrication" class="related-link">
+          <i class="fa-solid fa-chevron-right"></i> Joint Lubrication
+        </a>
+        <a href="/services/fracture-treatment" class="related-link">
+          <i class="fa-solid fa-chevron-right"></i> Fracture Treatment
+        </a>
+        <a href="/services/knee-hip-spine" class="related-link">
+          <i class="fa-solid fa-chevron-right"></i> Knee, Hip & Spine
+        </a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">10:30 AM – 1:30 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">5:30 PM – 8:00 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0">
+            <span style="color:var(--text-lt)">Sunday</span>
+            <span style="font-weight:600;color:#e24b4a">Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+</section>
+
+<!-- ═══════ OTHER SERVICES ═══════ -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <h2>Explore <em>Other Services</em></h2>
+    <div class="other-grid">
+      <a href="/services/acl-reconstruction" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-running"></i></div>
+        <div><h4>ACL Reconstruction</h4><p>Conservative and surgical management for ACL tears.</p></div>
+      </a>
+      <a href="/services/pain-management" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div><h4>Pain Management</h4><p>Multi-modal protocols for chronic and acute pain.</p></div>
+      </a>
+      <a href="/services/disc-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div><h4>Disc Treatment</h4><p>Non-surgical care for herniated and degenerative discs.</p></div>
+      </a>
+      <a href="/services/joint-lubrication" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-vial"></i></div>
+        <div><h4>Joint Lubrication</h4><p>Hyaluronic acid injections to restore joint fluid.</p></div>
+      </a>
+      <a href="/services/fracture-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-bone"></i></div>
+        <div><h4>Fracture Treatment</h4><p>BMI therapy for delayed union and non-union fractures.</p></div>
+      </a>
+      <a href="/services/knee-hip-spine" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-arrows-to-dot"></i></div>
+        <div><h4>Knee, Hip & Spine</h4><p>Holistic non-surgical joint preservation.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="service-cta">
+  <div class="service-cta-inner">
+    <h2>Address All Four Aspects <em>In One Visit</em></h2>
+    <p>Book a consultation with Dr. Sarish Sharma and get a complete nutritional and injury assessment — clinical-first, no unnecessary tests.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary">
+        <i class="fa-regular fa-calendar-check"></i> Book Consultation
+      </a>
+      <a href="tel:+919560657964" class="btn-ghost">
+        <i class="fa-solid fa-phone"></i> Call +91 95606 57964
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:0">
+            <span class="logo-name" style="color:var(--white)">Dr. Sarish Sharma</span>
+            <span class="logo-tag">Orthopedic Specialist</span>
+          </div>
+          <p>Providing exceptional non-surgical orthopedic care to patients across South Delhi. Healing bones, joints,
+            and lives — one patient at a time.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fa-solid fa-chevron-right"></i> About Dr. Sharma</a></li>
+            <li><a href="/specialities"><i class="fa-solid fa-chevron-right"></i> Specialities</a></li>
+            <li><a href="/services"><i class="fa-solid fa-chevron-right"></i> All Services</a></li>
+            <li><a href="/blogs"><i class="fa-solid fa-chevron-right"></i> Health Blog</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-chevron-right"></i> Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Treatments</h4>
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Pain Management</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> PRP Therapy</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nerve Blocks</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Fracture (BMI)</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> ACL & Sports Injury</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Spine & Disc Care</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Knee & Hip Joints</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Matri Mandir Rd, Block B 2, Safdarjung Enclave<br>New Delhi – 110029</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span><a href="tel:+919876543210" style="color:rgba(255,255,255,0.48)">+91 9560657964</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span><a href="mailto:dr.sarish@example.com"
+                style="color:rgba(255,255,255,0.48)">drsarish@yahoo.com</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <!-- <i class="fa-solid fa-clock"></i>
+            <span>Mon – Sat: 9:00 AM – 7:00 PM<br>Sunday: By Appointment</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Dr. Sarish Sharma. All Rights Reserved. | Designed by Lovely Tyagi</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+  

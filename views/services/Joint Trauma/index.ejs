@@ -1,0 +1,830 @@
+<%- include('../../partials/boilerplate') %>
+<%- include('../../partials/navbar') %>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+    --shadow: 0 4px 24px rgba(15,26,48,0.09);
+    --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7 }
+  img { max-width: 100%; display: block }
+  a { text-decoration: none; color: inherit }
+
+  /* ── HERO ── */
+  .service-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 0; position: relative; overflow: hidden;
+  }
+  .service-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .service-hero::after {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(26,171,152,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .service-hero-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 56px; align-items: flex-end; position: relative; z-index: 1;
+  }
+  .service-hero-content { padding-bottom: 56px }
+
+  .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap }
+  .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.48); transition: color var(--transition) }
+  .breadcrumb a:hover { color: var(--gold) }
+  .breadcrumb span { font-size: 0.78rem; color: rgba(255,255,255,0.22) }
+  .breadcrumb .current { color: var(--gold); font-weight: 500 }
+
+  .section-label {
+    font-size: 0.70rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 28px; height: 2px; background: var(--teal); border-radius: 2px; display: inline-block }
+
+  .service-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 18px;
+  }
+  .service-hero h1 em { color: var(--gold); font-style: italic }
+  .service-hero-desc { font-size: 1rem; color: rgba(255,255,255,0.58); line-height: 1.80; max-width: 520px; margin-bottom: 32px }
+
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px }
+  .hero-badge-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.78); font-size: 0.78rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 50px;
+  }
+  .hero-badge-pill i { color: var(--teal); font-size: 0.70rem }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap }
+
+  .btn-primary {
+    background: var(--teal); color: var(--white); padding: 13px 28px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,171,152,0.32); color: var(--white) }
+  .btn-ghost {
+    background: transparent; color: var(--white); padding: 12px 26px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    border: 1.5px solid rgba(255,255,255,0.28); transition: all var(--transition);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: var(--white) }
+
+  .service-hero-img-wrap { position: relative; align-self: flex-end }
+  .service-hero-img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block; box-shadow: 0 -8px 48px rgba(0,0,0,0.28) }
+  .hero-img-badge { position: absolute; top: 20px; left: -16px; background: var(--white); border-radius: var(--radius); padding: 14px 18px; box-shadow: var(--shadow-lg); text-align: center; min-width: 110px }
+  .hero-img-badge-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--teal); line-height: 1 }
+  .hero-img-badge-label { font-size: 0.65rem; color: var(--text-lt); margin-top: 3px; line-height: 1.4 }
+
+  /* ── 5 INJURY TYPES STRIP ── */
+  .injury-strip { background: var(--navy) }
+  .injury-strip-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+  }
+  .injury-type {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 10px; padding: 24px 14px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: background var(--transition);
+  }
+  .injury-type:last-child { border-right: none }
+  .injury-type:hover { background: rgba(255,255,255,0.04) }
+  .injury-type-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .injury-type-icon.sprain  { background: rgba(26,171,152,0.18) }
+  .injury-type-icon.strain  { background: rgba(198,153,58,0.18) }
+  .injury-type-icon.dislo   { background: rgba(226,75,74,0.18) }
+  .injury-type-icon.frac    { background: rgba(139,101,200,0.18) }
+  .injury-type-icon.cart    { background: rgba(52,168,234,0.18) }
+  .injury-type-icon.sprain i  { color: var(--teal) }
+  .injury-type-icon.strain i  { color: var(--gold) }
+  .injury-type-icon.dislo i   { color: #e24b4a }
+  .injury-type-icon.frac i    { color: #8b65c8 }
+  .injury-type-icon.cart i    { color: #34a8ea }
+  .injury-type-icon i { font-size: 1rem }
+  .injury-type strong { font-size: 0.82rem; font-weight: 700; color: var(--white) }
+  .injury-type span { font-size: 0.70rem; color: rgba(255,255,255,0.42); line-height: 1.4 }
+
+  /* ── QUICK FACTS ── */
+  .quick-facts { background: var(--teal) }
+  .quick-facts-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr) }
+  .fact-item { display: flex; align-items: center; gap: 14px; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.18) }
+  .fact-item:last-child { border-right: none }
+  .fact-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .fact-icon i { color: var(--white); font-size: 0.95rem }
+  .fact-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .fact-text span { font-size: 0.74rem; color: rgba(255,255,255,0.70) }
+
+  /* ── MAIN CONTENT ── */
+  .service-main { padding: 80px 5%; background: var(--white) }
+  .service-main-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 56px; align-items: flex-start }
+
+  .content-section { margin-bottom: 52px }
+  .content-section:last-child { margin-bottom: 0 }
+  .content-label {
+    font-size: 0.70rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .content-label::before { content: ''; width: 20px; height: 2px; background: var(--gold); display: inline-block; border-radius: 2px }
+  .content-h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.3 }
+  .content-h2 em { color: var(--teal); font-style: italic }
+  .content-p { font-size: 0.95rem; color: var(--text-lt); line-height: 1.82; margin-bottom: 16px }
+  .content-p:last-child { margin-bottom: 0 }
+  .content-p strong { color: var(--navy) }
+
+  /* ── 5 INJURY TYPE CARDS ── */
+  .injury-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px }
+  .injury-card {
+    background: var(--off-white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 22px 20px;
+    position: relative; overflow: hidden; transition: all var(--transition);
+  }
+  .injury-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 4px 4px 0 0 }
+  .injury-card.sprain::before  { background: var(--teal) }
+  .injury-card.strain::before  { background: var(--gold) }
+  .injury-card.dislo::before   { background: #e24b4a }
+  .injury-card.frac::before    { background: #8b65c8 }
+  .injury-card.cart::before    { background: #34a8ea }
+  .injury-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: var(--teal) }
+  .injury-card-num { font-family: var(--font-head); font-size: 3rem; font-weight: 700; color: rgba(26,39,68,0.04); position: absolute; top: 8px; right: 14px; line-height: 1 }
+  .injury-card-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 12px }
+  .injury-card.sprain .injury-card-icon  { background: rgba(26,171,152,0.10); color: var(--teal) }
+  .injury-card.strain .injury-card-icon  { background: rgba(198,153,58,0.10); color: var(--gold) }
+  .injury-card.dislo .injury-card-icon   { background: rgba(226,75,74,0.10); color: #e24b4a }
+  .injury-card.frac .injury-card-icon    { background: rgba(139,101,200,0.10); color: #8b65c8 }
+  .injury-card.cart .injury-card-icon    { background: rgba(52,168,234,0.10); color: #34a8ea }
+  .injury-card-icon i { font-size: 0.95rem }
+  .injury-card h4 { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 8px }
+  .injury-card p { font-size: 0.82rem; color: var(--text-lt); line-height: 1.68 }
+
+  /* Span full width for last card if odd */
+  .injury-cards .injury-card:last-child:nth-child(odd) { grid-column: 1 / -1 }
+
+  /* ── COMMON INJURIES ── */
+  .common-injuries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px }
+  .common-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 20px 16px;
+    text-align: center; transition: all var(--transition); position: relative; overflow: hidden;
+  }
+  .common-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--gold)); transform: scaleX(0); transition: transform var(--transition) }
+  .common-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px) }
+  .common-card:hover::after { transform: scaleX(1) }
+  .common-card-icon { width: 44px; height: 44px; background: rgba(26,171,152,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid rgba(26,171,152,0.16) }
+  .common-card-icon i { color: var(--teal); font-size: 0.95rem }
+  .common-card h4 { font-family: var(--font-head); font-size: 0.88rem; color: var(--navy); font-weight: 700; margin-bottom: 5px }
+  .common-card p { font-size: 0.76rem; color: var(--text-lt); line-height: 1.58 }
+
+  /* ── TREATMENT APPROACH CARDS ── */
+  .approach-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 24px }
+  .approach-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px 22px;
+    display: grid; grid-template-columns: 52px 1fr; gap: 18px;
+    align-items: flex-start; transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .approach-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--teal), var(--gold)); transform: scaleY(0); transition: transform 0.35s ease }
+  .approach-card:hover { box-shadow: var(--shadow); border-color: var(--teal); transform: translateX(4px) }
+  .approach-card:hover::after { transform: scaleY(1) }
+  .approach-icon { width: 52px; height: 52px; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .approach-icon i { color: var(--gold); font-size: 1.1rem }
+  .approach-tag { display: inline-flex; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--teal); background: rgba(26,171,152,0.08); border: 1px solid rgba(26,171,152,0.18); padding: 3px 10px; border-radius: 50px; margin-bottom: 8px; width: fit-content }
+  .approach-card h3 { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 8px }
+  .approach-card p { font-size: 0.84rem; color: var(--text-lt); line-height: 1.72 }
+  .approach-card p strong { color: var(--navy) }
+
+  /* ── CHECKLIST ── */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: var(--off-white); border-radius: var(--radius-sm); border: 1px solid var(--border) }
+  .check-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0 }
+  .check-item span { font-size: 0.87rem; color: var(--text); line-height: 1.5 }
+  .check-item span strong { color: var(--navy) }
+
+  /* ── WARNING BOX ── */
+  .warning-box { background: rgba(226,75,74,0.05); border: 1.5px solid rgba(226,75,74,0.18); border-radius: var(--radius); padding: 20px 22px; margin-top: 20px; display: flex; gap: 14px; align-items: flex-start }
+  .warning-box i { color: #e24b4a; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px }
+  .warning-box h4 { font-family: var(--font-head); font-size: 0.92rem; color: #c93535; font-weight: 700; margin-bottom: 6px }
+  .warning-box p { font-size: 0.83rem; color: var(--text-lt); line-height: 1.65 }
+
+  /* ── RECOVERY TIMELINE ── */
+  .steps-grid { display: flex; flex-direction: column; gap: 0; margin-top: 20px; position: relative }
+  .steps-grid::before { content: ''; position: absolute; left: 19px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--teal), rgba(26,171,152,0.08)) }
+  .step-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); position: relative }
+  .step-item:last-child { border-bottom: none }
+  .step-num { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-head); font-size: 0.88rem; font-weight: 700; color: var(--gold); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--navy); z-index: 1 }
+  .step-body h4 { font-family: var(--font-head); font-size: 0.95rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .step-body p { font-size: 0.83rem; color: var(--text-lt); line-height: 1.65 }
+  .step-badge { display: inline-block; font-size: 0.70rem; font-weight: 600; color: var(--teal-d); background: rgba(26,171,152,0.08); border: 1px solid rgba(26,171,152,0.18); padding: 2px 10px; border-radius: 50px; margin-bottom: 5px }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .faq-item { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition) }
+  .faq-item:hover { border-color: var(--teal) }
+  .faq-q { width: 100%; background: none; border: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--navy); transition: color var(--transition) }
+  .faq-q:hover, .faq-q.open { color: var(--teal) }
+  .faq-icon { width: 26px; height: 26px; background: var(--gray-lt); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 0.72rem; flex-shrink: 0; transition: all var(--transition) }
+  .faq-q.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+  .faq-a { display: none; padding: 14px 20px 18px; font-size: 0.87rem; color: var(--text-lt); line-height: 1.75; border-top: 1px solid var(--border) }
+  .faq-a.open { display: block }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 26px 24px }
+  .sidebar-card-title { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); position: relative }
+  .sidebar-card-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 30px; height: 2px; background: var(--gold) }
+  .appt-sidebar { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); border-color: var(--navy) }
+  .appt-sidebar .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-sidebar p { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 20px }
+  .appt-sidebar .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px }
+  .appt-sidebar .btn-call { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.22); color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition) }
+  .appt-sidebar .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.50) }
+  .appt-sidebar .btn-call i { color: var(--teal); font-size: 0.80rem }
+  .related-link { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); transition: all var(--transition); font-size: 0.87rem; color: var(--text); font-weight: 500 }
+  .related-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .related-link:hover { color: var(--teal); padding-left: 4px }
+  .related-link i { color: var(--teal); font-size: 0.62rem; flex-shrink: 0 }
+  .doc-card { display: flex; align-items: center; gap: 14px; margin-bottom: 16px }
+  .doc-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; border: 2px solid var(--teal) }
+  .doc-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 2px }
+  .doc-spec { font-size: 0.75rem; color: var(--teal) }
+  .doc-creds { display: flex; flex-direction: column; gap: 6px }
+  .doc-cred { display: flex; align-items: center; gap: 8px; font-size: 0.80rem; color: var(--text-lt) }
+  .doc-cred i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0 }
+
+  /* ── OTHER SERVICES ── */
+  .other-services { padding: 72px 5%; background: var(--off-white); border-top: 1px solid var(--border) }
+  .other-services-inner { max-width: 1100px; margin: 0 auto }
+  .other-services h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 600; margin-bottom: 32px; letter-spacing: -0.02em }
+  .other-services h2 em { color: var(--teal); font-style: italic }
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px }
+  .other-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 18px; display: flex; align-items: flex-start; gap: 14px; transition: all var(--transition) }
+  .other-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px); color: inherit }
+  .other-card-icon { width: 40px; height: 40px; background: rgba(26,171,152,0.08); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(26,171,152,0.14) }
+  .other-card-icon i { color: var(--teal); font-size: 0.88rem }
+  .other-card h4 { font-family: var(--font-head); font-size: 0.90rem; color: var(--navy); font-weight: 700; margin-bottom: 4px }
+  .other-card p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .service-cta { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); padding: 72px 5%; text-align: center; position: relative; overflow: hidden }
+  .service-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px) }
+  .service-cta-inner { position: relative; z-index: 1 }
+  .service-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; font-weight: 600 }
+  .service-cta h2 em { color: var(--gold); font-style: italic }
+  .service-cta p { font-size: 0.98rem; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 32px; line-height: 1.78 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .service-hero-grid { grid-template-columns: 1fr }
+    .service-hero-img-wrap { display: none }
+    .service-main-grid { grid-template-columns: 1fr }
+    .sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 280px }
+    .injury-strip-inner { grid-template-columns: repeat(3, 1fr) }
+    .injury-type:nth-child(3) { border-right: none }
+    .quick-facts-inner { grid-template-columns: repeat(2, 1fr) }
+    .fact-item:nth-child(2) { border-right: none }
+    .common-injuries { grid-template-columns: repeat(2, 1fr) }
+    .other-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  @media (max-width: 640px) {
+    .injury-strip-inner { grid-template-columns: repeat(2, 1fr) }
+    .injury-type { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08) }
+    .injury-type:last-child { border-bottom: none }
+    .quick-facts-inner { grid-template-columns: 1fr }
+    .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.16) }
+    .fact-item:last-child { border-bottom: none }
+    .injury-cards { grid-template-columns: 1fr }
+    .injury-cards .injury-card:last-child:nth-child(odd) { grid-column: auto }
+    .common-injuries { grid-template-columns: 1fr }
+    .approach-card { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+    .sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="service-hero">
+  <div class="service-hero-grid">
+    <div class="service-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <a href="/services">Services</a><span>›</span>
+        <span class="current">Joint Trauma</span>
+      </nav>
+
+      <div class="section-label">Acute · Chronic · Sports</div>
+      <h1>Joint <em>Trauma</em> Care</h1>
+      <p class="service-hero-desc">
+        Expert management of joint injuries from trauma, sports, and overuse — including sprains, strains, dislocations, fractures, and cartilage tears. Presenting with severe pain, swelling, and limited movement, most joint trauma can be treated effectively without surgery.
+      </p>
+
+      <div class="hero-badges">
+        <span class="hero-badge-pill"><i class="fa-solid fa-shield-halved"></i> Non-Surgical First</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-person-running"></i> Sports & Trauma</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-clock"></i> Same-Day Assessment</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+        <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call Now</a>
+      </div>
+    </div>
+
+    <div class="service-hero-img-wrap">
+      <img class="service-hero-img"
+        src="/images/ACL Reconstruction.webp"
+        alt="Joint Trauma Care — Dr. Sarish Sharma South Delhi"
+        loading="eager">
+      <div class="hero-img-badge">
+        <div class="hero-img-badge-num">5</div>
+        <div class="hero-img-badge-label">Injury Types<br>Treated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 5 INJURY TYPES STRIP ═══════ -->
+<div class="injury-strip">
+  <div class="injury-strip-inner">
+    <div class="injury-type">
+      <div class="injury-type-icon sprain"><i class="fa-solid fa-link-slash"></i></div>
+      <strong>Sprains</strong>
+      <span>Ligament damage</span>
+    </div>
+    <div class="injury-type">
+      <div class="injury-type-icon strain"><i class="fa-solid fa-person-walking"></i></div>
+      <strong>Strains</strong>
+      <span>Tendon / muscle tears</span>
+    </div>
+    <div class="injury-type">
+      <div class="injury-type-icon dislo"><i class="fa-solid fa-circle-exclamation"></i></div>
+      <strong>Dislocations</strong>
+      <span>Bones forced out of place</span>
+    </div>
+    <div class="injury-type">
+      <div class="injury-type-icon frac"><i class="fa-solid fa-bone"></i></div>
+      <strong>Fractures</strong>
+      <span>Acute, stress & non-union</span>
+    </div>
+    <div class="injury-type">
+      <div class="injury-type-icon cart"><i class="fa-solid fa-circle-half-stroke"></i></div>
+      <strong>Cartilage Tears</strong>
+      <span>Meniscus & labral damage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ QUICK FACTS ═══════ -->
+<div class="quick-facts">
+  <div class="quick-facts-inner">
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="fact-text"><strong>Same-Day Assessment</strong><span>Clinical diagnosis without delay</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="fact-text"><strong>Non-Surgical Priority</strong><span>Surgery only when truly needed</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-syringe"></i></div>
+      <div class="fact-text"><strong>PRP & Injections</strong><span>Accelerate natural healing</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-person-running"></i></div>
+      <div class="fact-text"><strong>Return to Sport</strong><span>Structured rehab protocols</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN CONTENT + SIDEBAR ═══════ -->
+<section class="service-main">
+  <div class="service-main-grid">
+
+    <div class="service-content">
+
+      <!-- Overview -->
+      <div class="content-section">
+        <div class="content-label">Overview</div>
+        <h2 class="content-h2">Understanding <em>Joint Trauma</em></h2>
+        <p class="content-p">
+          Joint injuries can occur in an instant — a sudden twist on the cricket field, a fall from a ladder, or a collision during sport. They can also develop gradually through repeated overuse over months. Regardless of the cause, joint trauma results in damage to the structures that give a joint its stability and movement: ligaments, tendons, muscles, cartilage, and bone.
+        </p>
+        <p class="content-p">
+          Dr. Sarish Sharma's approach to joint trauma is built on <strong>accurate clinical diagnosis first</strong> — identifying exactly which structure is injured and to what degree — and then deploying the most targeted, least invasive treatment to restore full function. Surgery is always the last resort.
+        </p>
+      </div>
+
+      <!-- 5 Injury Types -->
+      <div class="content-section">
+        <div class="content-label">Types of Injuries</div>
+        <h2 class="content-h2">Five Types of <em>Joint Injuries We Treat</em></h2>
+
+        <div class="injury-cards">
+          <div class="injury-card sprain">
+            <div class="injury-card-num">01</div>
+            <div class="injury-card-icon"><i class="fa-solid fa-link-slash"></i></div>
+            <h4>Sprains — Ligament Damage</h4>
+            <p>A sprain occurs when ligaments — the tough bands connecting bone to bone — are stretched or torn. Grade 1 (mild stretch) to Grade 3 (complete tear). Common in the ankle, knee (MCL, LCL), and wrist. Treated with bracing, PRP injections, and structured physiotherapy depending on severity.</p>
+          </div>
+
+          <div class="injury-card strain">
+            <div class="injury-card-num">02</div>
+            <div class="injury-card-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <h4>Strains — Tendon & Muscle Tears</h4>
+            <p>Strains involve damage to tendons or muscles from overstretching or sudden force. Hamstring tears, rotator cuff tears, quadriceps injuries, and Achilles tendon strains are common examples. PRP therapy accelerates tendon healing significantly — often avoiding surgery in partial tears.</p>
+          </div>
+
+          <div class="injury-card dislo">
+            <div class="injury-card-num">03</div>
+            <div class="injury-card-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h4>Dislocations — Bones Out of Place</h4>
+            <p>A dislocation occurs when bones in a joint are forced out of their normal position — most commonly the shoulder, fingers, and kneecap (patella). After reduction (putting the joint back), PRP and targeted physiotherapy restore stability and prevent recurrence without surgery in the majority of cases.</p>
+          </div>
+
+          <div class="injury-card frac">
+            <div class="injury-card-num">04</div>
+            <div class="injury-card-icon"><i class="fa-solid fa-bone"></i></div>
+            <h4>Fractures — Acute & Stress</h4>
+            <p>Acute fractures from direct trauma as well as stress fractures from repetitive loading — especially common in patients with low bone mineral density (BMD) or Vitamin D3 deficiency. Managed with immobilisation (plaster, Aircast), bone marrow injection (BMI) therapy for delayed unions, and vitamin supplementation.</p>
+          </div>
+
+          <div class="injury-card cart">
+            <div class="injury-card-num">05</div>
+            <div class="injury-card-icon"><i class="fa-solid fa-circle-half-stroke"></i></div>
+            <h4>Cartilage Tears</h4>
+            <p>Meniscal tears in the knee and labral tears in the hip and shoulder are among the most common cartilage injuries — causing locking, clicking, deep joint pain, and instability. Many tears — particularly degenerative ones — respond excellently to PRP injections and targeted rehabilitation without surgery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Injuries -->
+      <div class="content-section">
+        <div class="content-label">Common Presentations</div>
+        <h2 class="content-h2">Most Frequently <em>Seen Injuries</em></h2>
+        <div class="common-injuries">
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-person-running"></i></div>
+            <h4>ACL Tear</h4>
+            <p>Anterior cruciate ligament tear — the most common serious knee injury in sports like cricket, football, and badminton.</p>
+          </div>
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <h4>Rotator Cuff Tear</h4>
+            <p>Shoulder tendon tears causing pain, weakness, and inability to raise the arm — from sports, falls, or overuse.</p>
+          </div>
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <h4>Ankle Sprain</h4>
+            <p>The most common sports injury — lateral ligament sprains causing swelling, bruising, and instability after rolling the ankle.</p>
+          </div>
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-circle-half-stroke"></i></div>
+            <h4>Meniscal Tear</h4>
+            <p>Cartilage damage in the knee causing pain, locking, and swelling — from a sudden twist or gradual degeneration.</p>
+          </div>
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-hand"></i></div>
+            <h4>Tennis & Golfer's Elbow</h4>
+            <p>Tendon inflammation at the elbow from repetitive gripping, racquet sports, and overuse — causing outer or inner elbow pain.</p>
+          </div>
+          <div class="common-card">
+            <div class="common-card-icon"><i class="fa-solid fa-bone"></i></div>
+            <h4>Stress Fractures</h4>
+            <p>Hairline fractures from repetitive impact — particularly in athletes with low BMD or Vitamin D deficiency.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Symptoms -->
+      <div class="content-section">
+        <div class="content-label">Signs & Symptoms</div>
+        <h2 class="content-h2">When Should You <em>See a Doctor?</em></h2>
+        <div class="check-list">
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Severe joint pain</strong> immediately following a fall, twist, or impact</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Rapid <strong>swelling around the joint</strong> — particularly within the first few hours of injury</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Inability to bear weight</strong> or significantly reduced range of movement</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Locking or catching sensation</strong> in the knee — may indicate a meniscal tear</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Feeling of <strong>instability or giving way</strong> — joint feels like it might collapse</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Visible <strong>deformity or abnormal position</strong> of the joint (possible dislocation)</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span><strong>Chronic joint pain</strong> that has not resolved with rest after 2–3 weeks</span></div>
+        </div>
+
+        <div class="warning-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <h4>Seek Immediate Care If:</h4>
+            <p>The joint looks visibly deformed, the bone is visible through the skin, there is numbness or loss of feeling below the injury, or you cannot move the joint at all. These may indicate a fracture, open injury, or vascular compromise requiring urgent care.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treatment -->
+      <div class="content-section">
+        <div class="content-label">Treatment Approach</div>
+        <h2 class="content-h2">How We <em>Treat Joint Trauma</em></h2>
+
+        <div class="approach-cards">
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-kit-medical"></i></div>
+            <div>
+              <div class="approach-tag">Acute Care</div>
+              <h3>Immediate Management — Plaster & Aircast</h3>
+              <p>For acute fractures and severe sprains, <strong>immediate immobilisation</strong> with plaster casts or Aircast bracing protects the injury, reduces pain, and allows initial healing to begin. Dr. Sarish Sharma assesses each injury clinically and selects the most appropriate support based on injury type and severity — avoiding unnecessary casting where possible.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-droplet"></i></div>
+            <div>
+              <div class="approach-tag">Regenerative</div>
+              <h3>PRP & Growth Factor Injections</h3>
+              <p>Platelet-Rich Plasma (PRP) injections directly <strong>accelerate tissue repair</strong> in torn ligaments, tendons, and cartilage by delivering concentrated growth factors to the injury site. PRP therapy can reduce recovery time by 30–50% and frequently allows athletes to avoid surgery entirely for partial tears and moderate ligament injuries.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-bone"></i></div>
+            <div>
+              <div class="approach-tag">Fracture Healing</div>
+              <h3>Bone Marrow Injection (BMI) Therapy</h3>
+              <p>For delayed union or non-union fractures — bones that are not healing at the expected rate — <strong>intra-fracture bone marrow injection</strong> delivers stem cells and growth factors directly into the fracture site. This stimulates natural bone regeneration without surgery. Particularly effective when combined with Vitamin D3 and B12 supplementation to address underlying deficiencies.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <div>
+              <div class="approach-tag">Rehabilitation</div>
+              <h3>Structured Physiotherapy & Return to Sport</h3>
+              <p>Injection therapy and immobilisation alone are not enough. <strong>Targeted physiotherapy</strong> rebuilds the strength, proprioception, and movement patterns needed to protect the healed joint long-term. Dr. Sarish Sharma coordinates personalised rehab programmes with clear return-to-sport milestones — ensuring athletes return fully prepared, not just pain-free.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recovery -->
+      <div class="content-section">
+        <div class="content-label">Recovery</div>
+        <h2 class="content-h2">The Road Back <em>to Full Function</em></h2>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <span class="step-badge">Day 1</span>
+              <h4>Clinical Assessment & Diagnosis</h4>
+              <p>Dr. Sarish Sharma examines the injury clinically. Treatment begins the same day — immobilisation, injection, or both. No unnecessary delays waiting for reports.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <span class="step-badge">Week 1–2</span>
+              <h4>Protection & Pain Control</h4>
+              <p>RICE protocol, bracing or casting, and anti-inflammatory injections to manage acute swelling and pain. PRP therapy initiated for ligament and tendon injuries.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <span class="step-badge">Week 2–6</span>
+              <h4>Early Rehabilitation</h4>
+              <p>Progressive physiotherapy begins as acute symptoms settle — range of motion exercises, gentle strengthening, and proprioception training to restore stability.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <span class="step-badge">Month 2–4</span>
+              <h4>Strength & Function</h4>
+              <p>Advanced strengthening, sport-specific drills, and functional movement patterns. Most non-surgical patients achieve full function by this stage.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <span class="step-badge">Month 4–6+</span>
+              <h4>Return to Sport / Full Activity</h4>
+              <p>Clearance based on functional strength testing, not just symptom resolution. A gradual return programme prevents re-injury and builds long-term resilience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <div class="content-label">Common Questions</div>
+        <h2 class="content-h2">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Do I need an MRI before coming for a joint injury consultation?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">No. Dr. Sarish Sharma uses a clinical-first approach — he can diagnose most joint injuries accurately through examination of your symptoms and physical assessment. Bring any reports you have, but do not delay your appointment waiting to get an MRI. If imaging is genuinely needed to confirm a diagnosis or plan treatment, he will advise you specifically — not as a routine.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can ligament tears heal without surgery?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Many ligament injuries — including partial ACL tears, MCL tears, ankle ligament sprains, and shoulder instability — heal very well without surgery using PRP injections, bracing, and targeted physiotherapy. Complete tears in high-demand athletes may require surgical reconstruction for optimal outcome. Dr. Sarish Sharma evaluates each injury individually — surgery is only recommended when conservative management is unlikely to restore adequate stability for the patient's activity level.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How does PRP help joint injuries heal faster?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">PRP (Platelet-Rich Plasma) is prepared from the patient's own blood — a small sample is spun in a centrifuge to concentrate the platelets, which are packed with growth factors. When injected directly into a torn ligament, tendon, or damaged cartilage, these growth factors stimulate cell proliferation, collagen synthesis, and tissue repair at an accelerated rate. Clinical studies show PRP can reduce recovery time by 30–50% compared to rest alone.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">When is surgery actually necessary for joint trauma?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Surgery is necessary when: the injury involves a complete structural failure that cannot heal conservatively (e.g., complete ACL tear in a competitive athlete), there is a mechanical block to movement (locked knee from a bucket handle meniscal tear), progressive neurological symptoms are present, or conservative management has failed after an adequate trial. Dr. Sarish Sharma is transparent about when surgery is genuinely needed and never recommends it prematurely.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can I continue playing sports with a joint injury?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It depends entirely on the injury type and severity. Mild sprains may allow a modified return to sport within days with appropriate bracing. More significant injuries require a complete rest and rehabilitation period first. Playing through a significant joint injury risks converting a manageable injury into a more serious one. Dr. Sarish Sharma provides clear guidance on activity modification and safe return timelines for every patient.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card appt-sidebar">
+        <div class="sidebar-card-title">Book a Consultation</div>
+        <p>Same-day assessment available — clinical-first diagnosis, no need to wait for MRI.</p>
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+        <a href="tel:+919560657964" class="btn-call"><i class="fa-solid fa-phone"></i> +91 95606 57964</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Your Doctor</div>
+        <div class="doc-card">
+          <img class="doc-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+          <div>
+            <div class="doc-name">Dr. Sarish Sharma</div>
+            <div class="doc-spec">Orthopedics & Pain Management</div>
+          </div>
+        </div>
+        <div class="doc-creds">
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> MBBS, D.Orth, DNB Ortho</div>
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> Fellow — Sports Injury & Pain Management, London UK</div>
+          <div class="doc-cred"><i class="fa-solid fa-award"></i> 15 Years Clinical Experience</div>
+          <div class="doc-cred"><i class="fa-solid fa-users"></i> 8,000+ Patients Treated</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related Services</div>
+        <a href="/services/acl-reconstruction" class="related-link"><i class="fa-solid fa-chevron-right"></i> ACL Reconstruction</a>
+        <a href="/services/fracture-treatment" class="related-link"><i class="fa-solid fa-chevron-right"></i> Fracture Treatment</a>
+        <a href="/services/pain-management" class="related-link"><i class="fa-solid fa-chevron-right"></i> Pain Management</a>
+        <a href="/services/sports-injury-vitamin-balance" class="related-link"><i class="fa-solid fa-chevron-right"></i> Sports Injury & Vitamin Balance</a>
+        <a href="/services/joint-lubrication" class="related-link"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Morning (Mon–Sat)</span>
+            <span style="font-weight:700;color:var(--navy)">11AM – 2PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Evening (Mon–Sat)</span>
+            <span style="font-weight:700;color:var(--navy)">6PM – 8:30PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Emergency Slot</span>
+            <span style="font-weight:700;color:var(--navy)">2PM – 5PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:9px 0">
+            <span style="color:var(--text-lt)">Sunday</span>
+            <span style="font-weight:700;color:#e24b4a">Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════ OTHER SERVICES ═══════ -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <h2>Explore <em>Other Services</em></h2>
+    <div class="other-grid">
+      <a href="/services/acl-reconstruction" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-running"></i></div>
+        <div><h4>ACL Reconstruction</h4><p>Conservative and surgical management for ACL tears.</p></div>
+      </a>
+      <a href="/services/pain-management" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div><h4>Pain Management</h4><p>Multi-modal protocols for chronic and acute pain.</p></div>
+      </a>
+      <a href="/services/fracture-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-bone"></i></div>
+        <div><h4>Fracture Treatment</h4><p>BMI therapy for delayed union and non-union fractures.</p></div>
+      </a>
+      <a href="/services/disc-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div><h4>Disc Treatment</h4><p>ESI, traction and SNRB for herniated discs.</p></div>
+      </a>
+      <a href="/services/sports-injury-vitamin-balance" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div><h4>Sports Injury & Vitamin Balance</h4><p>Four-aspect injection therapy in a single session.</p></div>
+      </a>
+      <a href="/services/joint-lubrication" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-vial"></i></div>
+        <div><h4>Joint Lubrication</h4><p>HA injections to restore natural joint fluid.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="service-cta">
+  <div class="service-cta-inner">
+    <h2>Injured? Get the Right <em>Treatment Today</em></h2>
+    <p>Don't wait — early, accurate treatment makes all the difference in joint trauma recovery. Book a same-day assessment with Dr. Sarish Sharma.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false') });
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true') }
+  }
+</script>
+
+<%- include('../../partials/footer') %>

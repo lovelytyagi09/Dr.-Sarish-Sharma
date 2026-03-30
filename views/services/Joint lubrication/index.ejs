@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sarish Sharma – Orthopedic Specialist | South Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/about.css">
+  <link rel="stylesheet" href="/home.css">
+<!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-name">Dr. Sarish Sharma</span>
+        <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <!-- <a href="/specialities">Specialities</a> -->
+          <!-- SPECIALITIES DROPDOWN -->
+      <div class="nav-dropdown">
+        <a href="/specialities" class="nav-dropdown-toggle">
+          Specialities <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/specialities/precision-diagnostics">
+            <i class="fa-solid fa-microscope"></i>
+            <div>
+              <span>Precision Diagnostics</span>
+              <small>Clinical-first examination approach</small>
+            </div>
+          </a>
+          <a href="/specialities/regenerative-treatment">
+            <i class="fa-solid fa-syringe"></i>
+            <div>
+              <span>Regenerative Treatment</span>
+              <small>PRP, bone marrow & viscosupplementation</small>
+            </div>
+          </a>
+          <a href="/specialities/sports-rehabilitation">
+            <i class="fa-solid fa-person-running"></i>
+            <div>
+              <span>Sports Rehabilitation</span>
+              <small>ACL, ligament & sports injury care</small>
+            </div>
+          </a>
+          <a href="/specialities/pain-science">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <span>Pain Science</span>
+              <small>Nerve blocks & multimodal pain relief</small>
+            </div>
+          </a>
+        </div>
+      </div>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+        <a href="/blogs">Blogs</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-cta"><i class="fa-regular fa-calendar-check"></i> Make
+        Appointment</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+<style>
+  :root {
+    --navy: #0A2342;
+    --navy-d: #061629;
+    --teal: #1B998B;
+    --teal-d: #147a6e;
+    --gold: #C9A84C;
+    --white: #ffffff;
+    --off-white: #F5F7FA;
+    --gray-lt: #EEF1F6;
+    --gray: #8899AA;
+    --gray-dk: #455A6E;
+    --text: #1A2B3C;
+    --text-lt: #546E82;
+    --border: #DDE4EE;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(10,35,66,0.06);
+    --shadow: 0 4px 24px rgba(10,35,66,0.09);
+    --shadow-lg: 0 12px 48px rgba(10,35,66,0.12);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
+  body { font-family:var(--font-body); color:var(--text); background:var(--white); overflow-x:hidden; line-height:1.7 }
+  img { max-width:100%; display:block }
+  a { text-decoration:none; color:inherit }
+
+  /* ── HERO ── */
+  .service-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .service-hero::after {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(27,153,139,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .service-hero-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .service-hero-content { padding-bottom: 56px }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.50); transition: color var(--transition) }
+  .breadcrumb a:hover { color: var(--gold) }
+  .breadcrumb span { font-size: 0.78rem; color: rgba(255,255,255,0.25) }
+  .breadcrumb .current { font-size: 0.78rem; color: var(--gold); font-weight: 500 }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+
+  .service-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .service-hero h1 em { color: var(--gold); font-style: italic }
+  .service-hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.78;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px }
+  .hero-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.82);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 50px;
+  }
+  .hero-badge-pill i { color: var(--teal); font-size: 0.72rem }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    transition: all var(--transition);
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,153,139,0.35); color: var(--white) }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 12px 26px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(255,255,255,0.32);
+    transition: all var(--transition);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.60); color: var(--white) }
+
+  .service-hero-img-wrap { position: relative; align-self: flex-end }
+  .service-hero-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: block;
+    box-shadow: 0 -8px 48px rgba(0,0,0,0.25);
+  }
+  .hero-img-badge {
+    position: absolute;
+    top: 20px; left: -16px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    min-width: 110px;
+  }
+  .hero-img-badge-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--teal); line-height: 1 }
+  .hero-img-badge-label { font-size: 0.65rem; color: var(--text-lt); margin-top: 3px; line-height: 1.4 }
+
+  /* ── QUICK FACTS ── */
+  .quick-facts { background: var(--teal); padding: 0 }
+  .quick-facts-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .fact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 28px;
+    border-right: 1px solid rgba(255,255,255,0.18);
+  }
+  .fact-item:last-child { border-right: none }
+  .fact-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .fact-icon i { color: var(--white); font-size: 0.95rem }
+  .fact-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .fact-text span { font-size: 0.75rem; color: rgba(255,255,255,0.70) }
+
+  /* ── MAIN CONTENT ── */
+  .service-main { padding: 80px 5%; background: var(--white) }
+  .service-main-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 56px;
+    align-items: flex-start;
+  }
+
+  .content-section { margin-bottom: 52px }
+  .content-section:last-child { margin-bottom: 0 }
+  .content-label {
+    font-size: 0.70rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content-label::before { content: ''; width: 20px; height: 2px; background: var(--gold); display: inline-block; border-radius: 2px }
+  .content-h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.3 }
+  .content-h2 em { color: var(--teal); font-style: italic }
+  .content-p { font-size: 0.95rem; color: var(--text-lt); line-height: 1.82; margin-bottom: 16px }
+  .content-p:last-child { margin-bottom: 0 }
+  .content-p strong { color: var(--navy) }
+
+  /* Benefits Grid */
+  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px }
+  .benefit-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    text-align: center;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+  .benefit-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: var(--teal) }
+  .benefit-card:hover::before { transform: scaleX(1) }
+  .benefit-icon { width: 48px; height: 48px; background: rgba(27,153,139,0.10); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; border: 1px solid rgba(27,153,139,0.18) }
+  .benefit-icon i { color: var(--teal); font-size: 1rem }
+  .benefit-card h4 { font-family: var(--font-head); font-size: 0.92rem; color: var(--navy); font-weight: 700; margin-bottom: 6px }
+  .benefit-card p { font-size: 0.80rem; color: var(--text-lt); line-height: 1.60 }
+
+  /* Comparison Table */
+  .compare-table { width: 100%; border-collapse: collapse; margin-top: 24px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm) }
+  .compare-table th { background: var(--navy); color: var(--white); padding: 14px 18px; text-align: left; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em }
+  .compare-table th:first-child { border-radius: var(--radius-sm) 0 0 0 }
+  .compare-table th:last-child { border-radius: 0 var(--radius-sm) 0 0 }
+  .compare-table td { padding: 13px 18px; font-size: 0.84rem; color: var(--text); border-bottom: 1px solid var(--border) }
+  .compare-table tr:last-child td { border-bottom: none }
+  .compare-table tr:nth-child(even) td { background: var(--off-white) }
+  .compare-table td:first-child { font-weight: 600; color: var(--navy) }
+  .badge-yes { display: inline-flex; align-items: center; gap: 5px; color: var(--teal-d); font-weight: 600; font-size: 0.80rem }
+  .badge-no { color: var(--gray); font-size: 0.80rem }
+
+  /* Checklist */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--off-white); border-radius: var(--radius-sm); border: 1px solid var(--border) }
+  .check-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0 }
+  .check-item span { font-size: 0.88rem; color: var(--text); line-height: 1.5 }
+  .check-item span strong { color: var(--navy) }
+
+  /* Steps */
+  .steps-grid { display: flex; flex-direction: column; gap: 0; margin-top: 20px; position: relative }
+  .steps-grid::before { content: ''; position: absolute; left: 19px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--teal), rgba(27,153,139,0.10)) }
+  .step-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); position: relative }
+  .step-item:last-child { border-bottom: none }
+  .step-num { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-head); font-size: 0.88rem; font-weight: 700; color: var(--gold); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--navy); z-index: 1 }
+  .step-body h4 { font-family: var(--font-head); font-size: 0.95rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .step-body p { font-size: 0.83rem; color: var(--text-lt); line-height: 1.65 }
+  .step-badge { display: inline-block; font-size: 0.70rem; font-weight: 600; color: var(--teal-d); background: rgba(27,153,139,0.08); border: 1px solid rgba(27,153,139,0.18); padding: 2px 10px; border-radius: 50px; margin-bottom: 5px }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .faq-item { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition) }
+  .faq-item:hover { border-color: var(--teal) }
+  .faq-q { width: 100%; background: none; border: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--navy); transition: color var(--transition) }
+  .faq-q:hover, .faq-q.open { color: var(--teal) }
+  .faq-icon { width: 26px; height: 26px; background: var(--gray-lt); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 0.72rem; flex-shrink: 0; transition: all var(--transition) }
+  .faq-q.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+  .faq-a { display: none; padding: 14px 20px 18px; font-size: 0.87rem; color: var(--text-lt); line-height: 1.75; border-top: 1px solid var(--border) }
+  .faq-a.open { display: block }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 26px 24px }
+  .sidebar-card-title { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); position: relative }
+  .sidebar-card-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 32px; height: 2px; background: var(--gold) }
+  .appt-sidebar { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); border-color: var(--navy) }
+  .appt-sidebar .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-sidebar p { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.65; margin-bottom: 20px }
+  .appt-sidebar .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px }
+  .appt-sidebar .btn-call { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.25); color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition) }
+  .appt-sidebar .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55) }
+  .appt-sidebar .btn-call i { color: var(--teal); font-size: 0.8rem }
+  .related-link { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); transition: all var(--transition); font-size: 0.87rem; color: var(--text); font-weight: 500 }
+  .related-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .related-link:hover { color: var(--teal); padding-left: 4px }
+  .related-link i { color: var(--teal); font-size: 0.62rem; flex-shrink: 0 }
+  .doc-card { display: flex; align-items: center; gap: 14px; margin-bottom: 16px }
+  .doc-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; border: 2px solid var(--teal) }
+  .doc-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 2px }
+  .doc-spec { font-size: 0.75rem; color: var(--teal) }
+  .doc-creds { display: flex; flex-direction: column; gap: 6px }
+  .doc-cred { display: flex; align-items: center; gap: 8px; font-size: 0.80rem; color: var(--text-lt) }
+  .doc-cred i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0 }
+
+  /* ── OTHER SERVICES ── */
+  .other-services { padding: 72px 5%; background: var(--off-white); border-top: 1px solid var(--border) }
+  .other-services-inner { max-width: 1100px; margin: 0 auto }
+  .other-services h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 700; margin-bottom: 32px; letter-spacing: -0.02em }
+  .other-services h2 em { color: var(--teal); font-style: italic }
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+  .other-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; transition: all var(--transition) }
+  .other-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px); color: inherit }
+  .other-card-icon { width: 42px; height: 42px; background: rgba(27,153,139,0.08); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(27,153,139,0.15) }
+  .other-card-icon i { color: var(--teal); font-size: 0.9rem }
+  .other-card h4 { font-family: var(--font-head); font-size: 0.92rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .other-card p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .service-cta { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); padding: 72px 5%; text-align: center; position: relative; overflow: hidden }
+  .service-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px) }
+  .service-cta-inner { position: relative; z-index: 1 }
+  .service-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; font-weight: 700 }
+  .service-cta h2 em { color: var(--gold); font-style: italic }
+  .service-cta p { font-size: 0.98rem; color: rgba(255,255,255,0.58); max-width: 480px; margin: 0 auto 32px; line-height: 1.75 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .service-hero-grid { grid-template-columns: 1fr; gap: 40px }
+    .service-hero-img-wrap { display: none }
+    .service-main-grid { grid-template-columns: 1fr }
+    .sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 280px }
+    .quick-facts-inner { grid-template-columns: repeat(2, 1fr) }
+    .fact-item:nth-child(2) { border-right: none }
+    .other-grid { grid-template-columns: repeat(2, 1fr) }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  @media (max-width: 640px) {
+    .quick-facts-inner { grid-template-columns: 1fr }
+    .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15) }
+    .fact-item:last-child { border-bottom: none }
+    .benefits-grid { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+    .sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="service-hero">
+  <div class="service-hero-grid">
+    <div class="service-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/services">Services</a>
+        <span>›</span>
+        <span class="current">Joint Lubrication</span>
+      </nav>
+
+      <div class="section-label">Knee · Hip · Non-Surgical</div>
+      <h1>Joint <em>Lubrication</em></h1>
+      <p class="service-hero-desc">
+        Viscosupplementation (Hyaluronic Acid) injections that restore the natural fluid inside your joint — reducing friction, swelling, and stiffness in the knee and hip. A proven non-surgical solution for arthritis and joint degeneration.
+      </p>
+
+      <div class="hero-badges">
+        <span class="hero-badge-pill"><i class="fa-solid fa-clock"></i> 15–20 Min Procedure</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-person-walking"></i> Walk Same Day</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-shield-halved"></i> No Surgery Required</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> Book Consultation
+        </a>
+        <a href="tel:+919560657964" class="btn-ghost">
+          <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+      </div>
+    </div>
+
+    <div class="service-hero-img-wrap">
+      <img class="service-hero-img"
+        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+        alt="Joint lubrication hyaluronic acid injection knee hip South Delhi"
+        loading="eager"
+      >
+      <div class="hero-img-badge">
+        <div class="hero-img-badge-num">6 mo</div>
+        <div class="hero-img-badge-label">Average<br>Relief Duration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ QUICK FACTS ═══════ -->
+<div class="quick-facts">
+  <div class="quick-facts-inner">
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="fact-text"><strong>Procedure Time</strong><span>15 – 20 minutes</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-syringe"></i></div>
+      <div class="fact-text"><strong>Sessions</strong><span>1 – 3 injections</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-person-walking"></i></div>
+      <div class="fact-text"><strong>Recovery</strong><span>Walk same day</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <div class="fact-text"><strong>Relief Duration</strong><span>6 – 12 months</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN CONTENT + SIDEBAR ═══════ -->
+<section class="service-main">
+  <div class="service-main-grid">
+
+    <!-- LEFT: Content -->
+    <div class="service-content">
+
+      <!-- Overview -->
+      <div class="content-section">
+        <div class="content-label">Overview</div>
+        <h2 class="content-h2">What is <em>Viscosupplementation?</em></h2>
+        <p class="content-p">
+          Healthy joints are filled with synovial fluid — a thick, slippery substance that acts as a lubricant and shock absorber. In osteoarthritis and joint degeneration, this fluid thins out and loses its cushioning properties, resulting in bone-on-bone friction, pain, swelling, and stiffness.
+        </p>
+        <p class="content-p">
+          Viscosupplementation involves injecting <strong>Hyaluronic Acid (HA)</strong> — the same molecule found naturally in joint fluid — directly into the affected joint. This restores viscosity, reduces inflammation, and provides the joint with a natural cushion, allowing you to move freely and without pain.
+        </p>
+        <p class="content-p">
+          Dr. Sarish Sharma uses this procedure as a <strong>first-line treatment</strong> for mild to moderate knee and hip arthritis — delaying or even preventing the need for joint replacement surgery entirely.
+        </p>
+      </div>
+
+      <!-- Benefits -->
+      <div class="content-section">
+        <div class="content-label">Benefits</div>
+        <h2 class="content-h2">Why Choose <em>Joint Lubrication?</em></h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-droplet"></i></div>
+            <h4>Restores Joint Fluid</h4>
+            <p>Replenishes the natural hyaluronic acid lost to arthritis, restoring lubrication and shock absorption.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <h4>Reduces Inflammation</h4>
+            <p>HA injections have anti-inflammatory properties that reduce swelling, warmth, and stiffness around the joint.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <h4>Improves Mobility</h4>
+            <p>Most patients notice significant improvement in range of motion and ease of movement within 2–4 weeks.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>No Surgery</h4>
+            <p>A 15-minute in-clinic injection — no anaesthesia, no incision, no hospital stay, no recovery period.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <h4>Long-Lasting Relief</h4>
+            <p>A single course of injections provides relief for 6–12 months on average, with repeat courses available.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h4>Delays Replacement</h4>
+            <p>Regular viscosupplementation can significantly delay or avoid the need for knee or hip replacement surgery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conditions Treated -->
+      <div class="content-section">
+        <div class="content-label">Conditions Treated</div>
+        <h2 class="content-h2">Who Benefits from <em>This Treatment?</em></h2>
+        <div class="check-list">
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span><strong>Knee osteoarthritis</strong> — Grade 1 to 3 (mild to moderate), where the joint space is narrowed but not bone-on-bone</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span><strong>Hip arthritis</strong> — early to moderate degenerative changes causing groin pain and stiffness</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Patients who have <strong>not responded adequately</strong> to physiotherapy, oral medications, or lifestyle changes</span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Patients wanting to <strong>avoid or delay joint replacement surgery</strong></span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Active individuals with <strong>joint pain that limits sports or daily activities</strong></span>
+          </div>
+          <div class="check-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Elderly patients who are <strong>not surgical candidates</strong> due to age or co-morbidities</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- vs Surgery comparison -->
+      <div class="content-section">
+        <div class="content-label">Comparison</div>
+        <h2 class="content-h2">Joint Lubrication vs <em>Joint Replacement</em></h2>
+        <p class="content-p">For many patients in the early to moderate stages of arthritis, viscosupplementation offers comparable pain relief to surgery — with none of the risks or recovery time.</p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Joint Lubrication</th>
+              <th>Joint Replacement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Procedure Time</td>
+              <td>15 – 20 minutes</td>
+              <td>1 – 2 hours</td>
+            </tr>
+            <tr>
+              <td>Anaesthesia</td>
+              <td><span class="badge-no">Not required</span></td>
+              <td>General / Spinal</td>
+            </tr>
+            <tr>
+              <td>Hospital Stay</td>
+              <td><span class="badge-no">Not required</span></td>
+              <td>3 – 5 days</td>
+            </tr>
+            <tr>
+              <td>Recovery Time</td>
+              <td>Same day activity</td>
+              <td>3 – 6 months</td>
+            </tr>
+            <tr>
+              <td>Surgical Risk</td>
+              <td><span class="badge-yes"><i class="fa-solid fa-check"></i> None</span></td>
+              <td>Infection, clots, implant issues</td>
+            </tr>
+            <tr>
+              <td>Repeatable</td>
+              <td><span class="badge-yes"><i class="fa-solid fa-check"></i> Yes</span></td>
+              <td>Revision surgery only</td>
+            </tr>
+            <tr>
+              <td>Cost</td>
+              <td>Fraction of surgery cost</td>
+              <td>Very high</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Procedure Steps -->
+      <div class="content-section">
+        <div class="content-label">The Procedure</div>
+        <h2 class="content-h2">What Happens <em>During the Injection?</em></h2>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <span class="step-badge">5 minutes</span>
+              <h4>Clinical Assessment</h4>
+              <p>Dr. Sarish Sharma examines the joint, assesses range of motion, and confirms the injection site. No MRI required for straightforward cases.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <span class="step-badge">2 minutes</span>
+              <h4>Skin Preparation</h4>
+              <p>The injection site is cleaned and a local anaesthetic may be applied to minimise discomfort. The area is precisely marked.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <span class="step-badge">5 minutes</span>
+              <h4>Hyaluronic Acid Injection</h4>
+              <p>The HA gel is injected directly into the joint space using a fine needle. Ultrasound guidance may be used for precision. Most patients feel minimal discomfort.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <span class="step-badge">Immediate</span>
+              <h4>Post-Injection Observation</h4>
+              <p>You rest for 5–10 minutes, then walk out of the clinic. Avoid strenuous activity for 24–48 hours. No other restrictions.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <span class="step-badge">Week 2–4</span>
+              <h4>Gradual Improvement</h4>
+              <p>Most patients notice improved lubrication and reduced pain within 2 weeks. Full benefit is usually felt by 4–6 weeks and lasts 6–12 months.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <div class="content-label">Common Questions</div>
+        <h2 class="content-h2">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How many injections will I need?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Most patients receive a course of 1 to 3 injections spaced one week apart, depending on the type of HA product used and the severity of the condition. Single-injection formulations are also available. Dr. Sarish Sharma will recommend the optimal course after your clinical assessment.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Is it painful?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">The injection involves a brief sharp sensation similar to a blood test. Some patients feel mild pressure inside the joint during injection. A local anaesthetic is applied beforehand if needed. Mild soreness for 24–48 hours after the injection is normal and expected. Most patients describe it as significantly less uncomfortable than anticipated.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How long does the relief last?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Clinical studies show relief lasting between 6 and 12 months on average. Individual results vary based on the severity of arthritis, body weight, activity level, and the specific HA product used. The treatment can be repeated when relief diminishes — most patients do well with a course every 6–12 months.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can this be done for the hip as well as the knee?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. Viscosupplementation is effective for both knee and hip arthritis. Hip injections are performed under ultrasound guidance to ensure accurate placement into the hip joint space. The procedure and recovery are essentially the same as for the knee.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Is this safe for diabetic patients?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Hyaluronic acid injections are generally safe for diabetic patients and do not cause the blood sugar spikes associated with corticosteroid injections. This makes viscosupplementation a preferred option for diabetic patients with arthritis. Dr. Sarish Sharma will review your complete medical history before the procedure.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- END left content -->
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card appt-sidebar">
+        <div class="sidebar-card-title">Book a Consultation</div>
+        <p>Get a personalised assessment from Dr. Sarish Sharma — clinical-first diagnosis, no unnecessary tests.</p>
+        <a href="/contact" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> Book Appointment
+        </a>
+        <a href="tel:+919560657964" class="btn-call">
+          <i class="fa-solid fa-phone"></i> +91 95606 57964
+        </a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Your Doctor</div>
+        <div class="doc-card">
+          <img class="doc-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+          <div>
+            <div class="doc-name">Dr. Sarish Sharma</div>
+            <div class="doc-spec">Orthopedics & Sports Medicine</div>
+          </div>
+        </div>
+        <div class="doc-creds">
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> MBBS, MS (Ortho), DNB</div>
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> Fellow — Sports Injury & Pain Management</div>
+          <div class="doc-cred"><i class="fa-solid fa-award"></i> 15+ Years Experience</div>
+          <div class="doc-cred"><i class="fa-solid fa-users"></i> 8,000+ Patients Treated</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related Services</div>
+        <a href="/services/knee-hip-spine" class="related-link"><i class="fa-solid fa-chevron-right"></i> Knee, Hip & Spine Care</a>
+        <a href="/services/pain-management" class="related-link"><i class="fa-solid fa-chevron-right"></i> Pain Management</a>
+        <a href="/services/acl-reconstruction" class="related-link"><i class="fa-solid fa-chevron-right"></i> ACL Reconstruction</a>
+        <a href="/services/sports-injury-vitamin-balance" class="related-link"><i class="fa-solid fa-chevron-right"></i> Sports Injury & Vitamin Balance</a>
+        <a href="/services/fracture-treatment" class="related-link"><i class="fa-solid fa-chevron-right"></i> Fracture Treatment</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">10:30 AM – 1:30 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">5:30 PM – 8:00 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0">
+            <span style="color:var(--text-lt)">Sunday</span>
+            <span style="font-weight:600;color:#e24b4a">Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════ OTHER SERVICES ═══════ -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <h2>Explore <em>Other Services</em></h2>
+    <div class="other-grid">
+      <a href="/services/acl-reconstruction" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-running"></i></div>
+        <div><h4>ACL Reconstruction</h4><p>Conservative and surgical management for ACL tears.</p></div>
+      </a>
+      <a href="/services/pain-management" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div><h4>Pain Management</h4><p>Multi-modal protocols for chronic and acute pain.</p></div>
+      </a>
+      <a href="/services/disc-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div><h4>Disc Treatment</h4><p>Non-surgical care for herniated and degenerative discs.</p></div>
+      </a>
+      <a href="/services/sports-injury-vitamin-balance" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div><h4>Sports Injury & Vitamin Balance</h4><p>Four-aspect injection therapy in a single session.</p></div>
+      </a>
+      <a href="/services/fracture-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-bone"></i></div>
+        <div><h4>Fracture Treatment</h4><p>BMI therapy for delayed union and non-union fractures.</p></div>
+      </a>
+      <a href="/services/knee-hip-spine" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-arrows-to-dot"></i></div>
+        <div><h4>Knee, Hip & Spine</h4><p>Holistic non-surgical joint preservation.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="service-cta">
+  <div class="service-cta-inner">
+    <h2>Move Without Pain — <em>No Surgery Required</em></h2>
+    <p>Book a consultation with Dr. Sarish Sharma and find out if joint lubrication is right for your knee or hip condition.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false') });
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true') }
+  }
+</script>
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:0">
+            <span class="logo-name" style="color:var(--white)">Dr. Sarish Sharma</span>
+            <span class="logo-tag">Orthopedic Specialist</span>
+          </div>
+          <p>Providing exceptional non-surgical orthopedic care to patients across South Delhi. Healing bones, joints,
+            and lives — one patient at a time.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fa-solid fa-chevron-right"></i> About Dr. Sharma</a></li>
+            <li><a href="/specialities"><i class="fa-solid fa-chevron-right"></i> Specialities</a></li>
+            <li><a href="/services"><i class="fa-solid fa-chevron-right"></i> All Services</a></li>
+            <li><a href="/blogs"><i class="fa-solid fa-chevron-right"></i> Health Blog</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-chevron-right"></i> Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Treatments</h4>
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Pain Management</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> PRP Therapy</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nerve Blocks</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Fracture (BMI)</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> ACL & Sports Injury</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Spine & Disc Care</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Knee & Hip Joints</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Matri Mandir Rd, Block B 2, Safdarjung Enclave<br>New Delhi – 110029</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span><a href="tel:+919876543210" style="color:rgba(255,255,255,0.48)">+91 9560657964</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span><a href="mailto:dr.sarish@example.com"
+                style="color:rgba(255,255,255,0.48)">drsarish@yahoo.com</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <!-- <i class="fa-solid fa-clock"></i>
+            <span>Mon – Sat: 9:00 AM – 7:00 PM<br>Sunday: By Appointment</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Dr. Sarish Sharma. All Rights Reserved. | Designed by Lovely Tyagi</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>

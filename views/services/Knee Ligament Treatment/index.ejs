@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sarish Sharma – Orthopedic Specialist | South Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/about.css">
+  <link rel="stylesheet" href="/home.css">
+<!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-name">Dr. Sarish Sharma</span>
+        <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <!-- <a href="/specialities">Specialities</a> -->
+          <!-- SPECIALITIES DROPDOWN -->
+      <div class="nav-dropdown">
+        <a href="/specialities" class="nav-dropdown-toggle">
+          Specialities <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/specialities/precision-diagnostics">
+            <i class="fa-solid fa-microscope"></i>
+            <div>
+              <span>Precision Diagnostics</span>
+              <small>Clinical-first examination approach</small>
+            </div>
+          </a>
+          <a href="/specialities/regenerative-treatment">
+            <i class="fa-solid fa-syringe"></i>
+            <div>
+              <span>Regenerative Treatment</span>
+              <small>PRP, bone marrow & viscosupplementation</small>
+            </div>
+          </a>
+          <a href="/specialities/sports-rehabilitation">
+            <i class="fa-solid fa-person-running"></i>
+            <div>
+              <span>Sports Rehabilitation</span>
+              <small>ACL, ligament & sports injury care</small>
+            </div>
+          </a>
+          <a href="/specialities/pain-science">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <span>Pain Science</span>
+              <small>Nerve blocks & multimodal pain relief</small>
+            </div>
+          </a>
+        </div>
+      </div>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+        <a href="/blogs">Blogs</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-cta"><i class="fa-regular fa-calendar-check"></i> Make
+        Appointment</a>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+<style>
+  :root {
+    --navy: #0A2342;
+    --navy-d: #061629;
+    --teal: #1B998B;
+    --teal-d: #147a6e;
+    --gold: #C9A84C;
+    --white: #ffffff;
+    --off-white: #F5F7FA;
+    --gray-lt: #EEF1F6;
+    --gray: #8899AA;
+    --gray-dk: #455A6E;
+    --text: #1A2B3C;
+    --text-lt: #546E82;
+    --border: #DDE4EE;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(10,35,66,0.06);
+    --shadow: 0 4px 24px rgba(10,35,66,0.09);
+    --shadow-lg: 0 12px 48px rgba(10,35,66,0.12);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
+  body { font-family:var(--font-body); color:var(--text); background:var(--white); overflow-x:hidden; line-height:1.7 }
+  img { max-width:100%; display:block }
+  a { text-decoration:none; color:inherit }
+
+  /* ── HERO ── */
+  .service-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .service-hero::after {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(27,153,139,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .service-hero-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 56px; align-items: flex-end; position: relative; z-index: 1;
+  }
+  .service-hero-content { padding-bottom: 56px }
+
+  .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap }
+  .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.50); transition: color var(--transition) }
+  .breadcrumb a:hover { color: var(--gold) }
+  .breadcrumb span { font-size: 0.78rem; color: rgba(255,255,255,0.25) }
+  .breadcrumb .current { font-size: 0.78rem; color: var(--gold); font-weight: 500 }
+
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--teal); border-radius: 2px }
+
+  .service-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .service-hero h1 em { color: var(--gold); font-style: italic }
+  .service-hero-desc { font-size: 1rem; color: rgba(255,255,255,0.62); line-height: 1.78; max-width: 520px; margin-bottom: 32px }
+
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px }
+  .hero-badge-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.82); font-size: 0.78rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 50px;
+  }
+  .hero-badge-pill i { color: var(--teal); font-size: 0.72rem }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap }
+
+  .btn-primary {
+    background: var(--teal); color: var(--white); padding: 13px 28px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,153,139,0.35); color: var(--white) }
+  .btn-ghost {
+    background: transparent; color: var(--white); padding: 12px 26px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 9px;
+    border: 1.5px solid rgba(255,255,255,0.32); transition: all var(--transition);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.60); color: var(--white) }
+
+  .service-hero-img-wrap { position: relative; align-self: flex-end }
+  .service-hero-img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block; box-shadow: 0 -8px 48px rgba(0,0,0,0.25) }
+  .hero-img-badge { position: absolute; top: 20px; left: -16px; background: var(--white); border-radius: var(--radius); padding: 14px 18px; box-shadow: var(--shadow-lg); text-align: center; min-width: 110px }
+  .hero-img-badge-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--teal); line-height: 1 }
+  .hero-img-badge-label { font-size: 0.65rem; color: var(--text-lt); margin-top: 3px; line-height: 1.4 }
+
+  /* ── 3 JOINT AREAS STRIP ── */
+  .joints-strip { background: var(--teal); padding: 0 }
+  .joints-strip-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  }
+  .joint-item {
+    display: flex; align-items: center; gap: 18px;
+    padding: 30px 28px; border-right: 1px solid rgba(255,255,255,0.18);
+    position: relative; overflow: hidden;
+  }
+  .joint-item:last-child { border-right: none }
+  .joint-icon { width: 52px; height: 52px; background: rgba(255,255,255,0.15); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .joint-icon i { color: var(--white); font-size: 1.2rem }
+  .joint-item strong { display: block; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 4px; font-family: var(--font-head) }
+  .joint-item span { font-size: 0.76rem; color: rgba(255,255,255,0.68); line-height: 1.45 }
+
+  /* ── QUICK FACTS ── */
+  .quick-facts { background: var(--navy); padding: 0 }
+  .quick-facts-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 }
+  .fact-item { display: flex; align-items: center; gap: 14px; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.10) }
+  .fact-item:last-child { border-right: none }
+  .fact-icon { width: 40px; height: 40px; background: rgba(27,153,139,0.20); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .fact-icon i { color: var(--teal); font-size: 0.95rem }
+  .fact-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 2px }
+  .fact-text span { font-size: 0.75rem; color: rgba(255,255,255,0.50) }
+
+  /* ── MAIN CONTENT ── */
+  .service-main { padding: 80px 5%; background: var(--white) }
+  .service-main-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 56px; align-items: flex-start }
+
+  .content-section { margin-bottom: 52px }
+  .content-section:last-child { margin-bottom: 0 }
+  .content-label {
+    font-size: 0.70rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .content-label::before { content: ''; width: 20px; height: 2px; background: var(--gold); display: inline-block; border-radius: 2px }
+  .content-h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.3 }
+  .content-h2 em { color: var(--teal); font-style: italic }
+  .content-p { font-size: 0.95rem; color: var(--text-lt); line-height: 1.82; margin-bottom: 16px }
+  .content-p:last-child { margin-bottom: 0 }
+  .content-p strong { color: var(--navy) }
+
+  /* ── CONDITION TABS ── */
+  .condition-tabs { margin-top: 28px }
+  .tab-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px }
+  .tab-btn {
+    padding: 9px 20px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; border: 1.5px solid var(--border);
+    background: var(--white); color: var(--gray-dk);
+    transition: all var(--transition);
+  }
+  .tab-btn:hover { border-color: var(--teal); color: var(--teal) }
+  .tab-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white) }
+
+  .tab-panel { display: none }
+  .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
+
+  .condition-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .condition-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+  .condition-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px) }
+  .condition-card:hover::before { transform: scaleX(1) }
+  .condition-card-icon { width: 40px; height: 40px; background: rgba(27,153,139,0.10); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; border: 1px solid rgba(27,153,139,0.18) }
+  .condition-card-icon i { color: var(--teal); font-size: 0.95rem }
+  .condition-card h4 { font-family: var(--font-head); font-size: 0.95rem; color: var(--navy); font-weight: 700; margin-bottom: 6px }
+  .condition-card p { font-size: 0.81rem; color: var(--text-lt); line-height: 1.65 }
+
+  /* ── TREATMENT APPROACH CARDS ── */
+  .approach-grid { display: flex; flex-direction: column; gap: 18px; margin-top: 24px }
+  .approach-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 26px 24px;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    align-items: flex-start;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .approach-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--teal), var(--gold));
+    transform: scaleY(0);
+    transition: transform 0.35s ease;
+  }
+  .approach-card:hover { box-shadow: var(--shadow); border-color: var(--teal); transform: translateX(4px) }
+  .approach-card:hover::after { transform: scaleY(1) }
+  .approach-icon { width: 52px; height: 52px; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .approach-icon i { color: var(--gold); font-size: 1.15rem }
+  .approach-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--teal); background: rgba(27,153,139,0.08); border: 1px solid rgba(27,153,139,0.18); padding: 3px 10px; border-radius: 50px; margin-bottom: 8px; width: fit-content }
+  .approach-card h3 { font-family: var(--font-head); font-size: 1.05rem; color: var(--navy); font-weight: 700; margin-bottom: 8px }
+  .approach-card p { font-size: 0.84rem; color: var(--text-lt); line-height: 1.72 }
+  .approach-card p strong { color: var(--navy) }
+
+  /* ── CHECKLIST ── */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--off-white); border-radius: var(--radius-sm); border: 1px solid var(--border) }
+  .check-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0 }
+  .check-item span { font-size: 0.88rem; color: var(--text); line-height: 1.5 }
+  .check-item span strong { color: var(--navy) }
+
+  /* ── PRESERVE JOINT STAT BOXES ── */
+  .preserve-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px }
+  .preserve-stat {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 24px 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .preserve-stat::before { content: ''; position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(27,153,139,0.25) 0%, transparent 65%) }
+  .preserve-stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px }
+  .preserve-stat-label { font-size: 0.76rem; color: rgba(255,255,255,0.58); line-height: 1.45 }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px }
+  .faq-item { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition) }
+  .faq-item:hover { border-color: var(--teal) }
+  .faq-q { width: 100%; background: none; border: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--navy); transition: color var(--transition) }
+  .faq-q:hover, .faq-q.open { color: var(--teal) }
+  .faq-icon { width: 26px; height: 26px; background: var(--gray-lt); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 0.72rem; flex-shrink: 0; transition: all var(--transition) }
+  .faq-q.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+  .faq-a { display: none; padding: 14px 20px 18px; font-size: 0.87rem; color: var(--text-lt); line-height: 1.75; border-top: 1px solid var(--border) }
+  .faq-a.open { display: block }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 26px 24px }
+  .sidebar-card-title { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); position: relative }
+  .sidebar-card-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 32px; height: 2px; background: var(--gold) }
+  .appt-sidebar { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); border-color: var(--navy) }
+  .appt-sidebar .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-sidebar p { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.65; margin-bottom: 20px }
+  .appt-sidebar .btn-primary { width: 100%; justify-content: center; margin-bottom: 10px }
+  .appt-sidebar .btn-call { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.25); color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition) }
+  .appt-sidebar .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55) }
+  .appt-sidebar .btn-call i { color: var(--teal); font-size: 0.8rem }
+  .related-link { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); transition: all var(--transition); font-size: 0.87rem; color: var(--text); font-weight: 500 }
+  .related-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .related-link:hover { color: var(--teal); padding-left: 4px }
+  .related-link i { color: var(--teal); font-size: 0.62rem; flex-shrink: 0 }
+  .doc-card { display: flex; align-items: center; gap: 14px; margin-bottom: 16px }
+  .doc-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; border: 2px solid var(--teal) }
+  .doc-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 2px }
+  .doc-spec { font-size: 0.75rem; color: var(--teal) }
+  .doc-creds { display: flex; flex-direction: column; gap: 6px }
+  .doc-cred { display: flex; align-items: center; gap: 8px; font-size: 0.80rem; color: var(--text-lt) }
+  .doc-cred i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0 }
+
+  /* ── OTHER SERVICES ── */
+  .other-services { padding: 72px 5%; background: var(--off-white); border-top: 1px solid var(--border) }
+  .other-services-inner { max-width: 1100px; margin: 0 auto }
+  .other-services h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--navy); font-weight: 700; margin-bottom: 32px; letter-spacing: -0.02em }
+  .other-services h2 em { color: var(--teal); font-style: italic }
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+  .other-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; transition: all var(--transition) }
+  .other-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateY(-3px); color: inherit }
+  .other-card-icon { width: 42px; height: 42px; background: rgba(27,153,139,0.08); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(27,153,139,0.15) }
+  .other-card-icon i { color: var(--teal); font-size: 0.9rem }
+  .other-card h4 { font-family: var(--font-head); font-size: 0.92rem; color: var(--navy); font-weight: 600; margin-bottom: 4px }
+  .other-card p { font-size: 0.78rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .service-cta { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); padding: 72px 5%; text-align: center; position: relative; overflow: hidden }
+  .service-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px) }
+  .service-cta-inner { position: relative; z-index: 1 }
+  .service-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; font-weight: 700 }
+  .service-cta h2 em { color: var(--gold); font-style: italic }
+  .service-cta p { font-size: 0.98rem; color: rgba(255,255,255,0.58); max-width: 480px; margin: 0 auto 32px; line-height: 1.75 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .service-hero-grid { grid-template-columns: 1fr }
+    .service-hero-img-wrap { display: none }
+    .service-main-grid { grid-template-columns: 1fr }
+    .sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 280px }
+    .joints-strip-inner { grid-template-columns: 1fr }
+    .joint-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15) }
+    .joint-item:last-child { border-bottom: none }
+    .quick-facts-inner { grid-template-columns: repeat(2, 1fr) }
+    .fact-item:nth-child(2) { border-right: none }
+    .tab-panel.active { grid-template-columns: 1fr }
+    .preserve-stats { grid-template-columns: repeat(3, 1fr) }
+    .other-grid { grid-template-columns: repeat(2, 1fr) }
+  }
+  @media (max-width: 640px) {
+    .quick-facts-inner { grid-template-columns: 1fr }
+    .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.10) }
+    .fact-item:last-child { border-bottom: none }
+    .preserve-stats { grid-template-columns: 1fr }
+    .approach-card { grid-template-columns: 1fr }
+    .other-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+    .sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="service-hero">
+  <div class="service-hero-grid">
+    <div class="service-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <a href="/services">Services</a><span>›</span>
+        <span class="current">Knee, Hip & Spine</span>
+      </nav>
+
+      <div class="section-label">Joint Care · Non-Surgical</div>
+      <h1>Knee, Hip <em>& Spine</em></h1>
+      <p class="service-hero-desc">
+        Holistic joint care for osteoarthritis, labral tears, spinal stenosis, and degeneration — tailored non-surgical plans designed to preserve your native joint, restore mobility, and eliminate pain without surgery.
+      </p>
+
+      <div class="hero-badges">
+        <span class="hero-badge-pill"><i class="fa-solid fa-shield-halved"></i> Preserve Native Joint</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-arrows-to-dot"></i> Knee · Hip · Spine</span>
+        <span class="hero-badge-pill"><i class="fa-solid fa-user-clock"></i> Same-Day Treatment</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+        <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call Now</a>
+      </div>
+    </div>
+
+    <div class="service-hero-img-wrap">
+      <img class="service-hero-img"
+        src="/images/Knee hip and spine.jfif"
+        alt="Knee Hip Spine joint care non-surgical South Delhi"
+        loading="eager"
+      >
+      <div class="hero-img-badge">
+        <div class="hero-img-badge-num">3-in-1</div>
+        <div class="hero-img-badge-label">Joint Areas<br>Covered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 3 JOINT AREAS STRIP ═══════ -->
+<div class="joints-strip">
+  <div class="joints-strip-inner">
+    <div class="joint-item">
+      <div class="joint-icon"><i class="fa-solid fa-person-walking"></i></div>
+      <div>
+        <strong>Knee</strong>
+        <span>Osteoarthritis, meniscal tears, ligament injuries, patellofemoral pain</span>
+      </div>
+    </div>
+    <div class="joint-item">
+      <div class="joint-icon"><i class="fa-solid fa-circle-dot"></i></div>
+      <div>
+        <strong>Hip</strong>
+        <span>Labral tears, femoroacetabular impingement, hip arthritis, bursitis</span>
+      </div>
+    </div>
+    <div class="joint-item">
+      <div class="joint-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <div>
+        <strong>Spine</strong>
+        <span>Spinal stenosis, facet arthritis, spondylosis, degenerative disc disease</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ QUICK FACTS ═══════ -->
+<div class="quick-facts">
+  <div class="quick-facts-inner">
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-arrows-to-dot"></i></div>
+      <div class="fact-text"><strong>Joint Areas Covered</strong><span>Knee, hip and spine</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="fact-text"><strong>Goal</strong><span>Preserve native joint</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-syringe"></i></div>
+      <div class="fact-text"><strong>Approach</strong><span>Injections + physio + lifestyle</span></div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class="fa-solid fa-user-clock"></i></div>
+      <div class="fact-text"><strong>Diagnosis</strong><span>Same-day, clinical-first</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN CONTENT + SIDEBAR ═══════ -->
+<section class="service-main">
+  <div class="service-main-grid">
+
+    <div class="service-content">
+
+      <!-- Overview -->
+      <div class="content-section">
+        <div class="content-label">Overview</div>
+        <h2 class="content-h2">Why <em>Native Joint Preservation</em> Matters</h2>
+        <p class="content-p">
+          Your natural knee, hip, and spine are irreplaceable. No prosthetic implant — however advanced — fully replicates the feel, range of motion, and longevity of your own joint. <strong>Dr. Sarish Sharma's philosophy is simple:</strong> protect what you have for as long as possible using the most effective non-surgical treatments available.
+        </p>
+        <p class="content-p">
+          Joint degeneration is a spectrum. Caught early to mid-stage, the progression can be significantly slowed — and in many cases, pain eliminated — without ever reaching the point of needing replacement. Even in advanced cases, targeted interventions can provide years of meaningful pain relief and function.
+        </p>
+
+        <div class="preserve-stats">
+          <div class="preserve-stat">
+            <div class="preserve-stat-num">8,000+</div>
+            <div class="preserve-stat-label">Patients treated<br>without surgery</div>
+          </div>
+          <div class="preserve-stat">
+            <div class="preserve-stat-num">15+</div>
+            <div class="preserve-stat-label">Years specialising<br>in joint preservation</div>
+          </div>
+          <div class="preserve-stat">
+            <div class="preserve-stat-num">92%</div>
+            <div class="preserve-stat-label">Avoid surgery<br>success rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conditions — Tabbed -->
+      <div class="content-section">
+        <div class="content-label">Conditions Treated</div>
+        <h2 class="content-h2">What We <em>Treat</em></h2>
+        <p class="content-p">Select a joint area below to see the conditions treated under that category.</p>
+
+        <div class="condition-tabs">
+          <div class="tab-btns">
+            <button class="tab-btn active" onclick="switchTab('knee', this)">Knee</button>
+            <button class="tab-btn" onclick="switchTab('hip', this)">Hip</button>
+            <button class="tab-btn" onclick="switchTab('spine', this)">Spine</button>
+          </div>
+
+          <!-- Knee -->
+          <div class="tab-panel active" id="tab-knee">
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <h4>Knee Osteoarthritis</h4>
+              <p>Grade 1–3 cartilage degeneration causing pain, swelling, and morning stiffness. Treated with viscosupplementation, PRP, and targeted physiotherapy.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-circle-half-stroke"></i></div>
+              <h4>Meniscal Tears</h4>
+              <p>Degenerative or traumatic tears causing locking, clicking, and pain. Conservative management with injections and rehab avoids surgery in most cases.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-bolt"></i></div>
+              <h4>Patellofemoral Pain</h4>
+              <p>Pain around the kneecap worsened by stairs, squatting, or prolonged sitting. Managed through targeted physiotherapy, taping, and injection therapy.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-compress"></i></div>
+              <h4>Plica Syndrome</h4>
+              <p>Irritation of the synovial folds inside the knee causing clicking and medial knee pain. Responds well to corticosteroid injection and activity modification.</p>
+            </div>
+          </div>
+
+          <!-- Hip -->
+          <div class="tab-panel" id="tab-hip">
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <h4>Hip Osteoarthritis</h4>
+              <p>Groin pain, stiffness, and reduced hip rotation due to cartilage wear. Treated with viscosupplementation, PRP, and targeted physiotherapy.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-ring"></i></div>
+              <h4>Labral Tears</h4>
+              <p>Tears in the cartilage ring surrounding the hip socket causing deep groin pain and clicking. Conservative management with injections and rehab.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-arrows-to-dot"></i></div>
+              <h4>Femoroacetabular Impingement</h4>
+              <p>Abnormal contact between the femoral head and acetabulum causing hip pain and labral tears. Managed with activity modification, injections, and physiotherapy.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-fire"></i></div>
+              <h4>Greater Trochanteric Bursitis</h4>
+              <p>Inflammation of the bursa on the outer hip causing lateral hip pain. Highly responsive to targeted steroid injection with lasting relief.</p>
+            </div>
+          </div>
+
+          <!-- Spine -->
+          <div class="tab-panel" id="tab-spine">
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-compress"></i></div>
+              <h4>Spinal Stenosis</h4>
+              <p>Narrowing of the spinal canal compressing nerves — causing leg pain, numbness, and difficulty walking. Managed with epidural injections and physiotherapy.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <h4>Facet Joint Arthritis</h4>
+              <p>Degeneration of the small joints connecting spinal vertebrae — causing central back pain worsened by extension. Treated with facet joint injections.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+              <h4>Spondylosis</h4>
+              <p>Age-related degeneration of the spine with osteophyte formation and disc narrowing. Conservative management with injections and core rehabilitation.</p>
+            </div>
+            <div class="condition-card">
+              <div class="condition-card-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <h4>Sacroiliac Joint Pain</h4>
+              <p>Pain in the lower back and buttock from the SI joint. Often misdiagnosed as disc disease. Treated with targeted SI joint injections for rapid relief.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treatment Approach -->
+      <div class="content-section">
+        <div class="content-label">How We Treat</div>
+        <h2 class="content-h2">Our <em>Treatment Approach</em></h2>
+        <p class="content-p">Each patient receives a tailored combination of the following interventions — selected based on the specific joint, condition severity, and individual lifestyle demands.</p>
+
+        <div class="approach-grid">
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-syringe"></i></div>
+            <div>
+              <div class="approach-tag">Regenerative</div>
+              <h3>PRP & Viscosupplementation</h3>
+              <p>Platelet-Rich Plasma injections stimulate cartilage repair and reduce inflammation. Hyaluronic Acid injections restore joint lubrication. Both are derived from <strong>natural, biocompatible substances</strong> — no synthetic drugs, no systemic side effects. Used for knee and hip arthritis, meniscal degeneration, and labral pathology.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <div class="approach-tag">Interventional</div>
+              <h3>Targeted Joint & Nerve Injections</h3>
+              <p>Corticosteroid injections directly into the affected joint or around compressed nerves <strong>rapidly reduce inflammation</strong> and provide significant pain relief. Facet joint blocks, SI joint injections, and epidural steroids address spinal pain sources precisely — without affecting the whole body.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-person-walking"></i></div>
+            <div>
+              <div class="approach-tag">Rehabilitation</div>
+              <h3>Physiotherapy & Posture Correction</h3>
+              <p>Strengthening the muscles around a degenerated joint <strong>offloads stress from the cartilage</strong> and slows further damage. Dr. Sarish Sharma coordinates personalised physiotherapy programmes targeting hip stabilisers, quadriceps, core, and postural muscles — addressing root causes, not just symptoms.</p>
+            </div>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-icon"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <div class="approach-tag">Lifestyle</div>
+              <h3>Weight, Nutrition & Activity Optimisation</h3>
+              <p>Every kilogram of body weight places <strong>4–6 kilograms of force</strong> across the knee joint. Weight management, anti-inflammatory nutrition, activity modification, and appropriate footwear can dramatically slow arthritis progression — and are prescribed as part of every joint care plan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who this is for -->
+      <div class="content-section">
+        <div class="content-label">Ideal Candidates</div>
+        <h2 class="content-h2">Is This <em>Right for You?</em></h2>
+        <div class="check-list">
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Patients with <strong>mild to moderate osteoarthritis</strong> of the knee, hip, or spine not yet requiring replacement</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Anyone with <strong>joint pain affecting daily activities</strong> — walking, climbing stairs, sitting, sleeping</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Patients who want to <strong>delay or avoid joint replacement surgery</strong> for as long as possible</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Individuals with <strong>labral tears, meniscal degeneration</strong>, or impingement not responding to basic physiotherapy</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Patients with <strong>spinal stenosis or facet arthritis</strong> causing chronic back pain and walking limitations</span></div>
+          <div class="check-item"><i class="fa-solid fa-circle-check"></i><span>Elderly or medically unfit patients who are <strong>not suitable candidates</strong> for major joint surgery</span></div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <div class="content-label">Common Questions</div>
+        <h2 class="content-h2">Frequently Asked <em>Questions</em></h2>
+        <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Can joint degeneration actually be reversed?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Complete reversal of established arthritis is not currently possible. However, the progression can be significantly slowed, inflammation reduced, and pain eliminated — allowing patients to live active, comfortable lives without surgery. PRP therapy has shown evidence of cartilage regeneration in early-stage arthritis. The goal is maximum function and minimum pain for as long as possible.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">At what stage of arthritis should I seek treatment?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">The earlier the better. Grade 1 and 2 arthritis responds best to non-surgical treatment — with the highest chance of slowing progression and maintaining function long-term. Grade 3 arthritis can still benefit significantly from injections and physiotherapy. Grade 4 (bone on bone) may still be managed conservatively in patients who are not surgical candidates. Do not wait until pain becomes unbearable.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How is Dr. Sharma's approach different from a standard orthopaedic consultation?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Dr. Sarish Sharma relies primarily on clinical symptoms and examination findings rather than over-investigation. He does not recommend surgery as a default response to arthritis. Every patient receives a comprehensive, individualised non-surgical plan combining the most appropriate injection therapy, physiotherapy coordination, and lifestyle guidance — before surgery is ever considered.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">How long will non-surgical treatment keep me out of surgery?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">This varies widely based on age, arthritis severity, body weight, and treatment compliance. Many patients with mild to moderate arthritis are kept comfortable and functional for 5–10+ years with regular non-surgical management. Some avoid surgery entirely. The combination of viscosupplementation, PRP, physiotherapy, and lifestyle changes provides the best long-term outcomes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+              <span itemprop="name">Do I need to bring my X-ray or MRI for the consultation?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Bring any recent reports if you have them — they are helpful but not essential. Dr. Sarish Sharma's approach is clinical-first. He examines the patient thoroughly and can reach a diagnosis and treatment plan based on symptoms and examination findings alone in most cases. He will only request further investigations if genuinely needed — not as a routine.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card appt-sidebar">
+        <div class="sidebar-card-title">Book a Consultation</div>
+        <p>Clinical-first assessment — bring any X-rays or MRI if available, but not essential.</p>
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+        <a href="tel:+919560657964" class="btn-call"><i class="fa-solid fa-phone"></i> +91 95606 57964</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Your Doctor</div>
+        <div class="doc-card">
+          <img class="doc-avatar" src="/images/Secondaryimg.png" alt="Dr. Sarish Sharma">
+          <div>
+            <div class="doc-name">Dr. Sarish Sharma</div>
+            <div class="doc-spec">Orthopedics & Joint Care</div>
+          </div>
+        </div>
+        <div class="doc-creds">
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> MBBS, MS (Ortho), DNB</div>
+          <div class="doc-cred"><i class="fa-solid fa-graduation-cap"></i> Fellow — Sports Injury & Pain Management</div>
+          <div class="doc-cred"><i class="fa-solid fa-award"></i> 15+ Years Experience</div>
+          <div class="doc-cred"><i class="fa-solid fa-users"></i> 8,000+ Patients Treated</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related Services</div>
+        <a href="/services/joint-lubrication" class="related-link"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a>
+        <a href="/services/pain-management" class="related-link"><i class="fa-solid fa-chevron-right"></i> Pain Management</a>
+        <a href="/services/disc-treatment" class="related-link"><i class="fa-solid fa-chevron-right"></i> Disc Treatment</a>
+        <a href="/services/acl-reconstruction" class="related-link"><i class="fa-solid fa-chevron-right"></i> ACL Reconstruction</a>
+        <a href="/services/fracture-treatment" class="related-link"><i class="fa-solid fa-chevron-right"></i> Fracture Treatment</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">10:30 AM – 1:30 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0;border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-lt)">Mon – Sat</span>
+            <span style="font-weight:600;color:var(--navy)">5:30 PM – 8:00 PM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.83rem;padding:8px 0">
+            <span style="color:var(--text-lt)">Sunday</span>
+            <span style="font-weight:600;color:#e24b4a">Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════ OTHER SERVICES ═══════ -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <h2>Explore <em>Other Services</em></h2>
+    <div class="other-grid">
+      <a href="/services/joint-lubrication" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-vial"></i></div>
+        <div><h4>Joint Lubrication</h4><p>HA injections to restore natural joint fluid in knee and hip.</p></div>
+      </a>
+      <a href="/services/pain-management" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div><h4>Pain Management</h4><p>Multi-modal protocols for chronic and acute musculoskeletal pain.</p></div>
+      </a>
+      <a href="/services/disc-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div><h4>Disc Treatment</h4><p>ESI, traction and SNRB for herniated and degenerative discs.</p></div>
+      </a>
+      <a href="/services/acl-reconstruction" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-person-running"></i></div>
+        <div><h4>ACL Reconstruction</h4><p>Conservative and surgical management for ACL tears.</p></div>
+      </a>
+      <a href="/services/sports-injury-vitamin-balance" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div><h4>Sports Injury & Vitamin Balance</h4><p>Four-aspect injection therapy in a single session.</p></div>
+      </a>
+      <a href="/services/fracture-treatment" class="other-card">
+        <div class="other-card-icon"><i class="fa-solid fa-bone"></i></div>
+        <div><h4>Fracture Treatment</h4><p>BMI therapy for delayed union and non-union fractures.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="service-cta">
+  <div class="service-cta-inner">
+    <h2>Your Joint Is Worth <em>Preserving</em></h2>
+    <p>Book a consultation with Dr. Sarish Sharma and get a personalised plan to protect your knee, hip, or spine — without surgery.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false') });
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true') }
+  }
+</script>
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:0">
+            <span class="logo-name" style="color:var(--white)">Dr. Sarish Sharma</span>
+            <span class="logo-tag">Orthopedic Specialist</span>
+          </div>
+          <p>Providing exceptional non-surgical orthopedic care to patients across South Delhi. Healing bones, joints,
+            and lives — one patient at a time.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fa-solid fa-chevron-right"></i> About Dr. Sharma</a></li>
+            <li><a href="/specialities"><i class="fa-solid fa-chevron-right"></i> Specialities</a></li>
+            <li><a href="/services"><i class="fa-solid fa-chevron-right"></i> All Services</a></li>
+            <li><a href="/blogs"><i class="fa-solid fa-chevron-right"></i> Health Blog</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-chevron-right"></i> Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Treatments</h4>
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Pain Management</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> PRP Therapy</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Nerve Blocks</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Fracture (BMI)</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> ACL & Sports Injury</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Spine & Disc Care</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Knee & Hip Joints</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Matri Mandir Rd, Block B 2, Safdarjung Enclave<br>New Delhi – 110029</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span><a href="tel:+919876543210" style="color:rgba(255,255,255,0.48)">+91 9560657964</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span><a href="mailto:dr.sarish@example.com"
+                style="color:rgba(255,255,255,0.48)">drsarish@yahoo.com</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <!-- <i class="fa-solid fa-clock"></i>
+            <span>Mon – Sat: 9:00 AM – 7:00 PM<br>Sunday: By Appointment</span>
+          </div> -->
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Dr. Sarish Sharma. All Rights Reserved. | Designed by Lovely Tyagi</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>

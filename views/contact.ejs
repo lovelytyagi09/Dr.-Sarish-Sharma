@@ -1,0 +1,899 @@
+<%- include('partials/boilerplate') %>
+  <%- include('partials/navbar') %>
+
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+:root {
+  --navy:     #1A2744;
+  --navy-d:   #0F1A30;
+  --teal:     #1AAB98;
+  --teal-d:   #148A79;
+  --gold:     #C6993A;
+  --white:    #ffffff;
+  --off-white:#F5F4EF;
+  --gray-lt:  #ECEDF2;
+  --gray:     #8A97AB;
+  --gray-dk:  #3F5264;
+  --text:     #171F2D;
+  --text-lt:  #4A5F75;
+  --border:   #DDE2EC;
+  --font-head:'Fraunces', Georgia, serif;
+  --font-body:'Figtree', sans-serif;
+
+    --radius-sm: 6px;
+  --radius:    14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 2px 8px rgba(15, 26, 48, 0.06);
+  --shadow:    0 4px 24px rgba(15, 26, 48, 0.09);
+  --shadow-lg: 0 12px 48px rgba(15, 26, 48, 0.13);
+  --transition: 0.25s ease;
+}
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text);
+        background: var(--white);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ── PAGE HEADER ── */
+      .contact-hero {
+        background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+        padding: 72px 5% 64px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(-55deg,
+            transparent 0px, transparent 18px,
+            rgba(255, 255, 255, 0.02) 18px, rgba(255, 255, 255, 0.02) 20px);
+      }
+
+      .contact-hero::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(27, 153, 139, 0.2) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      .contact-hero-inner {
+        max-width: 700px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-label::before {
+        content: '';
+        display: inline-block;
+        width: 28px;
+        height: 2px;
+        background: var(--teal);
+        border-radius: 2px;
+      }
+
+      .contact-hero h1 {
+        font-family: var(--font-head);
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
+      }
+
+      .contact-hero h1 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      .contact-hero p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.75;
+        max-width: 520px;
+      }
+
+      /* ── CONTACT CARDS ROW ── */
+      .contact-cards-section {
+        background: var(--off-white);
+        padding: 56px 5%;
+      }
+
+      .contact-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .contact-card {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--teal), var(--gold));
+        opacity: 0;
+        transition: opacity var(--transition);
+      }
+
+      .contact-card:hover {
+        box-shadow: var(--shadow);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
+
+      .contact-card:hover::before {
+        opacity: 1;
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      .card-icon.teal {
+        background: rgba(27, 153, 139, 0.1);
+      }
+
+      .card-icon.gold {
+        background: rgba(201, 168, 76, 0.1);
+      }
+
+      .card-icon.green {
+        background: rgba(37, 211, 102, 0.1);
+      }
+
+      .card-icon.navy {
+        background: rgba(10, 35, 66, 0.08);
+      }
+
+      .card-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+
+      .card-value {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--navy);
+        line-height: 1.3;
+      }
+
+      .card-sub {
+        font-size: 0.8rem;
+        color: var(--text-lt);
+      }
+
+      .whatsapp-card {
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        border-color: #25D366;
+        color: var(--white);
+      }
+
+      .whatsapp-card .card-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .whatsapp-card .card-value {
+        color: var(--white);
+      }
+
+      .whatsapp-card .card-sub {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .whatsapp-card:hover {
+        border-color: #25D366;
+        transform: translateY(-3px);
+      }
+
+      .whatsapp-card::before {
+        background: rgba(255, 255, 255, 0.15);
+        opacity: 1;
+      }
+
+      .whatsapp-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 50px;
+        width: fit-content;
+        margin-top: 4px;
+      }
+
+      .whatsapp-badge .dot {
+        width: 7px;
+        height: 7px;
+        background: var(--white);
+        border-radius: 50%;
+      }
+
+      /* ── MAIN CONTENT ── */
+      .contact-main {
+        padding: 72px 5%;
+        background: var(--white);
+      }
+
+      .contact-main-grid {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 56px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* ── FORM ── */
+      .form-heading {
+        font-family: var(--font-head);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 28px;
+        letter-spacing: -0.02em;
+      }
+
+      .form-heading em {
+        color: var(--teal);
+        font-style: italic;
+      }
+
+      .appt-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-group label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--navy);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        color: var(--text);
+        background: var(--white);
+        transition: border-color var(--transition), box-shadow var(--transition);
+        outline: none;
+        width: 100%;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(27, 153, 139, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .form-group select {
+        appearance: none;
+        cursor: pointer;
+      }
+
+      .btn-submit {
+        background: var(--teal);
+        color: var(--white);
+        padding: 14px 32px;
+        border: none;
+        border-radius: 50px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: background var(--transition), transform var(--transition);
+        box-shadow: 0 4px 16px rgba(27, 153, 139, 0.3);
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-submit:hover {
+        background: var(--teal-d);
+        transform: translateY(-2px);
+      }
+
+      .form-note {
+        font-size: 0.78rem;
+        color: var(--text-lt);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* ── RIGHT SIDE — OPD + ADDRESS ── */
+      .right-col {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .opd-box {
+        background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+        border-radius: var(--radius-lg);
+        padding: 28px 26px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .opd-box::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 160px;
+        height: 160px;
+        background: radial-gradient(circle, rgba(27, 153, 139, 0.2) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      .opd-box-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .opd-box-label::before {
+        content: '';
+        width: 20px;
+        height: 2px;
+        background: var(--teal);
+        display: inline-block;
+        border-radius: 2px;
+      }
+
+      .opd-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .opd-row:last-child {
+        border-bottom: none;
+      }
+
+      .opd-row .day {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .opd-row .time {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--white);
+        text-align: right;
+      }
+
+      .opd-row .time.closed {
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: 400;
+      }
+
+      .opd-emergency {
+        margin-top: 16px;
+        background: rgba(27, 153, 139, 0.15);
+        border: 1px solid rgba(27, 153, 139, 0.3);
+        border-radius: var(--radius-sm);
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .opd-emergency strong {
+        color: var(--white);
+      }
+
+      .address-box {
+        background: var(--off-white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .address-box-title {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--navy);
+      }
+
+      .address-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .address-icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--teal);
+        margin-top: 2px;
+      }
+
+      .address-detail strong {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--navy);
+      }
+
+      .address-detail span {
+        font-size: 0.82rem;
+        color: var(--text-lt);
+        line-height: 1.5;
+      }
+
+      .metro-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(27, 153, 139, 0.08);
+        border: 1px solid rgba(27, 153, 139, 0.2);
+        color: var(--teal-d);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 50px;
+      }
+
+      /* ── MAP ── */
+      .map-section {
+        padding: 0 5% 80px;
+        background: var(--white);
+      }
+
+      .map-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .map-heading {
+        font-family: var(--font-head);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .map-frame {
+        width: 100%;
+        height: 420px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1.5px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .contact-main-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-hero h1 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-hero {
+          padding: 52px 5% 44px;
+        }
+
+        .map-frame {
+          height: 300px;
+        }
+      }
+    </style>
+
+    <!-- ═══════ PAGE HEADER ═══════ -->
+    <section class="contact-hero">
+      <div class="contact-hero-inner">
+        <div class="section-label">Get in Touch</div>
+        <h1>Book an <em>Appointment</em></h1>
+        <p>Reach out to Dr. Sarish Sharma's clinic for consultations, follow-ups, or any orthopedic queries. We're here
+          to help you move better and live pain-free.</p>
+      </div>
+    </section>
+
+    <!-- ═══════ CONTACT CARDS ═══════ -->
+    <section class="contact-cards-section">
+      <div class="contact-cards-grid">
+
+        <!-- Phone -->
+        <a href="tel:+911234567890" class="contact-card">
+          <div class="card-icon teal">📞</div>
+          <div>
+            <div class="card-label">Call Us</div>
+            <div class="card-value"
+              style="font-family: 'Courier New', monospace; font-weight: 700; letter-spacing: 0.08em;">+91 95606 57964
+            </div>
+            <div class="card-sub">Mon–Sat · 10:30 AM – 8:00 PM</div>
+          </div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9560657964?text=Hello%20Dr.%20Sarish%2C%20I%20would%20like%20to%20book%20an%20appointment."
+          target="_blank" class="contact-card whatsapp-card">
+          <div class="card-icon" style="background:rgba(255,255,255,0.2); font-size:1.3rem;">💬</div>
+          <div>
+            <div class="card-label">WhatsApp</div>
+            <div class="card-value">Chat with Us</div>
+            <div class="card-sub">Quick replies during clinic hours</div>
+            <div class="whatsapp-badge">
+              <div class="dot"></div> Usually replies in minutes
+            </div>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:info@drsarishsharma.com" class="contact-card">
+          <div class="card-icon gold">✉️</div>
+          <div>
+            <div class="card-label">Email</div>
+            <div class="card-value">drsarish@yahoo.com</div>
+            <div class="card-sub">We respond within 24 hours</div>
+          </div>
+        </a>
+
+        <!-- Location -->
+        <div class="contact-card">
+          <div class="card-icon navy">📍</div>
+          <div>
+            <div class="card-label">Clinic</div>
+            <div class="card-value"> Matri Mandir Rd, Block B 2, Safdarjung Enclave, New Delhi, Delhi, 110029 </div>
+            <div class="card-sub">South Delhi · near Bhikaji Cama Place Metro</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════ FORM + OPD + ADDRESS ═══════ -->
+    <section class="contact-main">
+      <div class="contact-main-grid">
+
+        <!-- LEFT — Appointment Form -->
+        <div class="appt-form fade-up fade-up-delay-2">
+          <h3>Request an Appointment</h3>
+          <p>We'll contact you to confirm your preferred slot within 2 hours.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="firstName" placeholder="Rajesh" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastName" placeholder="Kumar" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="+91 00000 00000" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="you@example.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" name="date" />
+            </div>
+            <div class="form-group">
+              <label>Preferred Time</label>
+              <select name="time">
+                <option value="">Select a slot</option>
+                <option>9:00 AM – 10:00 AM</option>
+                <option>10:00 AM – 11:00 AM</option>
+                <option>11:00 AM – 12:00 PM</option>
+                <option>2:00 PM – 3:00 PM</option>
+                <option>3:00 PM – 4:00 PM</option>
+                <option>5:00 PM – 6:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Service Required</label>
+            <select name="service">
+              <option value="">Select a treatment</option>
+              <option>Pain Management</option>
+              <option>PRP Therapy</option>
+              <option>Joint Lubrication</option>
+              <option>Nerve Block</option>
+              <option>Disc Treatment</option>
+              <option>ACL Reconstruction</option>
+              <option>Knee / Hip / Spine Care</option>
+              <option>Fracture Treatment (Delayed / Non-Union)</option>
+              <option>Sports Injury</option>
+              <option>Vitamin Balance Consultation</option>
+              <option>General Orthopedic Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Describe Your Concern (Optional)</label>
+            <textarea name="concern"
+              placeholder="Tell us briefly about your pain, symptoms, or specific concern..."></textarea>
+          </div>
+
+          <button class="form-submit" type="button" onclick="submitForm()">
+            <i class="fa-regular fa-calendar-check"></i> Confirm My Appointment
+          </button>
+          <p class="form-note">
+            <i class="fa-solid fa-lock"></i>
+            Your information is kept strictly confidential. We will call to confirm your appointment.
+          </p>
+        </div>
+
+        <!-- RIGHT — OPD Timings + Address -->
+        <div class="right-col">
+
+          <!-- OPD Timings -->
+          <div class="opd-box">
+            <div class="opd-box-label">OPD Timings</div>
+            <div class="opd-row">
+              <span class="day">MMonday – Thrusday – Saturday</span>
+              <span class="time">11:00 AM – 1: 30 PM</span>
+            </div>
+            <div class="opd-row">
+              <span class="day">Monday – Thrusday – Saturday</span>
+              <span class="time">5 : 30 PM – 8:00 PM</span>
+            </div>
+            <div class="opd-row">
+              <span class="day">Sunday</span>
+              <span class="time closed">Closed</span>
+            </div>
+            <div class="opd-emergency">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4m0 4h.01" />
+              </svg>
+              <span>For emergencies, <strong>call directly</strong> — do not use the form.</span>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="address-box">
+            <div class="address-box-title">Clinic Address</div>
+            <div class="address-row">
+              <div class="address-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="address-detail">
+                <strong>Clinic Address</strong>
+                <span>Matri Mandir Rd, Block B 2, Safdarjung Enclave, New Delhi, Delhi 110029</span>
+              </div>
+            </div>
+            <div class="address-row">
+              <div class="address-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                </svg>
+              </div>
+              <div class="address-detail">
+                <strong>Nearest Landmark</strong>
+                <span>Matri Mandir Rd</span>
+              </div>
+            </div>
+            <div class="address-row">
+              <div class="address-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </div>
+              <div class="address-detail">
+                <strong>Nearest Metro Station</strong>
+                <span class="metro-tag">🚇 Bhikaji Cama Place Metro — Pink Line</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Matri+Mandir+Rd+Safdarjung+Enclave+New+Delhi" target="_blank"
+              style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);text-decoration:none;padding:11px 22px;border-radius:50px;font-size:0.85rem;font-weight:600;margin-top:4px;">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Get Directions on Google Maps
+            </a>
+          </div>
+
+        </div>
+        <!-- END right-col -->
+
+      </div>
+      <!-- END contact-main-grid -->
+    </section>
+    <!-- END contact-main -->
+
+    <!-- ═══════ MAP ═══════ -->
+    <section class="map-section">
+      <div class="map-wrap">
+        <h3 class="map-heading">Find Us on the Map</h3>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.5!2d77.2090!3d28.5672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d4c6e4d4d4d%3A0x0!2sMatri+Mandir+Rd%2C+Block+B+2%2C+Safdarjung+Enclave%2C+New+Delhi%2C+Delhi+110029!5e0!3m2!1sen!2sin!4v1234567890"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Dr. Sarish Sharma Clinic, Safdarjung Enclave, New Delhi">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      async function submitForm() {
+        const btn = document.querySelector('.form-submit');
+
+        const data = {
+          firstName: document.querySelector('[name="firstName"]').value.trim(),
+          lastName: document.querySelector('[name="lastName"]').value.trim(),
+          phone: document.querySelector('[name="phone"]').value.trim(),
+          email: document.querySelector('[name="email"]').value.trim(),
+          date: document.querySelector('[name="date"]').value,
+          time: document.querySelector('[name="time"]').value,
+          service: document.querySelector('[name="service"]').value,
+          concern: document.querySelector('[name="concern"]').value.trim(),
+        };
+
+        if (!data.firstName || !data.phone) {
+          alert('Please fill in your name and phone number.');
+          return;
+        }
+
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening WhatsApp...';
+        btn.disabled = true;
+
+        try {
+          const response = await fetch('/submit-appointment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+          window.open(result.url, '_blank');
+
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
+          btn.style.background = '#16a34a';
+
+        } catch (err) {
+          alert('Something went wrong. Please try again.');
+          btn.innerHTML = '<i class="fa-regular fa-calendar-check"></i> Confirm My Appointment';
+          btn.disabled = false;
+        }
+      }
+    </script>
+    <%- include('partials/footer') %>
