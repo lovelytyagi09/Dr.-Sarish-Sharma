@@ -1,55 +1,61 @@
 <!-- ─── NAVBAR ─── -->
 <nav class="navbar">
   <div class="container">
+
     <div class="logo">
       <span class="logo-name">Dr. Sarish Sharma</span>
       <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
     </div>
+
     <div class="nav-links">
       <a href="/" class="active">Home</a>
-      <div class="about-dropdown-wrapper">
-        <button class="about-toggle" onclick="toggleAbout(event)">
-          About
-          <svg class="chevron" viewBox="0 0 24 24" width="14" height="14" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <div class="about-menu" id="aboutMenu">
-          <a href="/about/doctor">Doctor</a>
-          <a href="/about/clinic">Clinic</a>
-        </div>
-      </div>
+
+      <!-- About dropdown -->
       <div class="nav-dropdown">
-        <a href="/services" class="nav-dropdown-toggle">
-          Services <i class="fa-solid fa-chevron-down"></i>
+        <a href="/" class="nav-dropdown-toggle">
+          About <i class="fa-solid fa-chevron-down"></i>
         </a>
         <div class="nav-dropdown-menu">
-          <a href="/services">
-            <i class="fa-solid fa-grid-2"></i>
+          <a href="/about/doctor">
+            <i class="fa-solid fa-user-doctor"></i>
             <div>
-              <span>All Services</span>
-              <small>View all orthopedic treatments</small>
+              <span>Doctor</span>
+              <small>Meet our specialist</small>
             </div>
           </a>
-          <a href="/patientcareservice/homephysiotheraphy">
-            <i class="fa-solid fa-house-medical"></i>
+          <a href="/about/clinic">
+            <i class="fa-solid fa-hospital"></i>
             <div>
-              <span>Home Physiotherapy Delhi</span>
-              <small>Physiotherapy at your doorstep</small>
-            </div>
-          </a>
-          <a href="/patientcareservice/physiotheraphyrehab">
-            <i class="fa-solid fa-person-walking"></i>
-            <div>
-              <span>Physiotherapy & Rehab at Home</span>
-              <small>Rehabilitation from the comfort of home</small>
+              <span>Clinic</span>
+              <small>Our facility & infrastructure</small>
             </div>
           </a>
         </div>
       </div>
+      <a href="/services">Services</a>
       <a href="/contact">Contact</a>
       <a href="/blogs">Blogs</a>
+      <div class="nav-dropdown">
+  <a href="/" class="nav-dropdown-toggle">
+    Patient Care <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="nav-dropdown-menu">
+    <a href="/patientcareservice/homephysiotheraphy">
+      <i class="fa-solid fa-house-medical"></i>
+      <div>
+        <span>Home Physiotherapy Delhi</span>
+        <small>Professional physio at your doorstep</small>
+      </div>
+    </a>
+    <a href="/patientcareservice/physiotheraphyrehab">
+      <i class="fa-solid fa-person-walking"></i>
+      <div>
+        <span>Physiotherapy & Rehab at Home</span>
+        <small>Rehabilitation from the comfort of home</small>
+      </div>
+    </a>
+  </div>
+</div>
     </div>
     <a href="/contact" class="btn btn-primary nav-cta">
       <i class="fa-regular fa-calendar-check"></i> Make Appointment

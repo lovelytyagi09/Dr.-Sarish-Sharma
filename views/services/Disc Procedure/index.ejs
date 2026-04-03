@@ -15,60 +15,96 @@
   <link rel="stylesheet" href="/home.css">
 <!-- ─── NAVBAR ─── -->
   <nav class="navbar">
-    <div class="container">
-      <div class="logo">
-        <span class="logo-name">Dr. Sarish Sharma</span>
-        <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
-      </div>
-      <div class="nav-links">
-        <a href="/" class="active">Home</a>
-        <a href="/about">About</a>
-        <!-- <a href="/specialities">Specialities</a> -->
-          <!-- SPECIALITIES DROPDOWN -->
+  <div class="container">
+
+    <div class="logo">
+      <span class="logo-name">Dr. Sarish Sharma</span>
+      <span class="logo-tag">Orthopedic Specialist · South Delhi</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+
+      <!-- About dropdown -->
       <div class="nav-dropdown">
-        <a href="/specialities" class="nav-dropdown-toggle">
-          Specialities <i class="fa-solid fa-chevron-down"></i>
+        <a href="/about" class="nav-dropdown-toggle">
+          About <i class="fa-solid fa-chevron-down"></i>
         </a>
         <div class="nav-dropdown-menu">
-          <a href="/specialities/precision-diagnostics">
-            <i class="fa-solid fa-microscope"></i>
+          <a href="/about/doctor">
+            <i class="fa-solid fa-user-doctor"></i>
             <div>
-              <span>Precision Diagnostics</span>
-              <small>Clinical-first examination approach</small>
+              <span>Doctor</span>
+              <small>Meet our specialist</small>
             </div>
           </a>
-          <a href="/specialities/regenerative-treatment">
-            <i class="fa-solid fa-syringe"></i>
+          <a href="/about/clinic">
+            <i class="fa-solid fa-hospital"></i>
             <div>
-              <span>Regenerative Treatment</span>
-              <small>PRP, bone marrow & viscosupplementation</small>
-            </div>
-          </a>
-          <a href="/specialities/sports-rehabilitation">
-            <i class="fa-solid fa-person-running"></i>
-            <div>
-              <span>Sports Rehabilitation</span>
-              <small>ACL, ligament & sports injury care</small>
-            </div>
-          </a>
-          <a href="/specialities/pain-science">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div>
-              <span>Pain Science</span>
-              <small>Nerve blocks & multimodal pain relief</small>
+              <span>Clinic</span>
+              <small>Our facility & infrastructure</small>
             </div>
           </a>
         </div>
       </div>
-        <a href="/services">Services</a>
-        <a href="/contact">Contact</a>
-        <a href="/blogs">Blogs</a>
+      <div class="nav-dropdown">
+        <a href="/services" class="nav-dropdown-toggle">
+          Services <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/services">
+            <i class="fa-solid fa-grid-2"></i>
+            <div>
+              <span>All Services</span>
+              <small>View all orthopedic treatments</small>
+            </div>
+          </a>
+          <a href="/patientcareservice/homephysiotheraphy">
+            <i class="fa-solid fa-house-medical"></i>
+            <div>
+              <span>Home Physiotherapy Delhi</span>
+              <small>Physiotherapy at your doorstep</small>
+            </div>
+          </a>
+          <a href="/patientcareservice/physiotheraphyrehab">
+            <i class="fa-solid fa-person-walking"></i>
+            <div>
+              <span>Physiotherapy & Rehab at Home</span>
+              <small>Rehabilitation from the comfort of home</small>
+            </div>
+          </a>
+        </div>
       </div>
-      <a href="/contact" class="btn btn-primary nav-cta"><i class="fa-regular fa-calendar-check"></i> Make
-        Appointment</a>
-      <div class="hamburger"><span></span><span></span><span></span></div>
+      <a href="/contact">Contact</a>
+      <a href="/blogs">Blogs</a>
+      <div class="nav-dropdown">
+  <a href="/patientcare" class="nav-dropdown-toggle">
+    Patient Care <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="nav-dropdown-menu">
+    <a href="/services/home-physiotherapy">
+      <i class="fa-solid fa-house-medical"></i>
+      <div>
+        <span>Home Physiotherapy Delhi</span>
+        <small>Professional physio at your doorstep</small>
+      </div>
+    </a>
+    <a href="/services/physiotherapyrehab">
+      <i class="fa-solid fa-person-walking"></i>
+      <div>
+        <span>Physiotherapy & Rehab at Home</span>
+        <small>Rehabilitation from the comfort of home</small>
+      </div>
+    </a>
+  </div>
+</div>
     </div>
-  </nav>
+    <a href="/contact" class="btn btn-primary nav-cta">
+      <i class="fa-regular fa-calendar-check"></i> Make Appointment
+    </a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
 
 <style>
   :root {

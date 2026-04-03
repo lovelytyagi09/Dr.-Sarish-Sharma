@@ -1,0 +1,547 @@
+<%- include('../partials/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+    --shadow: 0 4px 24px rgba(15,26,48,0.09);
+    --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7 }
+  img { max-width: 100%; display: block }
+  a { text-decoration: none; color: inherit }
+
+  /* ── HERO ── */
+  .faq-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 80px 5% 72px;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .faq-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .faq-hero::after {
+    content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(circle, rgba(26,171,152,0.14) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .faq-hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto }
+
+  .section-label {
+    font-size: 0.70rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; width: 28px; height: 2px;
+    background: var(--teal); border-radius: 2px; display: inline-block;
+  }
+
+  .faq-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .faq-hero h1 em { color: var(--gold); font-style: italic }
+  .faq-hero p { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.80; max-width: 500px; margin: 0 auto 32px }
+
+  /* Search bar */
+  .faq-search-wrap { position: relative; max-width: 480px; margin: 0 auto }
+  .faq-search {
+    width: 100%; padding: 14px 20px 14px 48px;
+    border-radius: 50px; border: none; outline: none;
+    font-family: var(--font-body); font-size: 0.92rem;
+    background: rgba(255,255,255,0.10);
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    transition: all var(--transition);
+  }
+  .faq-search::placeholder { color: rgba(255,255,255,0.40) }
+  .faq-search:focus { background: rgba(255,255,255,0.16); border-color: var(--teal); box-shadow: 0 0 0 3px rgba(26,171,152,0.18) }
+  .faq-search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.45); font-size: 0.85rem; pointer-events: none }
+
+  /* ── CATEGORY TABS ── */
+  .faq-tabs-section { background: var(--off-white); padding: 28px 5%; border-bottom: 1px solid var(--border); position: sticky; top: 72px; z-index: 50 }
+  .faq-tabs-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; align-items: center }
+  .faq-tab {
+    padding: 8px 20px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; border: 1.5px solid var(--border);
+    background: var(--white); color: var(--gray-dk);
+    transition: all var(--transition);
+  }
+  .faq-tab:hover { border-color: var(--teal); color: var(--teal) }
+  .faq-tab.active { background: var(--navy); border-color: var(--navy); color: var(--white) }
+
+  /* ── FAQ MAIN ── */
+  .faq-main { padding: 80px 5%; background: var(--white) }
+  .faq-main-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: flex-start }
+
+  /* ── FAQ GROUPS ── */
+  .faq-group { margin-bottom: 52px }
+  .faq-group:last-child { margin-bottom: 0 }
+  .faq-group-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .faq-group-icon { width: 36px; height: 36px; background: rgba(26,171,152,0.10); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(26,171,152,0.18) }
+  .faq-group-icon i { color: var(--teal); font-size: 0.88rem }
+  .faq-group-title { font-family: var(--font-head); font-size: 1.15rem; color: var(--navy); font-weight: 700 }
+
+  /* ── ACCORDION ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px }
+  .faq-item {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: border-color var(--transition);
+  }
+  .faq-item:hover { border-color: rgba(26,171,152,0.35) }
+  .faq-item.open { border-color: var(--teal); box-shadow: var(--shadow-sm) }
+
+  .faq-q {
+    width: 100%; background: none; border: none;
+    padding: 18px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    cursor: pointer; text-align: left;
+    font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+    color: var(--navy); transition: color var(--transition);
+  }
+  .faq-q:hover { color: var(--teal) }
+  .faq-item.open .faq-q { color: var(--teal) }
+
+  .faq-icon {
+    width: 28px; height: 28px; background: var(--gray-lt);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--navy); font-size: 0.72rem; flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .faq-item.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg) }
+
+  .faq-a {
+    display: none; padding: 0 20px 20px;
+    font-size: 0.88rem; color: var(--text-lt); line-height: 1.80;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .faq-item.open .faq-a { display: block }
+  .faq-a strong { color: var(--navy) }
+
+  /* ── SIDEBAR ── */
+  .faq-sidebar { display: flex; flex-direction: column; gap: 20px }
+  .sidebar-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px 22px }
+  .sidebar-card-title { font-family: var(--font-head); font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); position: relative }
+  .sidebar-card-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 28px; height: 2px; background: var(--gold) }
+
+  .appt-card { background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%); border-color: var(--navy) }
+  .appt-card .sidebar-card-title { color: var(--white); border-bottom-color: rgba(255,255,255,0.12) }
+  .appt-card p { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 20px }
+  .btn-primary { background: var(--teal); color: var(--white); padding: 12px 22px; border-radius: 50px; font-family: var(--font-body); font-size: 0.86rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all var(--transition); border: none; cursor: pointer; margin-bottom: 10px }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); color: var(--white) }
+  .btn-call { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.20); color: var(--white); font-size: 0.84rem; font-weight: 600; transition: all var(--transition) }
+  .btn-call:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.45) }
+  .btn-call i { color: var(--teal); font-size: 0.78rem }
+
+  .quick-link { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text); font-weight: 500; transition: all var(--transition) }
+  .quick-link:last-child { border-bottom: none; padding-bottom: 0 }
+  .quick-link:hover { color: var(--teal); padding-left: 4px }
+  .quick-link i { color: var(--teal); font-size: 0.60rem; flex-shrink: 0 }
+
+  .opd-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 8px 0; border-bottom: 1px solid var(--border) }
+  .opd-row:last-child { border-bottom: none; padding-bottom: 0 }
+  .opd-row span:first-child { color: var(--text-lt) }
+  .opd-row span:last-child { font-weight: 700; color: var(--navy) }
+  .opd-row span.closed { color: #e24b4a }
+
+  /* ── STILL HAVE QUESTIONS ── */
+  .faq-cta { background: var(--off-white); padding: 72px 5%; border-top: 1px solid var(--border) }
+  .faq-cta-inner { max-width: 640px; margin: 0 auto; text-align: center }
+  .faq-cta h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: var(--navy); font-weight: 600; margin-bottom: 12px; letter-spacing: -0.02em }
+  .faq-cta h2 em { color: var(--teal); font-style: italic }
+  .faq-cta p { font-size: 0.95rem; color: var(--text-lt); max-width: 480px; margin: 0 auto 32px; line-height: 1.78 }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+  .btn-ghost { background: transparent; color: var(--navy); padding: 12px 26px; border-radius: 50px; font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--border); transition: all var(--transition) }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal) }
+  .btn-cta-primary { background: var(--teal); color: var(--white); padding: 13px 28px; border-radius: 50px; font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 9px; transition: all var(--transition); border: none; cursor: pointer }
+  .btn-cta-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,171,152,0.32); color: var(--white) }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .faq-main-grid { grid-template-columns: 1fr }
+    .faq-sidebar { flex-direction: row; flex-wrap: wrap }
+    .sidebar-card { flex: 1; min-width: 260px }
+  }
+  @media (max-width: 640px) {
+    .faq-tabs-section { top: 0 }
+    .cta-btns { flex-direction: column; align-items: center }
+    .faq-sidebar { flex-direction: column }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="faq-hero">
+  <div class="faq-hero-inner">
+    <div class="section-label">Help Centre</div>
+    <h1>Frequently Asked <em>Questions</em></h1>
+    <p>Everything you need to know about Dr. Sarish Sharma's clinic, consultations, procedures, and injections.</p>
+    <div class="faq-search-wrap">
+      <i class="fa-solid fa-magnifying-glass faq-search-icon"></i>
+      <input class="faq-search" type="text" placeholder="Search a question..." oninput="filterFaqs(this.value)">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CATEGORY TABS ═══════ -->
+<div class="faq-tabs-section">
+  <div class="faq-tabs-inner">
+    <button class="faq-tab active" onclick="filterCategory('all', this)">All Questions</button>
+    <button class="faq-tab" onclick="filterCategory('general', this)">General</button>
+    <button class="faq-tab" onclick="filterCategory('treatment', this)">Treatments</button>
+    <button class="faq-tab" onclick="filterCategory('appointment', this)">Appointments</button>
+    <button class="faq-tab" onclick="filterCategory('injection', this)">Injections</button>
+    <button class="faq-tab" onclick="filterCategory('surgery', this)">Surgery</button>
+  </div>
+</div>
+
+<!-- ═══════ FAQ MAIN ═══════ -->
+<section class="faq-main">
+  <div class="faq-main-grid">
+
+    <div class="faq-content" id="faqContent">
+
+      <!-- GENERAL -->
+      <div class="faq-group" data-group="general">
+        <div class="faq-group-label">
+          <div class="faq-group-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <span class="faq-group-title">General Questions</span>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item" data-category="general" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Do you provide consultations at the clinic?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes, we provide in-person consultations at the clinic. During your visit, Dr. Sarish Sharma will <strong>explain your condition in detail</strong> — what the problem is, why it has occurred, and what the most appropriate course of treatment is. We believe in clear, patient-centred communication so you fully understand your diagnosis before any treatment begins.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="general" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Is there a pharmacy at the clinic?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes — we have an <strong>in-house pharmacy</strong> at the clinic. Medicines prescribed during your consultation are available on-site, so you can collect everything you need in a single visit without having to visit a separate chemist.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="general" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>What procedures are performed at the clinic?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              The clinic offers a range of non-surgical procedures including <strong>cast application for fractures and injuries</strong>, intra-articular injections for joint lubrication, nerve blocks for pain relief, intramuscular injections for vitamin supplementation, and regenerative treatments such as PRP (Platelet-Rich Plasma) therapy. Most procedures can be performed on the same day as your consultation.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TREATMENTS -->
+      <div class="faq-group" data-group="treatment">
+        <div class="faq-group-label">
+          <div class="faq-group-icon"><i class="fa-solid fa-syringe"></i></div>
+          <span class="faq-group-title">Treatments & Procedures</span>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item" data-category="treatment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>What is joint lubrication (viscosupplementation) and who is it for?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Joint lubrication therapy uses <strong>Synvisc-One</strong> — a hyaluronic acid-based injection — delivered directly into the joint to restore its natural cushioning and reduce friction. It is used primarily for <strong>osteoarthritis of the knee</strong>, but is also effective for inflammation and pain in the shoulder, elbow, wrist, hip, and ankle joints. The injection reduces pain, improves movement, and can delay or avoid the need for surgery.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="treatment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>What is PRP therapy and how does it work?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              PRP (Platelet-Rich Plasma) therapy involves drawing a small sample of <strong>the patient's own blood</strong>, separating the platelets using a centrifuge, and infusing those platelets — enriched with natural growth factors — back into the affected joint or tissue. This stimulates the body's own healing response, reduces inflammation, and promotes tissue repair — all without surgery or foreign substances.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="treatment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>What vitamin injection therapy is available at the clinic?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              We offer targeted <strong>intramuscular vitamin injections</strong> to correct common deficiencies that contribute to joint pain, nerve inflammation, and slow recovery. This includes <strong>Vitamin D3</strong> for bone health and immunity, <strong>Vitamin B3 (Niacinamide) and Pyridoxine (B6)</strong> for nerve function and inflammation control, and <strong>bone density injections</strong> such as Prolia for patients with osteoporosis. All four aspects — inflammation, Vitamin D3, Vitamin B12/B3, and bone mineral density — are assessed and addressed in a single session where needed.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="treatment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>What is a nerve block and when is it used?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              A nerve block delivers anti-inflammatory medication directly around a compressed or irritated nerve, providing <strong>targeted and rapid pain relief</strong>. It is used for conditions such as sciatica, cervical radiculopathy, and other nerve entrapment syndromes. The injection is given intramuscularly or peri-neurally — not intravenously — and is both safe and effective for diagnosing and treating nerve-related pain.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- APPOINTMENTS -->
+      <div class="faq-group" data-group="appointment">
+        <div class="faq-group-label">
+          <div class="faq-group-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <span class="faq-group-title">Appointments & Fees</span>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item" data-category="appointment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>How do I book an appointment?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              You can book an appointment by <strong>calling +91 95606 57964</strong>, messaging on WhatsApp, or filling in the appointment form on the Contact page. Our team confirms your slot within 2 hours during clinic hours. Same-day appointments are available during OPD hours.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="appointment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Are same-day appointments available?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes — same-day appointments are available during OPD hours (11AM–2PM and 6PM–8:30PM, Monday to Saturday). The 2PM–5PM slot is available for <strong>emergency cases and prior appointments only</strong>. Call or WhatsApp to confirm availability before visiting.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="appointment" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Is home physiotherapy available?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes. Dr. Sarish Sharma's clinic offers <strong>professional home physiotherapy across Delhi NCR</strong> — including Shortwave Diathermy, Ultrasonic Therapy, Infrared, Laser Therapy, and active/passive mobilisation. This is ideal for post-surgical patients, neurological conditions, and elderly patients who cannot travel to the clinic.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- INJECTIONS -->
+      <div class="faq-group" data-group="injection">
+        <div class="faq-group-label">
+          <div class="faq-group-icon"><i class="fa-solid fa-droplet"></i></div>
+          <span class="faq-group-title">Injections & Safety</span>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item" data-category="injection" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Are the injections given intravenously (into the vein)?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              No — <strong>none of the injections are intravenous</strong>. The injections used at this clinic are either intramuscular (into the muscle) or intra-articular (into the joint). Vitamin injections — including Vitamin D3, B3, and B6 — are given intramuscularly. Joint lubrication and anti-inflammatory injections are given intra-articularly, directly into the affected joint.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="injection" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Are the injections safe? Are there any side effects?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes, the injections are safe. <strong>Intramuscular injections</strong> for vitamins and anti-inflammatory treatment have no significant side effects when administered correctly. <strong>Intra-articular injections</strong> — used for joint lubrication and osteoarthritis — are performed under strict aseptic precautions, eliminating any risk of infection or complication. The procedure is carried out in a sterile clinical environment by an experienced specialist.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="injection" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Which joints can be treated with intra-articular injections?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Intra-articular injections can be administered into the <strong>shoulder, elbow, wrist, hip, knee, and ankle</strong>. They are used both for reducing inflammation and for joint lubrication in osteoarthritis. The most common application is for <strong>knee osteoarthritis</strong>, where Synvisc-One injections restore the natural cushioning of the joint and significantly reduce pain and stiffness.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="injection" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Why are injections more effective than oral medicines for joint pain?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Oral painkillers treat the perception of pain but do nothing to address the underlying cause. Targeted injections deliver medication <strong>directly to the source of pain</strong> — the inflamed joint, compressed nerve, or damaged tissue — at a fraction of the systemic dose. This means faster relief, fewer side effects, and treatment of the root cause rather than merely masking the symptom.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SURGERY -->
+      <div class="faq-group" data-group="surgery">
+        <div class="faq-group-label">
+          <div class="faq-group-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="faq-group-title">Surgery & Non-Surgical Options</span>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item" data-category="surgery" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Does Dr. Sharma recommend surgery?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Surgery is always the <strong>last resort</strong> at Dr. Sarish Sharma's clinic. Every patient receives a thorough non-surgical evaluation first — and surgery is only recommended when conservative management has genuinely failed or when the nature of the injury makes surgical intervention unavoidable. The vast majority of patients achieve excellent outcomes without surgery.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="surgery" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Can joint replacement be delayed or avoided?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes — in many cases. Patients with mild to moderate arthritis can often be kept comfortable and functional for <strong>5–10+ years</strong> with regular joint lubrication injections (Synvisc-One), PRP therapy, physiotherapy, and lifestyle management — avoiding or significantly delaying joint replacement. Even in advanced cases, injections can provide meaningful quality-of-life improvement for patients who are not surgical candidates.
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="surgery" onclick="toggleFaq(this)">
+            <button class="faq-q">
+              <span>Can a herniated disc heal without surgery?</span>
+              <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-a">
+              Yes — in the majority of cases. Research shows that over <strong>90% of disc herniations improve with conservative management</strong> within 6–12 weeks. The disc material is gradually reabsorbed by the body, and nerve inflammation resolves with appropriate treatment including epidural steroid injections, traction therapy, and physiotherapy. Surgery is reserved for the minority of cases where neurological deficits progress.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="faq-sidebar">
+
+      <div class="sidebar-card appt-card">
+        <div class="sidebar-card-title">Still Have a Question?</div>
+        <p>Book a consultation and get a personalised answer directly from Dr. Sarish Sharma.</p>
+        <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+        <a href="tel:+919560657964" class="btn-call"><i class="fa-solid fa-phone"></i> +91 95606 57964</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Quick Links</div>
+        <a href="/services" class="quick-link"><i class="fa-solid fa-chevron-right"></i> All Services</a>
+        <a href="/services/pain-management" class="quick-link"><i class="fa-solid fa-chevron-right"></i> Pain Management</a>
+        <a href="/services/joint-lubrication" class="quick-link"><i class="fa-solid fa-chevron-right"></i> Joint Lubrication</a>
+        <a href="/services/acl-reconstruction" class="quick-link"><i class="fa-solid fa-chevron-right"></i> ACL Reconstruction</a>
+        <a href="/services/disc-treatment" class="quick-link"><i class="fa-solid fa-chevron-right"></i> Disc Treatment</a>
+        <a href="/about" class="quick-link"><i class="fa-solid fa-chevron-right"></i> About Dr. Sharma</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">OPD Timings</div>
+        <div class="opd-row"><span>Morning (Mon–Sat)</span><span>11AM – 2PM</span></div>
+        <div class="opd-row"><span>Evening (Mon–Sat)</span><span>6PM – 8:30PM</span></div>
+        <div class="opd-row"><span>Emergency Slot</span><span>2PM – 5PM</span></div>
+        <div class="opd-row"><span>Sunday</span><span class="closed">Closed</span></div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════ STILL HAVE QUESTIONS ═══════ -->
+<section class="faq-cta">
+  <div class="faq-cta-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2>Couldn't Find Your <em>Answer?</em></h2>
+    <p>Book a consultation with Dr. Sarish Sharma — clinical-first assessment, personalised answers, same-day treatment available.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-cta-primary"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Toggle FAQ
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Filter by category tab
+  function filterCategory(cat, btn) {
+    document.querySelectorAll('.faq-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const cats = item.getAttribute('data-category') || '';
+      item.style.display = (cat === 'all' || cats.includes(cat)) ? 'block' : 'none';
+    });
+    document.querySelectorAll('.faq-group').forEach(group => {
+      const visible = [...group.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+      group.style.display = visible ? 'block' : 'none';
+    });
+  }
+
+  // Search filter
+  function filterFaqs(query) {
+    const q = query.toLowerCase();
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display = text.includes(q) ? 'block' : 'none';
+    });
+    document.querySelectorAll('.faq-group').forEach(group => {
+      const visible = [...group.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+      group.style.display = visible ? 'block' : 'none';
+    });
+  }
+</script>
+
+<%- include('../partials/footer') %>

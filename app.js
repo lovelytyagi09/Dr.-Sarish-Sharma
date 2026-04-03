@@ -71,10 +71,11 @@ app.get('/services/fracture-treatment', (req, res) => {
 
 
 // BLOGS 
+app.get('/blogs', (req, res) => res.render('blog/index'));
+// BLOGS 
+app.get('/faqs', (req, res) => 
+  res.render('faq/index.ejs'));
 
-app.get('/blogs', (req, res) => {
-  res.render('blog/index.ejs');
-});
 //Submit Form 
 app.post('/submit-appointment', (req, res) => {
 
