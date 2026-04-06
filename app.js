@@ -69,13 +69,33 @@ app.get('/services/fracture-treatment', (req, res) => {
   res.render('services/Fracture Treatment/index.ejs');
 });
 
-
-// BLOGS 
-app.get('/blogs', (req, res) => res.render('blog/index'));
-// BLOGS 
+//FAQS 
 app.get('/faqs', (req, res) => 
   res.render('faq/index.ejs'));
 
+// BLOGS 
+app.get('/blogs', (req, res) => res.render('blog/index'));
+
+//BONE HEALTH 
+app.get("/blogs/bonehealth" , (req , res) => {
+  res.render("blog/bonehealth/index")
+})
+//JOINT CARE
+app.get("/blogs/jointcare" , (req , res) => {
+  res.render("blog/jointcare/index")
+})
+//SPINE HEALTH
+app.get("/blogs/spinehealth" , (req , res) => {
+  res.render("blog/spinehealth/index")
+})
+//arthiritis
+app.get("/blogs/arthiritis" , (req , res) => {
+  res.render("blog/arthiritis/index")
+})
+//fracture
+app.get("/blogs/fracture" , (req , res) => {
+  res.render("blog/fracture/index")
+})
 //Submit Form 
 app.post('/submit-appointment', (req, res) => {
 
@@ -102,10 +122,10 @@ app.post('/submit-appointment', (req, res) => {
   // Encode for WhatsApp URL
   const encodedMessage = encodeURIComponent(message);
 
-  // Your WhatsApp number with country code — no + sign
-  const whatsappNumber = '9259270578';
+// Your WhatsApp number with country code — no + sign
+const whatsappNumber = '919560657964';
 
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
   // Send URL back to frontend
   res.json({ url: whatsappURL });

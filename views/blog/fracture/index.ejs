@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Some Fractures Don't Heal — Bone Marrow Injection Therapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A2744;
+  --navy-d: #0F1A30;
+  --teal: #1AAB98;
+  --teal-d: #148A79;
+  --gold: #C6993A;
+  --white: #ffffff;
+  --off-white: #F5F4EF;
+  --gray-lt: #ECEDF2;
+  --gray: #8A97AB;
+  --gray-dk: #3F5264;
+  --text: #171F2D;
+  --text-lt: #4A5F75;
+  --border: #DDE2EC;
+  --font-head: 'Fraunces', Georgia, serif;
+  --font-body: 'Figtree', sans-serif;
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+  --shadow: 0 4px 24px rgba(15,26,48,0.09);
+  --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+  --transition: 0.25s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+/* ── TOPBAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(9,15,30,0.95);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.045)}
+.topbar-left{display:flex;align-items:center;gap:20px}
+.topbar-brand{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--white);letter-spacing:0.02em}
+.topbar-brand span{color:var(--teal)}
+.topbar-sep{width:1px;height:22px;background:rgba(255,255,255,0.1)}
+.topbar-crumb{font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray)}
+.topbar-right{display:flex;gap:8px;align-items:center}
+.tb-pill{font-size:0.66rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+.tb-teal{background:rgba(26,171,152,0.13);border:1px solid rgba(26,171,152,0.28);color:var(--teal)}
+.tb-gold{background:rgba(198,153,58,0.13);border:1px solid rgba(198,153,58,0.28);color:var(--gold)}
+
+/* ── PROGRESS ── */
+.progress-bar{position:fixed;top:62px;left:0;right:0;height:2px;background:rgba(255,255,255,0.05);z-index:199}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 100%);transition:width 0.08s linear}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--navy-d);position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 420px;padding-top:62px}
+
+/* animated scanline bg */
+.hero-scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,0.008) 3px,rgba(255,255,255,0.008) 4px);z-index:0}
+
+/* radial light source */
+.hero-light{position:absolute;top:-200px;left:-200px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(26,171,152,0.16) 0%,rgba(26,171,152,0.04) 40%,transparent 70%);pointer-events:none;z-index:0;animation:lightPulse 8s ease-in-out infinite}
+@keyframes lightPulse{0%,100%{opacity:0.8;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+
+.hero-light-2{position:absolute;bottom:-100px;right:300px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(198,153,58,0.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+/* grid lines */
+.hero-grid{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:64px 64px}
+
+/* Left content */
+.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 72px}
+
+.hero-badge-row{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.hbadge{font-family:var(--font-head);font-style:italic;font-size:0.72rem;font-weight:400;color:var(--gold);border:1px solid rgba(198,153,58,0.35);padding:3px 11px;border-radius:4px}
+.hrule{width:36px;height:1px;background:rgba(255,255,255,0.12)}
+.hcat{font-size:0.66rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray)}
+
+.hero-overtitle{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+
+.hero-title{font-family:var(--font-head);font-size:clamp(2rem,4.2vw,3.4rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:26px}
+.hero-title .ht-q{font-style:italic;color:rgba(255,255,255,0.9)}
+.hero-title .ht-teal{color:var(--teal);font-style:italic}
+.hero-title .ht-gold{color:var(--gold)}
+
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.85;max-width:540px;margin-bottom:44px}
+
+/* stat trio */
+.hero-stats{display:flex;gap:0;margin-bottom:44px;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.07)}
+.hstat{flex:1;padding:18px 20px;border-right:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02)}
+.hstat:last-child{border-right:none}
+.hstat-val{font-family:var(--font-head);font-size:1.7rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:4px}
+.hstat-val span{font-size:0.9rem;font-style:italic;color:var(--teal)}
+.hstat-label{font-size:0.66rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray)}
+
+/* author */
+.hero-author{display:flex;align-items:center;gap:16px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.07)}
+.ha-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal-d),var(--navy));border:2px solid rgba(26,171,152,0.4);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:0.88rem;font-weight:700;color:var(--white);flex-shrink:0}
+.ha-name{font-size:0.86rem;font-weight:600;color:var(--white);margin-bottom:2px}
+.ha-role{font-size:0.72rem;color:var(--gray)}
+.ha-meta{margin-left:auto;text-align:right}
+.ha-read{font-size:0.72rem;color:var(--gray)}
+.ha-time{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--white)}
+
+/* Right panel — bone diagram */
+.hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:60px 32px;border-left:1px solid rgba(255,255,255,0.04)}
+
+.bone-panel{width:100%;max-width:320px}
+.bp-label{font-size:0.66rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--gray);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.bp-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07)}
+
+/* Healing stage tabs */
+.stage-tabs{display:flex;gap:6px;margin-bottom:20px}
+.stage-tab{flex:1;padding:7px 8px;border-radius:6px;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-align:center;cursor:pointer;transition:all var(--transition);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.35);background:transparent}
+.stage-tab.active{background:rgba(26,171,152,0.18);border-color:rgba(26,171,152,0.4);color:var(--teal)}
+.stage-tab.problem{background:rgba(220,80,50,0.12);border-color:rgba(220,80,50,0.3);color:#E07055}
+.stage-tab.problem.active{background:rgba(220,80,50,0.22)}
+
+.bone-svg-wrap{display:flex;justify-content:center;margin-bottom:20px;min-height:220px;align-items:center}
+
+.bone-info-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);padding:14px 16px}
+.bib-title{font-family:var(--font-head);font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:5px}
+.bib-text{font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6}
+
+/* ── ARTICLE BODY ── */
+.article-body{max-width:1200px;margin:0 auto;padding:80px 52px 120px;display:grid;grid-template-columns:1fr 300px;gap:68px;align-items:start}
+.main-content{min-width:0}
+.section{margin-bottom:72px}
+
+.sec-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-num{font-family:var(--font-head);font-style:italic;font-size:0.7rem;color:var(--teal);border:1px solid rgba(26,171,152,0.3);padding:2px 9px;border-radius:4px}
+.sec-cat{font-size:0.66rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--gray)}
+
+.sec-heading{font-family:var(--font-head);font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;color:var(--navy-d);line-height:1.2;margin-bottom:18px}
+.sec-heading em{font-style:italic;color:var(--teal)}
+.sec-heading .gold{color:var(--gold)}
+
+.prose{font-size:0.97rem;color:var(--text-lt);line-height:1.9;margin-bottom:18px}
+.prose strong{color:var(--text);font-weight:600}
+
+.section-rule{width:52px;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:2px;margin:52px 0}
+
+/* ── FRACTURE TYPE CARDS ── */
+.fracture-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:28px 0}
+.fcard{border-radius:var(--radius);padding:22px 18px;position:relative;overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}
+.fcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.fcard::after{content:'';position:absolute;inset:0;border-radius:var(--radius);pointer-events:none}
+.fcard-normal{background:linear-gradient(145deg,rgba(26,171,152,0.08),rgba(26,171,152,0.02));border:1px solid rgba(26,171,152,0.2)}
+.fcard-delayed{background:linear-gradient(145deg,rgba(198,153,58,0.08),rgba(198,153,58,0.02));border:1px solid rgba(198,153,58,0.22)}
+.fcard-nonunion{background:linear-gradient(145deg,rgba(220,80,50,0.07),rgba(220,80,50,0.01));border:1px solid rgba(220,80,50,0.2)}
+.fcard-icon{font-size:1.8rem;margin-bottom:10px;display:block}
+.fcard-type{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px}
+.fcard-normal .fcard-type{color:var(--teal)}
+.fcard-delayed .fcard-type{color:var(--gold)}
+.fcard-nonunion .fcard-type{color:#DC5032}
+.fcard-name{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--navy-d);margin-bottom:8px}
+.fcard-timeline{font-size:0.75rem;font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:10px}
+.fcard-normal .fcard-timeline{background:rgba(26,171,152,0.1);color:var(--teal-d)}
+.fcard-delayed .fcard-timeline{background:rgba(198,153,58,0.1);color:#8A6010}
+.fcard-nonunion .fcard-timeline{background:rgba(220,80,50,0.1);color:#B53020}
+.fcard-desc{font-size:0.81rem;color:var(--text-lt);line-height:1.6}
+
+/* ── CAUSE GRID ── */
+.cause-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.cause-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;box-shadow:var(--shadow-sm);transition:all var(--transition)}
+.cause-item:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.cause-icon-wrap{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ci-teal{background:rgba(26,171,152,0.1)}
+.ci-gold{background:rgba(198,153,58,0.1)}
+.ci-red{background:rgba(220,80,50,0.08)}
+.ci-navy{background:rgba(26,39,68,0.08)}
+.cause-title{font-family:var(--font-head);font-size:0.9rem;font-weight:700;color:var(--navy-d);margin-bottom:4px}
+.cause-desc{font-size:0.8rem;color:var(--text-lt);line-height:1.55}
+
+/* ── BMI PROCESS STEPS ── */
+.process-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:32px 0;position:relative}
+.process-flow::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--teal),var(--gold));z-index:0}
+.pstep{position:relative;z-index:1;text-align:center;padding:0 8px}
+.pstep-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;border:2px solid transparent;transition:all var(--transition)}
+.pstep-1 .pstep-circle{background:rgba(26,171,152,0.12);border-color:rgba(26,171,152,0.4)}
+.pstep-2 .pstep-circle{background:rgba(26,171,152,0.18);border-color:rgba(26,171,152,0.5)}
+.pstep-3 .pstep-circle{background:rgba(198,153,58,0.12);border-color:rgba(198,153,58,0.4)}
+.pstep-4 .pstep-circle{background:rgba(198,153,58,0.2);border-color:rgba(198,153,58,0.55)}
+.pstep-num{font-family:var(--font-head);font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+.pstep-3 .pstep-num,.pstep-4 .pstep-num{color:var(--gold)}
+.pstep-title{font-family:var(--font-head);font-size:0.82rem;font-weight:700;color:var(--navy-d);margin-bottom:5px;line-height:1.25}
+.pstep-desc{font-size:0.74rem;color:var(--text-lt);line-height:1.5}
+
+/* ── OUTCOME BARS ── */
+.outcome-bars{display:flex;flex-direction:column;gap:16px;margin:28px 0}
+.ob-item{}
+.ob-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.ob-label{font-size:0.84rem;font-weight:600;color:var(--navy-d)}
+.ob-pct{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--teal)}
+.ob-track{height:8px;background:var(--gray-lt);border-radius:4px;overflow:hidden}
+.ob-fill{height:100%;border-radius:4px;width:0%;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)}
+.ob-fill-teal{background:linear-gradient(90deg,var(--teal-d),var(--teal))}
+.ob-fill-gold{background:linear-gradient(90deg,#8A6010,var(--gold))}
+.ob-sub{font-size:0.75rem;color:var(--gray);margin-top:4px}
+
+/* ── CALLOUT BOXES ── */
+.callout{border-radius:var(--radius);padding:22px 26px;margin:28px 0;display:flex;gap:16px;align-items:flex-start}
+.callout--info{background:rgba(26,171,152,0.06);border-left:4px solid var(--teal)}
+.callout--gold{background:rgba(198,153,58,0.07);border-left:4px solid var(--gold)}
+.callout--warn{background:rgba(220,80,50,0.06);border-left:4px solid #DC5032}
+.callout--dark{background:rgba(26,39,68,0.06);border-left:4px solid var(--navy)}
+.callout-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.callout-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--navy-d);margin-bottom:5px}
+.callout-text{font-size:0.88rem;color:var(--text-lt);line-height:1.72}
+.callout-text strong{color:var(--text)}
+
+/* ── COMPARISON TABLE ── */
+.comp-table{width:100%;border-collapse:collapse;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);margin:28px 0}
+.comp-table thead tr{background:var(--navy)}
+.comp-table th{font-size:0.7rem;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.7);padding:14px 18px;text-align:left}
+.comp-table td{padding:13px 18px;font-size:0.86rem;color:var(--text-lt);border-bottom:1px solid var(--border);vertical-align:middle}
+.comp-table tbody tr:last-child td{border-bottom:none}
+.comp-table tbody tr:nth-child(odd) td{background:var(--white)}
+.comp-table tbody tr:nth-child(even) td{background:var(--gray-lt)}
+.comp-table td:first-child{font-weight:600;color:var(--navy);background:var(--off-white)!important;white-space:nowrap}
+.td-teal{color:var(--teal-d)!important;font-weight:500!important}
+.td-red{color:#B53020!important;font-weight:500!important}
+.td-gold{color:#8A6010!important;font-weight:500!important}
+.check-yes{color:var(--teal);font-size:1rem}
+.check-no{color:#DC5032;font-size:1rem}
+
+/* ── PULL QUOTE ── */
+.pullquote{position:relative;margin:40px 0;padding:28px 32px 28px 54px;border-radius:0 var(--radius-lg) var(--radius-lg) 0;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);border-left:5px solid var(--teal)}
+.pullquote::before{content:'\201C';position:absolute;left:14px;top:8px;font-family:var(--font-head);font-size:4rem;line-height:1;color:var(--teal);opacity:0.45}
+.pullquote-text{font-family:var(--font-head);font-size:1.1rem;font-style:italic;font-weight:400;color:var(--white);line-height:1.72;margin-bottom:12px}
+.pullquote-attr{font-size:0.74rem;font-weight:600;letter-spacing:0.08em;color:var(--teal)}
+
+/* ── CANDIDATE CHECKLIST ── */
+.candidate-check{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}
+.cc-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow-sm);transition:all var(--transition)}
+.cc-item:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.cc-mark{width:22px;height:22px;border-radius:6px;background:rgba(26,171,152,0.1);border:1.5px solid var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:0.75rem;color:var(--teal);font-weight:700}
+.cc-text{font-size:0.84rem;color:var(--text-lt);line-height:1.55}
+.cc-text strong{color:var(--text)}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:82px;display:flex;flex-direction:column;gap:20px}
+.s-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
+.s-card-dark{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);border:none}
+.s-card-teal{background:linear-gradient(135deg,rgba(26,171,152,0.08) 0%,rgba(26,171,152,0.02) 100%);border:1px solid rgba(26,171,152,0.18)}
+.s-title{font-family:var(--font-head);font-size:0.9rem;font-weight:700;color:var(--navy-d);margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.s-card-dark .s-title{color:var(--white);border-color:rgba(255,255,255,0.1)}
+
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{display:block;font-size:0.79rem;color:var(--text-lt);text-decoration:none;padding:7px 10px;border-radius:var(--radius-sm);transition:all var(--transition);line-height:1.4}
+.toc-list a:hover,.toc-list a.active{background:rgba(26,171,152,0.08);color:var(--teal);padding-left:14px}
+.toc-list a.active{font-weight:600}
+
+/* healing timeline mini */
+.mini-timeline{display:flex;flex-direction:column;gap:0}
+.mt-item{display:flex;gap:12px;align-items:stretch}
+.mt-line-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.mt-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.mt-vline{width:2px;flex:1;min-height:16px;margin:3px 0}
+.mt-item:last-child .mt-vline{display:none}
+.mt-body{padding-bottom:14px}
+.mt-week{font-size:0.64rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px}
+.mt-label{font-size:0.8rem;color:var(--text-lt);line-height:1.4;font-weight:400}
+
+/* quick facts */
+.quick-facts{display:flex;flex-direction:column;gap:10px}
+.qf-item{display:flex;align-items:flex-start;gap:10px;font-size:0.8rem;color:var(--text-lt);line-height:1.5}
+.qf-icon{font-size:0.95rem;flex-shrink:0;margin-top:1px}
+
+/* contact card */
+.contact-card{text-align:center;padding:20px}
+.cc-headline{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.cc-sub{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:18px}
+.cc-btn{display:inline-block;background:var(--teal);color:var(--white);font-size:0.78rem;font-weight:600;padding:10px 22px;border-radius:30px;text-decoration:none;transition:background var(--transition)}
+.cc-btn:hover{background:var(--teal-d)}
+
+/* ── FOOTER ── */
+.article-footer{background:var(--navy-d);padding:60px 52px}
+.footer-inner{max-width:880px;margin:0 auto;text-align:center}
+.f-disc-label{display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);border:1px solid rgba(255,255,255,0.09);padding:4px 12px;border-radius:20px;margin-bottom:14px}
+.f-disc{font-size:0.81rem;color:rgba(255,255,255,0.28);line-height:1.85;max-width:680px;margin:0 auto 32px}
+.f-brand{font-family:var(--font-head);font-size:1.4rem;font-weight:700;color:var(--white)}
+.f-brand span{color:var(--teal)}
+.f-tagline{font-size:0.74rem;color:var(--gray);margin-top:5px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero-left>*{animation:fadeUp 0.7s ease both}
+.hero-left>*:nth-child(1){animation-delay:.05s}
+.hero-left>*:nth-child(2){animation-delay:.15s}
+.hero-left>*:nth-child(3){animation-delay:.25s}
+.hero-left>*:nth-child(4){animation-delay:.38s}
+.hero-left>*:nth-child(5){animation-delay:.5s}
+.hero-left>*:nth-child(6){animation-delay:.6s}
+.hero-right{animation:fadeUp .9s .35s ease both}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .article-body{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .fracture-cards{grid-template-columns:1fr 1fr}
+  .process-flow{grid-template-columns:1fr 1fr;gap:24px}
+  .process-flow::before{display:none}
+}
+@media(max-width:700px){
+  .hero-left{padding:48px 24px}
+  .article-body{padding:48px 20px 80px}
+  .fracture-cards{grid-template-columns:1fr}
+  .cause-grid{grid-template-columns:1fr}
+  .candidate-check{grid-template-columns:1fr}
+  .topbar{padding:0 20px}
+  .hero-stats{flex-direction:column}
+  .hstat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07)}
+  .hstat:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-brand">Bone<span>Heal</span></div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-crumb">Fracture Biology Series</div>
+  </div>
+  <div class="topbar-right">
+    <div class="tb-pill tb-teal">Non-Surgical</div>
+    <div class="tb-pill tb-gold">Regenerative</div>
+  </div>
+</nav>
+
+<!-- PROGRESS -->
+<div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-scanlines"></div>
+  <div class="hero-light"></div>
+  <div class="hero-light-2"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge-row">
+      <span class="hbadge">Fracture Biology</span>
+      <span class="hrule"></span>
+      <span class="hcat">Bone Marrow Injection Therapy</span>
+    </div>
+
+    <div class="hero-overtitle">A deep-dive for patients & clinicians</div>
+
+    <h1 class="hero-title">
+      <span class="ht-q">Why Some Fractures</span><br>
+      <span class="ht-q">Don't Heal —</span><br>
+      <span class="ht-teal">And What BMI Therapy</span><br>
+      <span class="ht-gold">Can Do About It</span>
+    </h1>
+
+    <p class="hero-sub">
+      Most fractures heal within weeks — but delayed union and non-union fractures can leave patients in pain for months or years, often being told surgery is the only answer. Bone Marrow Injection therapy offers a powerful non-surgical alternative that stimulates the body's own healing mechanisms at the fracture site.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-val">5–10<span>%</span></div>
+        <div class="hstat-label">Fractures develop non-union</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">80<span>%+</span></div>
+        <div class="hstat-label">BMI success rate in selected cases</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">1<span>×</span></div>
+        <div class="hstat-label">Minimally invasive procedure</div>
+      </div>
+    </div>
+
+    <div class="hero-author">
+      <div class="ha-avatar">DR</div>
+      <div>
+        <div class="ha-name">Dr. Sarish Sharma , MS (Ortho)</div>
+        <div class="ha-role">Orthopaedic & Fracture Specialist</div>
+      </div>
+      <div class="ha-meta">
+        <div class="ha-read">Reading time</div>
+        <div class="ha-time">10 min</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO RIGHT — Bone diagram panel -->
+  <div class="hero-right">
+    <div class="bone-panel">
+      <div class="bp-label">Fracture Healing Stages</div>
+
+      <div class="stage-tabs">
+        <div class="stage-tab active" onclick="switchStage('normal',this)">Normal</div>
+        <div class="stage-tab problem" onclick="switchStage('delayed',this)">Delayed</div>
+        <div class="stage-tab problem" onclick="switchStage('nonunion',this)">Non-union</div>
+      </div>
+
+      <div class="bone-svg-wrap" id="boneSvgWrap">
+        <!-- default: normal healing SVG -->
+      </div>
+
+      <div class="bone-info-box" id="boneInfoBox">
+        <div class="bib-title">Normal Fracture Healing</div>
+        <div class="bib-text">Callus forms within 2–3 weeks, bridging the fracture gap. Remodelling completes in weeks to months depending on bone and patient factors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARTICLE BODY ── -->
+<main class="article-body">
+<div class="main-content">
+
+  <!-- SECTION 1 – FRACTURE TYPES -->
+  <section class="section reveal" id="sec-types">
+    <div class="sec-eyebrow">
+      <span class="sec-num">01</span>
+      <span class="sec-cat">Understanding the Problem</span>
+    </div>
+    <h2 class="sec-heading">When bones <em>fail to heal</em> — the three scenarios</h2>
+    <p class="prose">
+      The human body is remarkably equipped to repair broken bone. Within hours of a fracture, a cascade of cellular events begins — haematoma formation, inflammation, periosteal activation, and ultimately callus formation. Under normal circumstances, this process completes within 6–12 weeks. But in a significant minority of patients, this cascade stalls — sometimes permanently.
+    </p>
+
+    <div class="fracture-cards reveal">
+      <div class="fcard fcard-normal">
+        <span class="fcard-icon">✅</span>
+        <div class="fcard-type">Expected outcome</div>
+        <div class="fcard-name">Normal Healing</div>
+        <span class="fcard-timeline">6–12 weeks</span>
+        <div class="fcard-desc">Haematoma organises into granulation tissue, cartilaginous callus bridges the gap, and bone remodels to restore mechanical integrity. Predictable with adequate blood supply and stability.</div>
+      </div>
+      <div class="fcard fcard-delayed">
+        <span class="fcard-icon">⏳</span>
+        <div class="fcard-type">Complication</div>
+        <div class="fcard-name">Delayed Union</div>
+        <span class="fcard-timeline">3–6+ months</span>
+        <div class="fcard-desc">Healing is occurring but significantly slower than expected. Pain and tenderness persist at the fracture site beyond the normal window. Radiological evidence of incomplete callus. Still treatable non-surgically.</div>
+      </div>
+      <div class="fcard fcard-nonunion">
+        <span class="fcard-icon">⛔</span>
+        <div class="fcard-type">Established failure</div>
+        <div class="fcard-name">Non-Union</div>
+        <span class="fcard-timeline">6+ months, no progress</span>
+        <div class="fcard-desc">Healing has ceased. Fracture gap persists without bridging callus. Two subtypes: <strong>hypertrophic</strong> (adequate blood supply, insufficient stability) and <strong>atrophic</strong> (insufficient biological activity). Requires active intervention.</div>
+      </div>
+    </div>
+
+    <div class="callout callout--gold">
+      <div class="callout-icon">📐</div>
+      <div class="callout-body">
+        <div class="callout-title">Defining non-union clinically</div>
+        <div class="callout-text">The FDA defines non-union as a fracture that is at least <strong>9 months old</strong> with no visible healing progress for the last 3 months. Clinically, most specialists act earlier — at 4–6 months without radiological progression — to avoid prolonged disability and the biological window for regenerative therapies closing.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule reveal"></div>
+
+  <!-- SECTION 2 – CAUSES -->
+  <section class="section reveal" id="sec-causes">
+    <div class="sec-eyebrow">
+      <span class="sec-num">02</span>
+      <span class="sec-cat">Root Causes</span>
+    </div>
+    <h2 class="sec-heading">Why do fractures <em>stop healing?</em></h2>
+    <p class="prose">
+      Failed fracture healing is rarely the result of a single factor. It is almost always a combination of biological, mechanical, and systemic variables. Understanding which factors are present in a given patient is essential for selecting the right intervention — and BMI therapy is most powerful when the underlying biology is understood and corrected alongside the injection.
+    </p>
+
+    <div class="cause-grid reveal">
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-teal">🩸</div>
+        <div>
+          <div class="cause-title">Poor Blood Supply</div>
+          <div class="cause-desc">Adequate vascularity is essential for delivering progenitor cells, oxygen, and growth factors. Fractures of the femoral neck, talus, and scaphoid are high-risk due to tenuous blood supply. Smoking dramatically impairs microvascular healing.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-gold">⚙️</div>
+        <div>
+          <div class="cause-title">Mechanical Instability</div>
+          <div class="cause-desc">Excessive movement at the fracture site disrupts callus formation. Inadequate fixation, early weight-bearing, or implant failure can prevent the mechanical environment needed for ossification.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-red">🦠</div>
+        <div>
+          <div class="cause-title">Infection</div>
+          <div class="cause-desc">Even low-grade subclinical infection at a fracture site creates an inflammatory milieu that inhibits osteoblast activity. Open fractures, post-surgical cases, and immunocompromised patients are at highest risk.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-navy">💊</div>
+        <div>
+          <div class="cause-title">Systemic Factors</div>
+          <div class="cause-desc">Diabetes, vitamin D deficiency, hypothyroidism, renal disease, and chronic NSAID or steroid use all impair bone healing biology. Nutritional status — particularly protein and calcium — is frequently overlooked.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-teal">📏</div>
+        <div>
+          <div class="cause-title">Large Fracture Gap</div>
+          <div class="cause-desc">Gaps exceeding 2–3mm are harder for callus to bridge. Bone loss from comminution, debridement of infected bone, or atrophic non-union all increase the biological challenge and may require augmentation.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-gold">🧬</div>
+        <div>
+          <div class="cause-title">Depleted Stem Cell Pool</div>
+          <div class="cause-desc">Fracture healing depends on mesenchymal stem cells (MSCs) from the periosteum and bone marrow. Age, prior irradiation, and bone marrow disorders reduce MSC availability — a direct target of BMI therapy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout-icon">🚬</div>
+      <div class="callout-body">
+        <div class="callout-title">Smoking — the most modifiable risk factor</div>
+        <div class="callout-text">Smokers have a <strong>2–3× increased risk</strong> of delayed union and non-union. Nicotine causes direct vasoconstriction of periosteal vessels, reduces osteoblast proliferation, and impairs collagen synthesis. Smoking cessation should be a prerequisite for non-surgical fracture healing programmes — and BMI response rates are substantially better in non-smokers.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule reveal"></div>
+
+  <!-- SECTION 3 – WHAT IS BMI -->
+  <section class="section reveal" id="sec-bmi">
+    <div class="sec-eyebrow">
+      <span class="sec-num">03</span>
+      <span class="sec-cat">The Treatment</span>
+    </div>
+    <h2 class="sec-heading">What is <em>Bone Marrow Injection</em> Therapy?</h2>
+    <p class="prose">
+      Bone Marrow Injection (BMI) therapy — also termed Bone Marrow Aspirate Concentrate (BMAC) injection — is a minimally invasive, biologics-based procedure that harnesses the patient's own regenerative cells to stimulate fracture healing. It is founded on the observation that non-healing fractures are often biologically inert — lacking the cellular machinery needed to advance healing — and that this can be corrected by delivering a concentrated bolus of osteoprogenitor cells directly to the fracture site.
+    </p>
+    <p class="prose">
+      Bone marrow, aspirated typically from the posterior iliac crest, is rich in <strong>mesenchymal stem cells (MSCs)</strong>, osteoblast precursors, haematopoietic cells, and growth factors including BMP-2, TGF-β, VEGF, and IGF-1. When concentrated and injected under fluoroscopic or ultrasound guidance into the non-union site, this biological payload can restart the stalled healing cascade.
+    </p>
+
+    <div class="process-flow reveal">
+      <div class="pstep pstep-1">
+        <div class="pstep-circle">🩸</div>
+        <div class="pstep-num">Step 01</div>
+        <div class="pstep-title">Aspiration</div>
+        <div class="pstep-desc">30–60 ml bone marrow drawn from posterior iliac crest under local anaesthetic. Same-day procedure.</div>
+      </div>
+      <div class="pstep pstep-2">
+        <div class="pstep-circle">🔬</div>
+        <div class="pstep-num">Step 02</div>
+        <div class="pstep-title">Concentration</div>
+        <div class="pstep-desc">Aspirate centrifuged to concentrate MSCs, platelets, and growth factors — typically 6–8× baseline concentration.</div>
+      </div>
+      <div class="pstep pstep-3">
+        <div class="pstep-circle">🎯</div>
+        <div class="pstep-num">Step 03</div>
+        <div class="pstep-title">Guided Injection</div>
+        <div class="pstep-desc">BMAC injected percutaneously into the fracture site under fluoroscopic or ultrasound guidance. Precise targeting is critical.</div>
+      </div>
+      <div class="pstep pstep-4">
+        <div class="pstep-circle">🦴</div>
+        <div class="pstep-num">Step 04</div>
+        <div class="pstep-title">Healing Response</div>
+        <div class="pstep-desc">MSCs differentiate into osteoblasts; growth factors stimulate vascular ingrowth and callus formation over 6–12 weeks.</div>
+      </div>
+    </div>
+
+    <div class="callout callout--dark reveal">
+      <div class="callout-icon">🔬</div>
+      <div class="callout-body">
+        <div class="callout-title">The biological mechanism</div>
+        <div class="callout-text">MSCs delivered to the fracture site respond to local cues — hypoxia, inflammatory mediators, mechanical signals — and differentiate into <strong>osteoblasts</strong> (bone-forming cells). Simultaneously, the VEGF and PDGF content of BMAC stimulates <strong>angiogenesis</strong>, restoring the vascular supply that atrophic non-unions often lack. BMP-2 and BMP-7, present in the concentrate, directly upregulate osteoblast gene expression and accelerate mineralised callus formation.</div>
+      </div>
+    </div>
+
+    <div class="pullquote reveal">
+      <p class="pullquote-text">BMI therapy doesn't override biology — it re-engages it. We're taking the patient's own healing potential and delivering it precisely where it's needed, at a concentration the body can no longer achieve naturally at that site.</p>
+      <div class="pullquote-attr">Dr. Sarish Sharma · Orthopaedic & Fracture Specialist</div>
+    </div>
+  </section>
+
+  <div class="section-rule reveal"></div>
+
+  <!-- SECTION 4 – EVIDENCE & OUTCOMES -->
+  <section class="section reveal" id="sec-evidence">
+    <div class="sec-eyebrow">
+      <span class="sec-num">04</span>
+      <span class="sec-cat">Evidence & Outcomes</span>
+    </div>
+    <h2 class="sec-heading">What does the <em>evidence show?</em></h2>
+    <p class="prose">
+      BMI therapy for non-union has an evidence base stretching back over three decades, with the landmark work of Connolly et al. in the 1990s demonstrating percutaneous BMAC injection as a viable alternative to surgical bone grafting. Since then, multiple prospective studies, systematic reviews, and comparative trials have refined patient selection and outcomes data.
+    </p>
+
+    <div class="outcome-bars reveal" id="outcomeBars">
+      <div class="ob-item">
+        <div class="ob-meta">
+          <span class="ob-label">Overall union rate in tibia non-union</span>
+          <span class="ob-pct">80–87%</span>
+        </div>
+        <div class="ob-track"><div class="ob-fill ob-fill-teal" data-w="85"></div></div>
+        <div class="ob-sub">Prospective data across multiple centres (Hernigou et al., multiple series)</div>
+      </div>
+      <div class="ob-item">
+        <div class="ob-meta">
+          <span class="ob-label">Pain reduction at 3 months</span>
+          <span class="ob-pct">~70%</span>
+        </div>
+        <div class="ob-track"><div class="ob-fill ob-fill-teal" data-w="70"></div></div>
+        <div class="ob-sub">Patient-reported outcome measures (VAS pain scores)</div>
+      </div>
+      <div class="ob-item">
+        <div class="ob-meta">
+          <span class="ob-label">Success in hypertrophic non-union</span>
+          <span class="ob-pct">90%+</span>
+        </div>
+        <div class="ob-track"><div class="ob-fill ob-fill-gold" data-w="92"></div></div>
+        <div class="ob-sub">Best results where vascularity is adequate; mechanical factors corrected</div>
+      </div>
+      <div class="ob-item">
+        <div class="ob-meta">
+          <span class="ob-label">Avoidance of open surgery</span>
+          <span class="ob-pct">75–80%</span>
+        </div>
+        <div class="ob-track"><div class="ob-fill ob-fill-gold" data-w="77"></div></div>
+        <div class="ob-sub">Proportion of patients avoiding planned surgical bone grafting</div>
+      </div>
+    </div>
+
+    <table class="comp-table reveal">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>BMI / BMAC</th>
+          <th>Surgical Bone Graft</th>
+          <th>Observation only</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Invasiveness</td>
+          <td class="td-teal">Minimally invasive</td>
+          <td class="td-gold">Major surgery</td>
+          <td class="td-red">None, but no action</td>
+        </tr>
+        <tr>
+          <td>Anaesthesia</td>
+          <td class="td-teal">Local / sedation</td>
+          <td class="td-gold">General / spinal</td>
+          <td class="td-teal">Not required</td>
+        </tr>
+        <tr>
+          <td>Hospital stay</td>
+          <td class="td-teal">Day case</td>
+          <td class="td-gold">2–5 days</td>
+          <td class="td-teal">None</td>
+        </tr>
+        <tr>
+          <td>Recovery time</td>
+          <td class="td-teal">Days</td>
+          <td class="td-gold">Weeks–months</td>
+          <td>Ongoing disability</td>
+        </tr>
+        <tr>
+          <td>Infection risk</td>
+          <td class="td-teal">Very low</td>
+          <td class="td-gold">Moderate</td>
+          <td class="td-teal">None additional</td>
+        </tr>
+        <tr>
+          <td>Biological activity</td>
+          <td class="td-teal">High (autologous MSCs)</td>
+          <td class="td-teal">High (structural)</td>
+          <td class="td-red">None added</td>
+        </tr>
+        <tr>
+          <td>Suitable for repeat</td>
+          <td class="check-yes">✓</td>
+          <td class="check-no">✗ (limited sites)</td>
+          <td class="check-no">✗</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="section-rule reveal"></div>
+
+  <!-- SECTION 5 – WHO IS A CANDIDATE -->
+  <section class="section reveal" id="sec-candidates">
+    <div class="sec-eyebrow">
+      <span class="sec-num">05</span>
+      <span class="sec-cat">Patient Selection</span>
+    </div>
+    <h2 class="sec-heading">Who is the <em>right candidate</em> for BMI therapy?</h2>
+    <p class="prose">
+      BMI therapy is not appropriate for every non-union — and careful patient selection is the most important determinant of outcome. The procedure works best when the biological deficit (insufficient osteoprogenitor cells) is the primary cause of non-healing, rather than gross mechanical instability or active infection, which must be resolved first.
+    </p>
+
+    <div class="candidate-check reveal">
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>Established delayed union or non-union</strong> — fracture present for 3+ months without progression on serial imaging</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>Hypertrophic or oligotrophic pattern</strong> — adequate vascularity confirmed, biological stimulation is the limiting factor</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>Adequate mechanical environment</strong> — existing fixation is stable, or supplemented with cast/brace immobilisation</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>No active infection</strong> at the fracture site — infection must be eradicated before biological therapy is initiated</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>Patient willing to address modifiable factors</strong> — smoking cessation, vitamin D and nutritional optimisation, diabetes control</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-mark">✓</div>
+        <div class="cc-text"><strong>Seeking to avoid or delay surgery</strong> — particularly elderly, high surgical risk, or patients wishing to preserve bone graft donor sites</div>
+      </div>
+    </div>
+
+    <div class="callout callout--warn reveal">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <div class="callout-title">When BMI is not the answer</div>
+        <div class="callout-text">Atrophic non-unions with large segmental bone loss, fractures with gross mechanical instability (loose or failed implants), active osteomyelitis, and patients with haematological malignancies affecting the bone marrow are poor candidates. In these cases, surgical options — bone grafting, intramedullary nailing revision, or frame-assisted bone transport — should be the primary discussion.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule reveal"></div>
+
+  <!-- SECTION 6 – WHAT TO EXPECT -->
+  <section class="section reveal" id="sec-expect">
+    <div class="sec-eyebrow">
+      <span class="sec-num">06</span>
+      <span class="sec-cat">The Patient Journey</span>
+    </div>
+    <h2 class="sec-heading">What to expect — <em>before, during & after</em></h2>
+    <p class="prose">
+      For patients considering BMI therapy, understanding the full journey removes anxiety and ensures appropriate expectations. The procedure is performed as a day case, typically under local anaesthetic with light sedation, and causes minimal disruption to daily life.
+    </p>
+
+    <div class="cause-grid reveal">
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-teal">📋</div>
+        <div>
+          <div class="cause-title">Pre-procedure Assessment</div>
+          <div class="cause-desc">Full review of imaging (X-ray + MRI or CT), blood tests including vitamin D, HbA1c, inflammatory markers, and nutritional screen. Smoking cessation mandatory for 6+ weeks. Systemic conditions optimised.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-teal">🏥</div>
+        <div>
+          <div class="cause-title">Procedure Day</div>
+          <div class="cause-desc">Day case. Local anaesthesia to posterior iliac crest. 30–60 ml aspirate obtained, centrifuged on-site (15–20 minutes). Percutaneous injection under imaging guidance. Total procedural time: 45–60 minutes.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-gold">🩹</div>
+        <div>
+          <div class="cause-title">Immediate Recovery</div>
+          <div class="cause-desc">Soreness at aspiration site (2–4 days). Protected weight-bearing as clinically appropriate. Most patients return to sedentary activity within 48–72 hours. Driving typically restricted for 1 week.</div>
+        </div>
+      </div>
+      <div class="cause-item">
+        <div class="cause-icon-wrap ci-gold">📈</div>
+        <div>
+          <div class="cause-title">Monitoring & Follow-up</div>
+          <div class="cause-desc">Serial X-rays at 6, 12, and 24 weeks. CT scan at 12 weeks if union uncertain. Pain typically begins improving at 4–6 weeks. Radiological union (bridging callus on 3 cortices) expected at 8–16 weeks in responders.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--info reveal">
+      <div class="callout-icon">🔄</div>
+      <div class="callout-body">
+        <div class="callout-title">Can BMI be repeated?</div>
+        <div class="callout-text">Yes — and this is one of its important advantages over surgical bone grafting. If the initial injection produces a partial response (some callus formation but incomplete union), a second injection can be administered at 12–16 weeks. Evidence suggests <strong>repeat injections are safe and additive</strong> in effect, with many cases achieving full union after a second procedure that showed partial response after the first.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /main-content -->
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <div class="s-card">
+    <div class="s-title">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      In this article
+    </div>
+    <ul class="toc-list" id="toc">
+      <li><a href="#sec-types">Fracture healing failure types</a></li>
+      <li><a href="#sec-causes">Why fractures stop healing</a></li>
+      <li><a href="#sec-bmi">What is BMI therapy?</a></li>
+      <li><a href="#sec-evidence">Evidence & outcomes</a></li>
+      <li><a href="#sec-candidates">Who is a candidate?</a></li>
+      <li><a href="#sec-expect">Before, during & after</a></li>
+    </ul>
+  </div>
+
+  <div class="s-card">
+    <div class="s-title">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Healing Timeline
+    </div>
+    <div class="mini-timeline">
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:var(--teal)"></div>
+          <div class="mt-vline" style="background:rgba(26,171,152,0.2)"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:var(--teal)">0–2 weeks</div>
+          <div class="mt-label">Haematoma → soft callus begins. Inflammatory phase.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:var(--teal)"></div>
+          <div class="mt-vline" style="background:rgba(26,171,152,0.2)"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:var(--teal)">2–6 weeks</div>
+          <div class="mt-label">Cartilaginous callus. Bridging begins on X-ray.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:var(--gold)"></div>
+          <div class="mt-vline" style="background:rgba(198,153,58,0.2)"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:var(--gold)">6–12 weeks</div>
+          <div class="mt-label">Bony callus. Fracture site stiffening. Early weight-bearing.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:var(--gold)"></div>
+          <div class="mt-vline" style="background:rgba(198,153,58,0.15)"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:var(--gold)">3–12 months</div>
+          <div class="mt-label">Remodelling. Callus reshapes to cortical bone. Strength returns.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:#DC5032"></div>
+          <div class="mt-vline" style="background:rgba(220,80,50,0.15)"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:#DC5032">3–6+ months</div>
+          <div class="mt-label">⚠ Delayed union — healing slow but active. BMI considered.</div>
+        </div>
+      </div>
+      <div class="mt-item">
+        <div class="mt-line-wrap">
+          <div class="mt-dot" style="background:#DC5032"></div>
+          <div class="mt-vline" style="display:none"></div>
+        </div>
+        <div class="mt-body">
+          <div class="mt-week" style="color:#DC5032">6+ months</div>
+          <div class="mt-label">🚨 Non-union — active intervention required. BMI or surgery.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-card s-card-teal">
+    <div class="s-title" style="color:var(--navy-d)">Key Facts — BMI Therapy</div>
+    <div class="quick-facts">
+      <div class="qf-item"><span class="qf-icon">💉</span><span>Autologous — uses patient's own cells, no rejection risk</span></div>
+      <div class="qf-item"><span class="qf-icon">🏥</span><span>Day-case procedure — home the same day</span></div>
+      <div class="qf-item"><span class="qf-icon">⏱️</span><span>45–60 minute total procedural time</span></div>
+      <div class="qf-item"><span class="qf-icon">🔁</span><span>Repeatable if partial response at 12–16 weeks</span></div>
+      <div class="qf-item"><span class="qf-icon">📊</span><span>80–90% success in carefully selected patients</span></div>
+      <div class="qf-item"><span class="qf-icon">🦴</span><span>Best results when mechanical stability is adequate</span></div>
+    </div>
+  </div>
+
+  <div class="s-card s-card-dark contact-card">
+    <div class="cc-headline">Is BMI right for you?</div>
+    <div class="cc-sub">Non-union assessment requires specialist review of your imaging, history, and systemic factors. Book a consultation to explore your options.</div>
+    <a href="#" class="cc-btn">Request Assessment →</a>
+  </div>
+
+</aside>
+</main>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="f-disc-label">Medical Disclaimer</div>
+    <p class="f-disc">This article is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Bone Marrow Injection therapy should only be considered following thorough clinical assessment by a qualified orthopaedic specialist. Individual results vary based on fracture type, patient health, and other clinical factors.</p>
+    <div class="f-brand">Bone<span>Heal</span></div>
+    <div class="f-tagline">Fracture Biology · Regenerative Orthopaedics · Evidence-Informed Care</div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const pFill = document.getElementById('pFill');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  pFill.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+});
+
+// Scroll reveal
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+revEls.forEach(el => revObs.observe(el));
+
+// Animate outcome bars
+const bars = document.querySelectorAll('.ob-fill');
+const barObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.w + '%';
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+bars.forEach(b => { b.style.width = '0%'; barObs.observe(b); });
+
+// Active TOC
+const secs = document.querySelectorAll('section[id]');
+const tocAs = document.querySelectorAll('.toc-list a');
+const tocObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      tocAs.forEach(a => a.classList.remove('active'));
+      const a = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+secs.forEach(s => tocObs.observe(s));
+
+// Bone diagram switcher
+const svgs = {
+  normal: {
+    svg: `<svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px">
+      <!-- Tibia shaft upper -->
+      <rect x="72" y="10" width="56" height="80" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <!-- callus bridge (green = good) -->
+      <ellipse cx="100" cy="100" rx="38" ry="14" fill="rgba(26,171,152,0.25)" stroke="#1AAB98" stroke-width="1.8" stroke-dasharray="0"/>
+      <text x="100" y="104" text-anchor="middle" font-family="Figtree" font-size="8" fill="#1AAB98" font-weight="600">Callus bridge</text>
+      <!-- fracture line (healed) -->
+      <line x1="72" y1="95" x2="128" y2="95" stroke="rgba(26,171,152,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Tibia shaft lower -->
+      <rect x="72" y="115" width="56" height="80" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <!-- union indicator -->
+      <circle cx="156" cy="100" r="14" fill="rgba(26,171,152,0.15)" stroke="#1AAB98" stroke-width="1.5"/>
+      <text x="156" y="96" text-anchor="middle" font-family="Figtree" font-size="7" fill="#1AAB98" font-weight="700">✓</text>
+      <text x="156" y="107" text-anchor="middle" font-family="Figtree" font-size="6" fill="rgba(26,171,152,0.7)">Union</text>
+      <line x1="128" y1="100" x2="142" y2="100" stroke="rgba(26,171,152,0.3)" stroke-width="1"/>
+    </svg>`,
+    title: 'Normal Fracture Healing',
+    text: 'Callus bridges the fracture gap by 4–6 weeks. Three cortices bridged by 12 weeks indicates clinical union. Remodelling continues for months.'
+  },
+  delayed: {
+    svg: `<svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px">
+      <!-- Tibia shaft upper -->
+      <rect x="72" y="10" width="56" height="78" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <!-- sparse callus -->
+      <ellipse cx="94" cy="97" rx="14" ry="7" fill="rgba(198,153,58,0.2)" stroke="rgba(198,153,58,0.5)" stroke-width="1.2"/>
+      <ellipse cx="112" cy="99" rx="10" ry="5" fill="rgba(198,153,58,0.15)" stroke="rgba(198,153,58,0.3)" stroke-width="1"/>
+      <!-- gap -->
+      <line x1="72" y1="93" x2="128" y2="93" stroke="rgba(198,153,58,0.6)" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="100" y="89" text-anchor="middle" font-family="Figtree" font-size="7" fill="#C6993A" font-weight="600">Incomplete callus</text>
+      <!-- Tibia shaft lower -->
+      <rect x="72" y="108" width="56" height="80" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <!-- warning indicator -->
+      <circle cx="156" cy="100" r="14" fill="rgba(198,153,58,0.15)" stroke="#C6993A" stroke-width="1.5"/>
+      <text x="156" y="97" text-anchor="middle" font-family="Figtree" font-size="8" fill="#C6993A" font-weight="700">⏳</text>
+      <text x="156" y="109" text-anchor="middle" font-family="Figtree" font-size="5.5" fill="rgba(198,153,58,0.7)">Delayed</text>
+      <line x1="128" y1="100" x2="142" y2="100" stroke="rgba(198,153,58,0.3)" stroke-width="1"/>
+    </svg>`,
+    title: 'Delayed Union',
+    text: 'Sparse, incomplete callus visible after 3+ months. Fracture line still evident. Healing is occurring but too slowly — biological augmentation or optimisation needed.'
+  },
+  nonunion: {
+    svg: `<svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px">
+      <!-- Tibia shaft upper — sclerotic end -->
+      <rect x="72" y="10" width="56" height="74" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <rect x="76" y="74" width="48" height="8" rx="3" fill="#3F5264" opacity="0.7"/>
+      <!-- Gap (no callus) -->
+      <rect x="76" y="84" width="48" height="14" rx="2" fill="rgba(220,80,50,0.08)" stroke="rgba(220,80,50,0.35)" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="100" y="94" text-anchor="middle" font-family="Figtree" font-size="7" fill="#DC5032" font-weight="600">No callus — gap</text>
+      <!-- Sclerotic lower end -->
+      <rect x="76" y="100" width="48" height="8" rx="3" fill="#3F5264" opacity="0.7"/>
+      <!-- Tibia shaft lower -->
+      <rect x="72" y="106" width="56" height="80" rx="14" fill="#1A2744" stroke="#3F5264" stroke-width="1.5"/>
+      <!-- danger indicator -->
+      <circle cx="156" cy="100" r="14" fill="rgba(220,80,50,0.12)" stroke="#DC5032" stroke-width="1.5"/>
+      <text x="156" y="97" text-anchor="middle" font-family="Figtree" font-size="8" fill="#DC5032" font-weight="700">⛔</text>
+      <text x="156" y="108" text-anchor="middle" font-family="Figtree" font-size="5" fill="rgba(220,80,50,0.7)">Non-union</text>
+      <line x1="128" y1="100" x2="142" y2="100" stroke="rgba(220,80,50,0.3)" stroke-width="1"/>
+      <!-- sclerosis labels -->
+      <line x1="72" y1="78" x2="52" y2="70" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2,3"/>
+      <text x="10" y="70" font-family="Figtree" font-size="6.5" fill="rgba(255,255,255,0.35)">Sclerotic</text>
+      <text x="12" y="79" font-family="Figtree" font-size="6.5" fill="rgba(255,255,255,0.35)">end plates</text>
+    </svg>`,
+    title: 'Non-Union',
+    text: 'No callus formation. Sclerotic bone ends have sealed, blocking vascular ingrowth. Requires active biological intervention — BMI therapy or surgical bone graft.'
+  }
+};
+
+function switchStage(type, el) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const wrap = document.getElementById('boneSvgWrap');
+  const info = document.getElementById('boneInfoBox');
+  wrap.innerHTML = svgs[type].svg;
+  info.querySelector('.bib-title').textContent = svgs[type].title;
+  info.querySelector('.bib-text').textContent = svgs[type].text;
+}
+
+// Init bone SVG
+document.getElementById('boneSvgWrap').innerHTML = svgs.normal.svg;
+</script>
+</body>
+</html>

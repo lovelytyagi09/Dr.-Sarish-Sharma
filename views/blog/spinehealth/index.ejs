@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpineArticle 03 — Slipped Disc or Muscle Spasm?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+:root {
+  --navy: #1A2744;
+  --navy-d: #0F1A30;
+  --teal: #1AAB98;
+  --teal-d: #148A79;
+  --gold: #C6993A;
+  --white: #ffffff;
+  --off-white: #F5F4EF;
+  --gray-lt: #ECEDF2;
+  --gray: #8A97AB;
+  --gray-dk: #3F5264;
+  --text: #171F2D;
+  --text-lt: #4A5F75;
+  --border: #DDE2EC;
+  --font-head: 'Fraunces', Georgia, serif;
+  --font-body: 'Figtree', sans-serif;
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 2px 8px rgba(15, 26, 48, 0.06);
+  --shadow: 0 4px 24px rgba(15, 26, 48, 0.09);
+  --shadow-lg: 0 12px 48px rgba(15, 26, 48, 0.13);
+  --transition: 0.25s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background: rgba(10, 17, 34, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.topbar-brand {
+  font-family: var(--font-head);
+  font-size: 1rem; font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.topbar-brand span { color: var(--teal); }
+.topbar-meta {
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.topbar-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(26, 171, 152, 0.15);
+  border: 1px solid rgba(26, 171, 152, 0.3);
+  color: var(--teal);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy-d);
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  position: relative;
+  overflow: hidden;
+  padding-top: 64px;
+}
+
+.hero-noise {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,171,152,0.18) 0%, transparent 70%);
+  top: -100px; right: 300px;
+  pointer-events: none;
+}
+
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 60px 80px 80px;
+}
+
+.article-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 32px;
+}
+.label-number {
+  font-family: var(--font-head);
+  font-size: 0.75rem; font-style: italic; font-weight: 400;
+  color: var(--gold);
+  border: 1px solid rgba(198,153,58,0.4);
+  padding: 3px 10px; border-radius: 4px;
+}
+.label-cat {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gray);
+}
+.label-line {
+  width: 30px; height: 1px;
+  background: var(--gray);
+}
+
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-title em {
+  font-style: italic; font-weight: 600;
+  color: var(--teal);
+}
+
+.hero-sub {
+  font-size: 1.05rem; font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
+.hero-meta-row {
+  display: flex; align-items: center; gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.meta-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 700; font-size: 0.85rem;
+  color: var(--white); flex-shrink: 0;
+}
+.meta-info { flex: 1; }
+.meta-name {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--white); margin-bottom: 2px;
+}
+.meta-role {
+  font-size: 0.75rem; font-weight: 400;
+  color: var(--gray);
+}
+.meta-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.1); }
+.meta-stat { text-align: center; }
+.meta-stat-val {
+  font-family: var(--font-head);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--white); display: block;
+}
+.meta-stat-lbl {
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Hero right – anatomy panel */
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  padding: 80px 40px;
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.spine-panel {
+  width: 100%; max-width: 340px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  backdrop-filter: blur(8px);
+}
+.panel-title {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.spine-svg-wrap {
+  display: flex; justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+/* Inline spine SVG */
+.spine-diagram { width: 160px; }
+
+.comparison-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.ccard {
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  position: relative; overflow: hidden;
+}
+.ccard--disc {
+  background: rgba(26,171,152,0.1);
+  border: 1px solid rgba(26,171,152,0.2);
+}
+.ccard--spasm {
+  background: rgba(198,153,58,0.1);
+  border: 1px solid rgba(198,153,58,0.2);
+}
+.ccard-icon {
+  font-size: 1.4rem; margin-bottom: 8px; display: block;
+}
+.ccard-name {
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.ccard--disc .ccard-name { color: var(--teal); }
+.ccard--spasm .ccard-name { color: var(--gold); }
+.ccard-desc {
+  font-size: 0.73rem; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ── PROGRESS INDICATOR ── */
+.progress-bar {
+  position: fixed; top: 64px; left: 0; right: 0;
+  height: 2px; background: rgba(255,255,255,0.06); z-index: 99;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 0.1s linear;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 80px 40px 120px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── MAIN CONTENT ── */
+.main-content { min-width: 0; }
+
+.section { margin-bottom: 64px; }
+
+.section-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+}
+.eyebrow-num {
+  font-family: var(--font-head);
+  font-size: 0.7rem; font-style: italic;
+  color: var(--teal);
+  border: 1px solid rgba(26,171,152,0.35);
+  padding: 2px 9px; border-radius: 4px;
+}
+.eyebrow-text {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gray);
+}
+
+.section-heading {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--navy-d);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.section-heading em {
+  font-style: italic; color: var(--teal);
+}
+
+.prose {
+  font-size: 1rem; font-weight: 400;
+  color: var(--text-lt);
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+.prose strong { color: var(--text); font-weight: 600; }
+
+/* Comparison Table */
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  margin: 32px 0;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.compare-table thead tr {
+  background: var(--navy);
+}
+.compare-table th {
+  font-family: var(--font-body);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  padding: 16px 20px;
+  text-align: left;
+}
+.compare-table th:first-child { color: var(--gray); }
+.compare-table td {
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  color: var(--text-lt);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table tbody tr:last-child td { border-bottom: none; }
+.compare-table tbody tr:nth-child(even) td { background: var(--gray-lt); }
+.compare-table tbody tr:nth-child(odd) td { background: var(--white); }
+.compare-table td:first-child {
+  font-weight: 600; color: var(--navy);
+  background: var(--off-white) !important;
+  white-space: nowrap;
+}
+.td-disc { color: var(--teal-d) !important; }
+.td-spasm { color: #8A6010 !important; }
+
+/* Symptom cards */
+.symptom-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 32px 0;
+}
+.sym-card {
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+}
+.sym-card--disc {
+  background: linear-gradient(135deg, rgba(26,171,152,0.06) 0%, rgba(26,171,152,0.02) 100%);
+  border: 1px solid rgba(26,171,152,0.2);
+}
+.sym-card--spasm {
+  background: linear-gradient(135deg, rgba(198,153,58,0.07) 0%, rgba(198,153,58,0.02) 100%);
+  border: 1px solid rgba(198,153,58,0.22);
+}
+.sym-card-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.sym-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0;
+}
+.sym-card--disc .sym-dot { background: var(--teal); }
+.sym-card--spasm .sym-dot { background: var(--gold); }
+.sym-card-title {
+  font-family: var(--font-head);
+  font-size: 1rem; font-weight: 700;
+  color: var(--navy-d);
+}
+.sym-list {
+  list-style: none; display: flex; flex-direction: column; gap: 9px;
+}
+.sym-list li {
+  font-size: 0.88rem; color: var(--text-lt);
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.5;
+}
+.sym-list li::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+.sym-card--disc .sym-list li::before { background: var(--teal); }
+.sym-card--spasm .sym-list li::before { background: var(--gold); }
+
+/* Alert / call-out box */
+.callout {
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 32px 0;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.callout--warning {
+  background: rgba(198,153,58,0.08);
+  border-left: 4px solid var(--gold);
+}
+.callout--info {
+  background: rgba(26,171,152,0.07);
+  border-left: 4px solid var(--teal);
+}
+.callout--danger {
+  background: rgba(220,50,50,0.06);
+  border-left: 4px solid #DC3232;
+}
+.callout-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+.callout-body {}
+.callout-title {
+  font-family: var(--font-head);
+  font-size: 1rem; font-weight: 700;
+  color: var(--navy-d);
+  margin-bottom: 6px;
+}
+.callout-text {
+  font-size: 0.9rem; color: var(--text-lt);
+  line-height: 1.7;
+}
+.callout-text strong { color: var(--text); }
+
+/* Red flags */
+.red-flag-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin: 24px 0;
+}
+.rflag {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.rflag:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+.rflag-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(220,50,50,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.rflag-text {
+  font-size: 0.88rem; color: var(--text-lt);
+  line-height: 1.55; font-weight: 400;
+}
+.rflag-text strong { color: var(--text); font-weight: 600; }
+
+/* Step timeline */
+.timeline {
+  position: relative; margin: 32px 0;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 11px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), var(--gold));
+  border-radius: 2px;
+}
+.t-step {
+  position: relative; margin-bottom: 32px;
+}
+.t-step:last-child { margin-bottom: 0; }
+.t-dot {
+  position: absolute; left: -28px; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--teal);
+  box-shadow: 0 0 0 3px rgba(26,171,152,0.15);
+}
+.t-step:last-child .t-dot { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(198,153,58,0.15); }
+.t-label {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 4px;
+}
+.t-step:last-child .t-label { color: var(--gold); }
+.t-heading {
+  font-family: var(--font-head);
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--navy-d);
+  margin-bottom: 8px;
+}
+.t-body {
+  font-size: 0.9rem; color: var(--text-lt); line-height: 1.7;
+}
+
+/* Divider */
+.section-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  border-radius: 2px;
+  margin: 40px 0;
+}
+
+/* Pull quote */
+.pullquote {
+  position: relative;
+  margin: 40px 0;
+  padding: 28px 32px 28px 48px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+  border-left: 5px solid var(--teal);
+}
+.pullquote::before {
+  content: '\201C';
+  position: absolute; left: 14px; top: 10px;
+  font-family: var(--font-head);
+  font-size: 3.5rem; line-height: 1;
+  color: var(--teal); opacity: 0.6;
+}
+.pullquote-text {
+  font-family: var(--font-head);
+  font-size: 1.15rem; font-style: italic;
+  font-weight: 400; line-height: 1.65;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.pullquote-attr {
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: sticky; top: 84px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.sidebar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.sidebar-card-title {
+  font-family: var(--font-head);
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--navy-d);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.sidebar-card-title svg { color: var(--teal); }
+
+/* TOC */
+.toc-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.toc-list a {
+  display: block;
+  font-size: 0.82rem; font-weight: 400;
+  color: var(--text-lt);
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  line-height: 1.45;
+}
+.toc-list a:hover {
+  background: var(--off-white);
+  color: var(--teal);
+  padding-left: 14px;
+}
+.toc-list a.active {
+  background: rgba(26,171,152,0.08);
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* Specialist card */
+.specialist-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+  border: none;
+}
+.specialist-card .sidebar-card-title { color: var(--white); border-color: rgba(255,255,255,0.1); }
+.spec-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.spec-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.83rem; color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+.spec-badge {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(26,171,152,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; flex-shrink: 0;
+}
+
+/* quick checklist */
+.check-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.check-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.82rem; color: var(--text-lt); line-height: 1.5;
+}
+.check-list li .ck {
+  width: 18px; height: 18px; border-radius: 5px;
+  background: rgba(26,171,152,0.12);
+  border: 1.5px solid var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+  font-size: 0.7rem; color: var(--teal); font-weight: 700;
+}
+
+/* ── FOOTER ── */
+.article-footer {
+  background: var(--navy-d);
+  padding: 64px 40px;
+}
+.footer-inner {
+  max-width: 860px; margin: 0 auto; text-align: center;
+}
+.footer-disc-label {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 16px;
+}
+.footer-disc {
+  font-size: 0.83rem; color: rgba(255,255,255,0.35);
+  line-height: 1.8; margin-bottom: 32px;
+}
+.footer-brand {
+  font-family: var(--font-head);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--white);
+}
+.footer-brand span { color: var(--teal); }
+.footer-tagline {
+  font-size: 0.78rem; color: var(--gray);
+  margin-top: 4px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * {
+  animation: fadeUp 0.7s ease both;
+}
+.hero-left > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.35s; }
+.hero-right { animation: fadeUp 0.9s 0.3s ease both; }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { display: none; }
+  .hero-left { padding: 60px 32px; }
+  .article-body { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .symptom-grid, .red-flag-grid { grid-template-columns: 1fr; }
+  .topbar { padding: 0 24px; }
+}
+@media (max-width: 600px) {
+  .compare-table { font-size: 0.82rem; }
+  .compare-table th, .compare-table td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-brand">Spine<span>Insight</span></div>
+  <div class="topbar-meta">Spine Health Series</div>
+  <div class="topbar-tag">Article 03</div>
+</nav>
+
+<!-- PROGRESS -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <div class="article-label">
+      <span class="label-number">Article 03</span>
+      <span class="label-line"></span>
+      <span class="label-cat">Spine Health · Diagnosis</span>
+    </div>
+
+    <h1 class="hero-title">
+      Slipped Disc or<br>
+      <em>Muscle Spasm?</em><br>
+      How to Tell the Difference
+    </h1>
+
+    <p class="hero-sub">
+      Back pain is one of the most common reasons people visit a doctor — but the cause is often misidentified. A slipped disc and a muscle spasm feel similar but require very different treatments.
+    </p>
+
+    <div class="hero-meta-row">
+      <div class="meta-avatar">DR</div>
+      <div class="meta-info">
+        <div class="meta-name">Dr. Sarish Sharma, MS Orthopaedics</div>
+        <div class="meta-role">Spine & Orthopaedic Surgeon</div>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-stat">
+        <span class="meta-stat-val">8 min</span>
+        <span class="meta-stat-lbl">Read</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-stat">
+        <span class="meta-stat-val">Apr '26</span>
+        <span class="meta-stat-lbl">Published</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="spine-panel">
+      <div class="panel-title">Anatomy at a Glance</div>
+
+      <div class="spine-svg-wrap">
+        <!-- Stylised spine SVG -->
+        <svg class="spine-diagram" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Vertebrae -->
+          <g>
+            <!-- C1-C7 cervical (small) -->
+            <rect x="52" y="10" width="56" height="18" rx="5" fill="#1A2744" stroke="#1AAB98" stroke-width="1.2"/>
+            <rect x="52" y="32" width="56" height="18" rx="5" fill="#1A2744" stroke="#1AAB98" stroke-width="1.2"/>
+            <rect x="52" y="54" width="56" height="18" rx="5" fill="#1A2744" stroke="#1AAB98" stroke-width="1.2"/>
+
+            <!-- Disc highlight (normal) -->
+            <rect x="56" y="72" width="48" height="6" rx="3" fill="rgba(26,171,152,0.25)" stroke="rgba(26,171,152,0.5)" stroke-width="0.8"/>
+
+            <!-- T1-T12 thoracic (medium) -->
+            <rect x="48" y="82" width="64" height="20" rx="5" fill="#1A2744" stroke="#3F5264" stroke-width="1.2"/>
+            <rect x="48" y="106" width="64" height="20" rx="5" fill="#1A2744" stroke="#3F5264" stroke-width="1.2"/>
+            <rect x="48" y="130" width="64" height="20" rx="5" fill="#1A2744" stroke="#3F5264" stroke-width="1.2"/>
+            <rect x="48" y="154" width="64" height="20" rx="5" fill="#1A2744" stroke="#3F5264" stroke-width="1.2"/>
+
+            <!-- Normal disc -->
+            <rect x="52" y="174" width="56" height="7" rx="3" fill="rgba(26,171,152,0.2)" stroke="rgba(26,171,152,0.4)" stroke-width="0.8"/>
+
+            <!-- L1-L5 lumbar (large) – PROBLEM ZONE -->
+            <rect x="44" y="185" width="72" height="24" rx="6" fill="#1A2744" stroke="#C6993A" stroke-width="1.5"/>
+            <rect x="44" y="213" width="72" height="24" rx="6" fill="#1A2744" stroke="#C6993A" stroke-width="1.5"/>
+            <!-- Slipped disc indicator -->
+            <ellipse cx="80" cy="237.5" rx="36" ry="6" fill="none" stroke="rgba(198,153,58,0.3)" stroke-width="1"/>
+            <path d="M 80 237 Q 104 237 110 241" stroke="#C6993A" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="44" y="241" width="72" height="24" rx="6" fill="#1A2744" stroke="#C6993A" stroke-width="1.5"/>
+
+            <!-- Herniated disc bulge -->
+            <ellipse cx="117" cy="229" rx="10" ry="6" fill="rgba(198,153,58,0.3)" stroke="#C6993A" stroke-width="1.5"/>
+            <text x="130" y="232" font-family="Figtree" font-size="7" fill="#C6993A" font-weight="600">Herniation</text>
+
+            <!-- Sacrum -->
+            <path d="M 46 269 Q 48 300 80 308 Q 112 300 114 269 Z" fill="#0F1A30" stroke="#3F5264" stroke-width="1.2"/>
+          </g>
+
+          <!-- Spinal cord line -->
+          <line x1="80" y1="10" x2="80" y2="260" stroke="rgba(26,171,152,0.15)" stroke-width="2" stroke-dasharray="3,5"/>
+
+          <!-- Labels -->
+          <text x="8" y="23" font-family="Figtree" font-size="7.5" fill="#8A97AB">Cervical</text>
+          <text x="6" y="100" font-family="Figtree" font-size="7.5" fill="#8A97AB">Thoracic</text>
+          <text x="9" y="202" font-family="Figtree" font-size="7.5" fill="#C6993A" font-weight="600">Lumbar</text>
+        </svg>
+      </div>
+
+      <div class="comparison-cards">
+        <div class="ccard ccard--disc">
+          <span class="ccard-icon">🫀</span>
+          <div class="ccard-name">Slipped Disc</div>
+          <div class="ccard-desc">Structural — disc nucleus pushes through the outer ring</div>
+        </div>
+        <div class="ccard ccard--spasm">
+          <span class="ccard-icon">⚡</span>
+          <div class="ccard-name">Muscle Spasm</div>
+          <div class="ccard-desc">Functional — involuntary sustained muscle contraction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- SECTION 1 -->
+    <section class="section reveal" id="sec-understanding">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">01</span>
+        <span class="eyebrow-text">Understanding the Basics</span>
+      </div>
+      <h2 class="section-heading">What exactly is a <em>slipped disc</em>?</h2>
+      <p class="prose">
+        The spine is made up of a series of bones (vertebrae) cushioned by intervertebral discs — flexible, shock-absorbing pads with a tough outer ring and a gel-like centre. When the outer ring weakens or tears, the soft inner material can push outward. This is commonly called a <strong>herniated, prolapsed, or slipped disc</strong>.
+      </p>
+      <p class="prose">
+        The herniated material can press against nearby nerve roots, causing not just localised back pain but also radiating pain, numbness, or weakness along the path of the affected nerve. The lumbar region (lower back) is most commonly affected, often involving the L4–L5 or L5–S1 discs.
+      </p>
+
+      <div class="callout callout--info">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <div class="callout-title">Key distinction</div>
+          <div class="callout-text">A slipped disc is a <strong>structural problem</strong> — something has physically changed in the anatomy. A muscle spasm, by contrast, is a <strong>functional problem</strong> — the muscles are working abnormally, but there is no structural damage (unless it is a protective response to an underlying injury).</div>
+        </div>
+      </div>
+
+      <h2 class="section-heading" style="margin-top:40px;">And a <em>muscle spasm</em>?</h2>
+      <p class="prose">
+        A muscle spasm is an involuntary, sustained contraction of one or more muscles. In the back, spasms most commonly affect the erector spinae and quadratus lumborum — the long muscles that run parallel to the spine. They can be triggered by overexertion, dehydration, sudden awkward movement, or as a <strong>protective response</strong> when the nervous system senses a threat to the spine.
+      </p>
+      <p class="prose">
+        This protective spasm mechanism is one reason that slipped discs and muscle spasms can co-exist — the disc herniation triggers the nervous system to lock surrounding muscles in spasm to stabilise the area.
+      </p>
+    </section>
+
+    <div class="section-divider reveal"></div>
+
+    <!-- SECTION 2 – SYMPTOMS -->
+    <section class="section reveal" id="sec-symptoms">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">02</span>
+        <span class="eyebrow-text">Reading the Signals</span>
+      </div>
+      <h2 class="section-heading">Recognising the <em>symptoms</em></h2>
+      <p class="prose">
+        Both conditions cause back pain — but the character, radiation, and behaviour of the pain differ significantly. Learning to read these signals can help you and your doctor narrow down the cause quickly.
+      </p>
+
+      <div class="symptom-grid">
+        <div class="sym-card sym-card--disc">
+          <div class="sym-card-header">
+            <div class="sym-dot"></div>
+            <div class="sym-card-title">Slipped Disc</div>
+          </div>
+          <ul class="sym-list">
+            <li>Pain that <strong>radiates down</strong> the leg (sciatica) or arm</li>
+            <li>Numbness or tingling in the limb below the waist</li>
+            <li>Muscle weakness in the leg or foot</li>
+            <li>Worsens with sitting, bending forward, coughing or sneezing</li>
+            <li>Sharp or burning quality, often one-sided</li>
+            <li>Usually gradual onset, though sometimes sudden</li>
+          </ul>
+        </div>
+        <div class="sym-card sym-card--spasm">
+          <div class="sym-card-header">
+            <div class="sym-dot"></div>
+            <div class="sym-card-title">Muscle Spasm</div>
+          </div>
+          <ul class="sym-list">
+            <li>Pain localised to the back — rarely travels to the legs</li>
+            <li>Visible or palpable muscle tightness or knot</li>
+            <li>Pain that eases with rest and heat</li>
+            <li>Sudden onset — often follows a specific movement or strain</li>
+            <li>Aching, cramping quality; no neurological symptoms</li>
+            <li>Stiffness that improves (or worsens) with gentle movement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout--warning">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <div class="callout-title">The overlap problem</div>
+          <div class="callout-text">Symptoms can overlap significantly. A large disc herniation can cause severe localised spasm with no visible radiation, while a severe spasm can temporarily compress nerves, creating numbness or tingling. <strong>Self-diagnosis is unreliable</strong> — this guide helps you understand patterns, but clinical examination and imaging are often essential.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider reveal"></div>
+
+    <!-- SECTION 3 – COMPARISON TABLE -->
+    <section class="section reveal" id="sec-compare">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">03</span>
+        <span class="eyebrow-text">Side-by-Side</span>
+      </div>
+      <h2 class="section-heading">A structured <em>comparison</em></h2>
+      <p class="prose">The table below summarises the most clinically useful distinguishing features between the two conditions.</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>🫀 Slipped Disc</th>
+            <th>⚡ Muscle Spasm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pain type</td>
+            <td class="td-disc">Sharp, burning, electric</td>
+            <td class="td-spasm">Aching, cramping, dull</td>
+          </tr>
+          <tr>
+            <td>Radiation</td>
+            <td class="td-disc">Down leg or arm (dermatomal)</td>
+            <td class="td-spasm">Stays in back, rarely radiates</td>
+          </tr>
+          <tr>
+            <td>Onset</td>
+            <td class="td-disc">Gradual or sudden (lifting)</td>
+            <td class="td-spasm">Sudden — specific trigger</td>
+          </tr>
+          <tr>
+            <td>Neurological signs</td>
+            <td class="td-disc">Numbness, tingling, weakness</td>
+            <td class="td-spasm">Absent (unless severe)</td>
+          </tr>
+          <tr>
+            <td>Effect of rest</td>
+            <td class="td-disc">Variable — often worse lying down</td>
+            <td class="td-spasm">Usually improves with rest</td>
+          </tr>
+          <tr>
+            <td>Effect of movement</td>
+            <td class="td-disc">Worse with flexion, coughing</td>
+            <td class="td-spasm">Initially worse, then may improve</td>
+          </tr>
+          <tr>
+            <td>Palpable tension</td>
+            <td class="td-disc">Not usually palpable</td>
+            <td class="td-spasm">Muscle band or "knot" felt</td>
+          </tr>
+          <tr>
+            <td>Duration (untreated)</td>
+            <td class="td-disc">Weeks to months; may persist</td>
+            <td class="td-spasm">Days to 2 weeks typically</td>
+          </tr>
+          <tr>
+            <td>Diagnosis confirmed by</td>
+            <td class="td-disc">MRI scan</td>
+            <td class="td-spasm">Clinical examination</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="section-divider reveal"></div>
+
+    <!-- SECTION 4 – RED FLAGS -->
+    <section class="section reveal" id="sec-redflags">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">04</span>
+        <span class="eyebrow-text">Urgent Signals</span>
+      </div>
+      <h2 class="section-heading">Red flags — <em>seek care immediately</em></h2>
+      <p class="prose">
+        Certain symptoms indicate that neural structures or vascular supply are severely compromised. These are medical emergencies — <strong>do not wait for your next scheduled appointment</strong>.
+      </p>
+
+      <div class="red-flag-grid">
+        <div class="rflag">
+          <div class="rflag-icon">🚨</div>
+          <div class="rflag-text"><strong>Loss of bladder or bowel control</strong> — may indicate cauda equina syndrome, a surgical emergency</div>
+        </div>
+        <div class="rflag">
+          <div class="rflag-icon">🦵</div>
+          <div class="rflag-text"><strong>Sudden weakness in one or both legs</strong> — inability to lift the foot (foot drop) or stand</div>
+        </div>
+        <div class="rflag">
+          <div class="rflag-icon">😴</div>
+          <div class="rflag-text"><strong>Saddle anaesthesia</strong> — numbness in the inner thighs, perineum, or genitals</div>
+        </div>
+        <div class="rflag">
+          <div class="rflag-icon">🌙</div>
+          <div class="rflag-text"><strong>Severe pain at night or at rest</strong> that wakes you — could suggest infection, tumour, or fracture</div>
+        </div>
+        <div class="rflag">
+          <div class="rflag-icon">🌡️</div>
+          <div class="rflag-text"><strong>Fever with back pain</strong> — raises concern for spinal infection (discitis or abscess)</div>
+        </div>
+        <div class="rflag">
+          <div class="rflag-icon">⚖️</div>
+          <div class="rflag-text"><strong>Unexplained weight loss</strong> alongside back pain — warrants urgent investigation for systemic cause</div>
+        </div>
+      </div>
+
+      <div class="callout callout--danger">
+        <div class="callout-icon">🚑</div>
+        <div class="callout-body">
+          <div class="callout-title">Cauda Equina Syndrome — A True Emergency</div>
+          <div class="callout-text">If you experience <strong>loss of bladder or bowel control</strong> alongside back pain and leg symptoms, go to the emergency department immediately. Cauda equina syndrome requires surgical decompression within hours to prevent permanent paralysis.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider reveal"></div>
+
+    <!-- SECTION 5 – TREATMENT -->
+    <section class="section reveal" id="sec-treatment">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">05</span>
+        <span class="eyebrow-text">Management Pathways</span>
+      </div>
+      <h2 class="section-heading">Treatment approaches — <em>why they differ</em></h2>
+      <p class="prose">
+        Because the underlying mechanism is different, the treatment strategies diverge substantially. Applying muscle-spasm treatment to a herniated disc (or vice versa) is not only unhelpful — in some cases it can delay recovery or cause harm.
+      </p>
+
+      <div class="timeline">
+        <div class="t-step">
+          <div class="t-dot"></div>
+          <div class="t-label">Muscle Spasm — First line</div>
+          <div class="t-heading">Rest, Heat & Anti-inflammatories</div>
+          <div class="t-body">Short-term rest (24–48 hours, not prolonged bed rest), topical or oral NSAIDs, heat application to the affected muscles, and gentle mobilisation. Muscle relaxants may be prescribed for severe spasm. Most acute spasms resolve within 2 weeks with conservative management.</div>
+        </div>
+        <div class="t-step">
+          <div class="t-dot"></div>
+          <div class="t-label">Muscle Spasm — Recovery</div>
+          <div class="t-heading">Physiotherapy & Core Strengthening</div>
+          <div class="t-body">Once acute pain subsides, physiotherapy focuses on flexibility exercises (e.g., child's pose, knee-to-chest), followed by progressive core stabilisation. McKenzie method and soft-tissue release techniques are commonly used. Addressing the root cause (posture, ergonomics, weak core) is essential to prevent recurrence.</div>
+        </div>
+        <div class="t-step">
+          <div class="t-dot"></div>
+          <div class="t-label">Slipped Disc — First line</div>
+          <div class="t-heading">Structured Conservative Care</div>
+          <div class="t-body">Disc herniations are treated conservatively first: NSAIDs, neuropathic pain medications (gabapentin, pregabalin if radiculopathy is present), selective nerve root blocks, and specialist physiotherapy. Traction, certain manipulation techniques, and heat should be <strong>avoided</strong> in acute disc herniation without specialist guidance.</div>
+        </div>
+        <div class="t-step">
+          <div class="t-dot"></div>
+          <div class="t-label">Slipped Disc — Escalation</div>
+          <div class="t-heading">Injections & Surgical Options</div>
+          <div class="t-body">If conservative management fails after 6–8 weeks, or if neurological deficits are worsening, epidural steroid injections or surgical microdiscectomy may be indicated. Surgery is highly effective for true disc herniation with radiculopathy — success rates exceed 85% in appropriately selected patients.</div>
+        </div>
+      </div>
+
+      <div class="pullquote reveal">
+        <p class="pullquote-text">Most disc herniations improve without surgery. The goal of specialist assessment is not to operate — it's to ensure you're on the right pathway, with the right timeline, and with red flags identified early.</p>
+        <div class="pullquote-attr">Dr. Sarish Sharma · Spine & Orthopaedic Surgeon</div>
+      </div>
+    </section>
+
+    <div class="section-divider reveal"></div>
+
+    <!-- SECTION 6 – WHEN TO SEE A SPECIALIST -->
+    <section class="section reveal" id="sec-specialist">
+      <div class="section-eyebrow">
+        <span class="eyebrow-num">06</span>
+        <span class="eyebrow-text">Getting Expert Help</span>
+      </div>
+      <h2 class="section-heading">When to see a <em>specialist</em></h2>
+      <p class="prose">
+        Not every episode of back pain requires specialist review. But there are clear thresholds — and waiting too long when these are crossed can result in avoidable complications.
+      </p>
+      <p class="prose">
+        <strong>See a GP promptly</strong> if back pain has lasted more than 2–3 weeks without improvement, if you have any neurological symptoms (numbness, tingling, weakness), or if the pain is significantly impacting your daily life or sleep.
+      </p>
+      <p class="prose">
+        <strong>Request a specialist referral</strong> (orthopaedic surgeon or neurosurgeon) if an MRI has confirmed disc herniation, if radiculopathy is not resolving with conservative management, if you are a working-age adult with progressive neurological deficit, or if you have had two or more significant episodes of disc-related symptoms.
+      </p>
+
+      <div class="callout callout--info">
+        <div class="callout-icon">🩻</div>
+        <div class="callout-body">
+          <div class="callout-title">Do you need an MRI immediately?</div>
+          <div class="callout-text">Not always. For acute back pain with no neurological signs and no red flags, most guidelines recommend a 4–6 week trial of conservative management before imaging. Early MRI is warranted if neurological symptoms are present, symptoms are worsening rapidly, or a red flag is identified. Speak to your doctor about timing — unnecessary early MRI rarely changes management and can cause anxiety about incidental findings.</div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /main-content -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        In this article
+      </div>
+      <ul class="toc-list" id="toc">
+        <li><a href="#sec-understanding">Understanding the basics</a></li>
+        <li><a href="#sec-symptoms">Recognising symptoms</a></li>
+        <li><a href="#sec-compare">Side-by-side comparison</a></li>
+        <li><a href="#sec-redflags">Red flags — seek care now</a></li>
+        <li><a href="#sec-treatment">Treatment approaches</a></li>
+        <li><a href="#sec-specialist">When to see a specialist</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card specialist-card">
+      <div class="sidebar-card-title">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Who treats this?
+      </div>
+      <ul class="spec-list">
+        <li>
+          <div class="spec-badge">🩻</div>
+          <span><strong style="color:rgba(255,255,255,0.85)">Orthopaedic Surgeon</strong> — disc & skeletal spine problems</span>
+        </li>
+        <li>
+          <div class="spec-badge">🧠</div>
+          <span><strong style="color:rgba(255,255,255,0.85)">Neurosurgeon</strong> — nerve compression & complex disc surgery</span>
+        </li>
+        <li>
+          <div class="spec-badge">🏃</div>
+          <span><strong style="color:rgba(255,255,255,0.85)">Physiotherapist</strong> — rehabilitation, spasm management</span>
+        </li>
+        <li>
+          <div class="spec-badge">💉</div>
+          <span><strong style="color:rgba(255,255,255,0.85)">Pain Specialist</strong> — injections, neuropathic pain</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" color="var(--teal)"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Quick self-check
+      </div>
+      <ul class="check-list">
+        <li>
+          <span class="ck">✓</span>
+          Pain below the knee or into the foot?
+        </li>
+        <li>
+          <span class="ck">✓</span>
+          Numbness or tingling in leg or foot?
+        </li>
+        <li>
+          <span class="ck">✓</span>
+          Weakness when walking or lifting foot?
+        </li>
+        <li>
+          <span class="ck">✓</span>
+          Worse when sitting or coughing?
+        </li>
+        <li>
+          <span class="ck">✓</span>
+          Lasting longer than 3 weeks?
+        </li>
+      </ul>
+      <p style="margin-top:14px;font-size:0.78rem;color:var(--text-lt);line-height:1.6;">
+        If you answered <strong>yes to two or more</strong>, consider booking a clinical assessment — disc herniation is more likely and imaging may be appropriate.
+      </p>
+    </div>
+
+  </aside>
+</main>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <div class="footer-inner">
+    <div class="footer-disc-label">Medical Disclaimer</div>
+    <p class="footer-disc">
+      This article is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the guidance of a qualified healthcare professional with questions you may have regarding a medical condition. Never disregard professional medical advice or delay seeking it because of something you have read here.
+    </p>
+    <div class="footer-brand">Spine<span>Insight</span></div>
+    <div class="footer-tagline">Evidence-informed spine health for patients and practitioners</div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const fill = document.getElementById('progressFill');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  fill.style.width = pct + '%';
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+
+// Active TOC
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+
+const tocObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => tocObserver.observe(s));
+</script>
+</body>
+</html>
