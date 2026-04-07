@@ -1,0 +1,417 @@
+<%- include('../partials/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #1A2744;
+    --navy-d: #0F1A30;
+    --teal: #1AAB98;
+    --teal-d: #148A79;
+    --gold: #C6993A;
+    --white: #ffffff;
+    --off-white: #F5F4EF;
+    --gray-lt: #ECEDF2;
+    --gray: #8A97AB;
+    --gray-dk: #3F5264;
+    --text: #171F2D;
+    --text-lt: #4A5F75;
+    --border: #DDE2EC;
+    --font-head: 'Fraunces', Georgia, serif;
+    --font-body: 'Figtree', sans-serif;
+    --radius-sm: 6px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(15,26,48,0.06);
+    --shadow: 0 4px 24px rgba(15,26,48,0.09);
+    --shadow-lg: 0 12px 48px rgba(15,26,48,0.13);
+    --transition: 0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7 }
+  img { max-width: 100%; display: block }
+  a { text-decoration: none; color: inherit }
+
+  /* ── HERO ── */
+  .loc-hero {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 72px 5% 64px;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .loc-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 20px);
+  }
+  .loc-hero::after {
+    content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 560px; height: 360px;
+    background: radial-gradient(circle, rgba(26,171,152,0.14) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .loc-hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto }
+
+  .section-label {
+    font-size: 0.70rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; width: 28px; height: 2px; background: var(--teal); border-radius: 2px; display: inline-block;
+  }
+
+  .loc-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  .loc-hero h1 em { color: var(--gold); font-style: italic }
+  .loc-hero p { font-size: 0.96rem; color: rgba(255,255,255,0.55); line-height: 1.78; max-width: 480px; margin: 0 auto }
+
+  /* ── STATS STRIP ── */
+  .stats-strip { background: var(--teal) }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .stat-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 20px 28px; border-right: 1px solid rgba(255,255,255,0.18);
+  }
+  .stat-item:last-child { border-right: none }
+  .stat-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .stat-icon i { color: var(--white); font-size: 0.90rem }
+  .stat-text strong { display: block; font-size: 0.86rem; font-weight: 700; color: var(--white); margin-bottom: 1px }
+  .stat-text span { font-size: 0.72rem; color: rgba(255,255,255,0.68) }
+
+  /* ── LOCATIONS GRID ── */
+  .locations-section { padding: 72px 5%; background: var(--off-white) }
+  .locations-inner { max-width: 1100px; margin: 0 auto }
+  .locations-head { text-align: center; margin-bottom: 48px }
+  .locations-head h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    color: var(--navy); font-weight: 600;
+    letter-spacing: -0.02em; margin-bottom: 10px;
+  }
+  .locations-head h2 em { color: var(--teal); font-style: italic }
+  .locations-head p { font-size: 0.92rem; color: var(--text-lt); max-width: 480px; margin: 0 auto }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .loc-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    display: flex; flex-direction: column;
+    gap: 14px;
+    transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .loc-card::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0); transition: transform var(--transition);
+  }
+  .loc-card:hover { box-shadow: var(--shadow); transform: translateY(-5px); border-color: var(--teal) }
+  .loc-card:hover::before { transform: scaleX(1) }
+
+  .loc-card-top { display: flex; align-items: center; gap: 14px }
+  .loc-card-icon {
+    width: 46px; height: 46px;
+    background: rgba(26,171,152,0.10);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; border: 1px solid rgba(26,171,152,0.18);
+    transition: all var(--transition);
+  }
+  .loc-card:hover .loc-card-icon { background: var(--teal); border-color: var(--teal) }
+  .loc-card-icon i { color: var(--teal); font-size: 1rem; transition: color var(--transition) }
+  .loc-card:hover .loc-card-icon i { color: var(--white) }
+
+  .loc-card-name {
+    font-family: var(--font-head);
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--navy); line-height: 1.3;
+  }
+  .loc-card-area { font-size: 0.76rem; color: var(--text-lt); margin-top: 2px }
+
+  .loc-card-desc { font-size: 0.83rem; color: var(--text-lt); line-height: 1.68 }
+
+  .loc-card-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.80rem; font-weight: 600; color: var(--teal);
+    margin-top: 4px; transition: all var(--transition);
+  }
+  .loc-card:hover .loc-card-link { gap: 10px; color: var(--teal-d) }
+
+  /* ── ABOUT SECTION ── */
+  .about-strip {
+    padding: 64px 5%; background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+  .about-strip-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .about-strip h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--navy); font-weight: 600;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  .about-strip h2 em { color: var(--teal); font-style: italic }
+  .about-strip p { font-size: 0.92rem; color: var(--text-lt); line-height: 1.80; margin-bottom: 12px }
+  .about-strip p:last-of-type { margin-bottom: 28px }
+  .about-strip p strong { color: var(--navy) }
+
+  .btn-primary {
+    background: var(--teal); color: var(--white); padding: 12px 26px; border-radius: 50px;
+    font-family: var(--font-body); font-size: 0.86rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all var(--transition); border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,171,152,0.30); color: var(--white) }
+
+  .highlights { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px }
+  .hi-item { display: flex; align-items: center; gap: 10px; font-size: 0.86rem; color: var(--text) }
+  .hi-item i { color: var(--teal); flex-shrink: 0 }
+
+  /* Right side — info cards */
+  .info-cards { display: flex; flex-direction: column; gap: 14px }
+  .info-card {
+    background: var(--off-white); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .info-card-icon { width: 38px; height: 38px; background: var(--navy); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+  .info-card-icon i { color: var(--gold); font-size: 0.88rem }
+  .info-card h4 { font-family: var(--font-head); font-size: 0.90rem; color: var(--navy); font-weight: 700; margin-bottom: 3px }
+  .info-card p { font-size: 0.80rem; color: var(--text-lt); line-height: 1.55 }
+
+  /* ── CTA ── */
+  .loc-cta {
+    background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 100%);
+    padding: 64px 5%; text-align: center; position: relative; overflow: hidden;
+  }
+  .loc-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0px, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 20px) }
+  .loc-cta-inner { position: relative; z-index: 1 }
+  .loc-cta h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--white); margin-bottom: 10px; font-weight: 600 }
+  .loc-cta h2 em { color: var(--gold); font-style: italic }
+  .loc-cta p { font-size: 0.95rem; color: rgba(255,255,255,0.52); max-width: 440px; margin: 0 auto 28px; line-height: 1.75 }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap }
+  .btn-ghost { background: transparent; color: var(--white); padding: 12px 24px; border-radius: 50px; font-family: var(--font-body); font-size: 0.86rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgba(255,255,255,0.28); transition: all var(--transition) }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: var(--white) }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .locations-grid { grid-template-columns: repeat(2, 1fr) }
+    .stats-inner { grid-template-columns: 1fr }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15) }
+    .stat-item:last-child { border-bottom: none }
+    .about-strip-inner { grid-template-columns: 1fr; gap: 40px }
+  }
+  @media (max-width: 640px) {
+    .locations-grid { grid-template-columns: 1fr }
+    .cta-btns { flex-direction: column; align-items: center }
+  }
+</style>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="loc-hero">
+  <div class="loc-hero-inner">
+    <div class="section-label">South Delhi</div>
+    <h1>Best Orthopedic Doctor <em>Near You</em></h1>
+    <p>Dr. Sarish Sharma serves patients across South Delhi — offering expert non-surgical orthopedic care close to your neighbourhood.</p>
+  </div>
+</section>
+
+<!-- ═══════ STATS ═══════ -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-location-dot"></i></div>
+      <div class="stat-text"><strong>7 Locations Served</strong><span>Across South Delhi NCR</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="stat-text"><strong>8,000+ Patients</strong><span>Treated from across Delhi</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="stat-text"><strong>Non-Surgical First</strong><span>Surgery always last resort</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ LOCATIONS GRID ═══════ -->
+<section class="locations-section">
+  <div class="locations-inner">
+    <div class="locations-head">
+      <h2>Areas <em>We Serve</em></h2>
+      <p>Select your area to find out how Dr. Sarish Sharma can help patients closest to you.</p>
+    </div>
+
+    <div class="locations-grid">
+
+      <a href="/locations/best-orthopedic-doctor-katwaria-sarai" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Katwaria Sarai</div>
+            <div class="loc-card-area">South Delhi · Near IIT</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Serving patients from Katwaria Sarai and IIT Delhi area with expert orthopedic and pain management care.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-green-park" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Green Park</div>
+            <div class="loc-card-area">South Delhi · Green Park Metro</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Easily accessible from Green Park — offering non-surgical joint care, PRP therapy, and spine treatments.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-hauz-khas" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Hauz Khas</div>
+            <div class="loc-card-area">South Delhi · Hauz Khas Village</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Trusted by patients from Hauz Khas for arthritis management, sports injuries, and nerve block procedures.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-rk-puram" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">R.K. Puram</div>
+            <div class="loc-card-area">South West Delhi</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Serving R.K. Puram residents with specialised treatments for joint pain, disc conditions, and fractures.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-safdarjung" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Safdarjung</div>
+            <div class="loc-card-area">Clinic Location · South Delhi</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">The clinic is located in Safdarjung Enclave — near Ring Road, Bhikaji Cama Place, opposite Mahindra Showroom.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-saket" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Saket</div>
+            <div class="loc-card-area">South Delhi · Saket Metro</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Patients from Saket visit Dr. Sarish Sharma for knee and hip arthritis, ACL injuries, and pain management.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/locations/best-orthopedic-doctor-vasant-kunj" class="loc-card">
+        <div class="loc-card-top">
+          <div class="loc-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="loc-card-name">Vasant Kunj</div>
+            <div class="loc-card-area">South Delhi · Vasant Kunj</div>
+          </div>
+        </div>
+        <p class="loc-card-desc">Serving Vasant Kunj with comprehensive orthopedic care — fracture treatment, sports rehab, and vitamin therapy.</p>
+        <span class="loc-card-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT STRIP ═══════ -->
+<section class="about-strip">
+  <div class="about-strip-inner">
+    <div>
+      <div class="section-label" style="justify-content:flex-start">Why Choose Dr. Sharma</div>
+      <h2>South Delhi's Trusted <em>Orthopedic Specialist</em></h2>
+      <p>Dr. Sarish Sharma is a senior orthopedic consultant with <strong>15+ years of clinical experience</strong> and a fellowship in Sports Injury & Pain Management from London, UK. His clinic in Safdarjung Enclave is conveniently accessible from all areas of South Delhi.</p>
+      <p>His philosophy is simple — <strong>surgery is always the last resort</strong>. Every patient receives a personalised non-surgical plan first, combining PRP therapy, joint injections, nerve blocks, and physiotherapy to restore mobility and eliminate pain.</p>
+      <div class="highlights">
+        <div class="hi-item"><i class="fa-solid fa-circle-check"></i> Clinical-first diagnosis — no unnecessary tests</div>
+        <div class="hi-item"><i class="fa-solid fa-circle-check"></i> In-house pharmacy for same-visit prescriptions</div>
+        <div class="hi-item"><i class="fa-solid fa-circle-check"></i> Same-day appointments available</div>
+        <div class="hi-item"><i class="fa-solid fa-circle-check"></i> Home physiotherapy across Delhi NCR</div>
+      </div>
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+    </div>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <h4>Clinic Address</h4>
+          <p>Matri Mandir Rd, Block B 2, Safdarjung Enclave, New Delhi — 110029</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <h4>OPD Timings</h4>
+          <p>Mon–Sat: 11AM–2PM & 6PM–8:30PM<br>Emergency: 2PM–5PM (prior appointment)</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:+919560657964" style="color:var(--teal);font-weight:600">+91 95606 57964</a><br>drsarish@yahoo.com</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fa-solid fa-train-subway"></i></div>
+        <div>
+          <h4>Nearest Metro</h4>
+          <p>Bhikaji Cama Place — Pink Line</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="loc-cta">
+  <div class="loc-cta-inner">
+    <h2>Looking for an Orthopedic Doctor <em>Near You?</em></h2>
+    <p>Book a consultation with Dr. Sarish Sharma — same-day appointments available, clinical-first diagnosis.</p>
+    <div class="cta-btns">
+      <a href="/contact" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+      <a href="tel:+919560657964" class="btn-ghost"><i class="fa-solid fa-phone"></i> Call +91 95606 57964</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

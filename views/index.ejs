@@ -423,52 +423,54 @@
       </div>
     </section>
 
-    <!-- ─── REVIEWS / YT ─── -->
-    <section class="reviews" id="reviews">
-      <div class="container">
-        <div class="reviews-header fade-up">
-          <div class="section-tag" style="border-color:#FF0000;color:#cc0000">Patient Video Reviews</div>
-          <h2 class="section-title">Hear It Directly From Our Patients</h2>
-          <p class="section-sub" style="margin:0 auto">Watch real patients share their recovery journeys and treatment experiences with Dr. Sarish Sharma.</p>
+  <!-- ─── REVIEWS / YT ─── -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header fade-up">
+      <div class="section-tag" style="border-color:#FF0000;color:#cc0000">Patient Video Reviews</div>
+      <h2 class="section-title">Hear It Directly From Our Patients</h2>
+      <p class="section-sub" style="margin:0 auto">Watch real patients share their recovery journeys and treatment experiences with Dr. Sarish Sharma.</p>
+    </div>
+    <div class="yt-grid">
+      <div class="yt-card fade-up fade-up-delay-1">
+        <div class="yt-thumb" onclick="playVideo(this, 'ccCBMU4pR4g')">
+          <img src="https://img.youtube.com/vi/ccCBMU4pR4g/maxresdefault.jpg" alt="Patient PRP Journey" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-btn"><i class="fab fa-youtube"></i></div>
+          </div>
         </div>
-        <div class="yt-grid">
-          <div class="yt-card fade-up fade-up-delay-1">
-            <div class="yt-thumb" onclick="playVideo(this, 'KD69p-Nm__s')">
-              <img src="https://img.youtube.com/vi/KD69p-Nm__s/maxresdefault.jpg" alt="Patient PRP Journey" loading="lazy">
-              <div class="yt-play">
-                <div class="yt-play-btn"><i class="fab fa-youtube"></i></div>
-              </div>
-            </div>
-            <div class="yt-info">
-              <div class="yt-title">"3 Years of Knee Pain Gone in 6 Weeks — My PRP Journey"</div>
-              <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 4 min watch</div>
-            </div>
-          </div>
-          <div class="yt-card fade-up fade-up-delay-2">
-            <div class="yt-thumb">
-              <iframe src="https://www.youtube.com/embed/Lx6pW96qIgQ" title="Spinal Surgery avoided" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen loading="lazy"></iframe>
-            </div>
-            <div class="yt-info">
-              <div class="yt-title">"How I Avoided Spinal Surgery with Dr. Sharma's Nerve Block"</div>
-              <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 6 min watch</div>
-            </div>
-          </div>
-          <div class="yt-card fade-up fade-up-delay-3">
-            <div class="yt-thumb">
-              <iframe src="https://www.youtube.com/embed/Czx6LUnG1cs" title="ACL Recovery Without Surgery" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen loading="lazy"></iframe>
-            </div>
-            <div class="yt-info">
-              <div class="yt-title">"Back on the Field — My ACL Recovery Without Surgery"</div>
-              <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 5 min watch</div>
-            </div>
-          </div>
+        <div class="yt-info">
+          <div class="yt-title">"How Doctor Sarish Sharma helped me to get better again"</div>
+          <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 3 min watch</div>
         </div>
       </div>
-    </section>
+      <div class="yt-card fade-up fade-up-delay-2">
+        <div class="yt-thumb" onclick="playVideo(this, 'ZZdOfOKRbJE', 24)">
+          <img src="https://img.youtube.com/vi/ZZdOfOKRbJE/maxresdefault.jpg" alt="Spinal Surgery avoided" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-btn"><i class="fab fa-youtube"></i></div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <div class="yt-title">"How I Avoided Surgery with Dr. Sharma's Treatment"</div>
+          <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 2 min watch</div>
+        </div>
+      </div>
+      <div class="yt-card fade-up fade-up-delay-3">
+        <div class="yt-thumb" onclick="playVideo(this, 'MsOSO7YNZqg')">
+          <img src="https://img.youtube.com/vi/MsOSO7YNZqg/maxresdefault.jpg" alt="ACL Recovery Without Surgery" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-btn"><i class="fab fa-youtube"></i></div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <div class="yt-title">"Patient during treatment — Right Shoulder Bursitis and Left Tennis Elbow  Recovery Without Surgery"</div>
+          <div class="yt-meta"><i class="fab fa-youtube" style="color:#FF0000"></i> Patient Story · 1 min watch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- ─── APPOINTMENT FORM ─── -->
     <section class="appointment" id="appointment">
@@ -650,6 +652,17 @@
           btn.disabled = false;
         }
       }
+      function playVideo(el, id, start = 0) {
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&start=${start}`;
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  el.innerHTML = '';
+  el.appendChild(iframe);
+}
     </script>
 
   </body>

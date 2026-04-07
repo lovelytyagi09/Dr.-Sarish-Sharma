@@ -76,6 +76,45 @@ app.get('/faqs', (req, res) =>
 // BLOGS 
 app.get('/blogs', (req, res) => res.render('blog/index'));
 
+// LOCATIONS
+app.get('/locations', (req, res) => {
+  res.render('locations/index');
+});
+
+// SAFDARJUNG
+app.get('/locations/best-orthopedic-doctor-safdarjung', (req, res) => {
+  res.render('locations/bestorthoinSafdarjung/index');
+});
+
+// GREEN PARK
+app.get('/locations/best-orthopedic-doctor-green-park', (req, res) => {
+  res.render('locations/bestorthoinGreenPark/index');
+});
+
+// HAUZ KHAS
+app.get('/locations/best-orthopedic-doctor-hauz-khas', (req, res) => {
+  res.render('locations/bestorthoinHauzKhas/index');
+});
+
+// R.K. PURAM
+app.get('/locations/best-orthopedic-doctor-rk-puram', (req, res) => {
+  res.render('locations/bestorthoinRKPuram/index');
+});
+
+// SAKET
+app.get('/locations/best-orthopedic-doctor-saket', (req, res) => {
+  res.render('locations/bestorthoinSaket/index');
+});
+
+// KATWARIA SARAI
+app.get('/locations/best-orthopedic-doctor-katwaria-sarai', (req, res) => {
+  res.render('locations/bestorthoinKatwariaSarai/index');
+});
+
+// VASANT KUNJ
+app.get('/locations/best-orthopedic-doctor-vasant-kunj', (req, res) => {
+  res.render('locations/bestorthoinVasantKunj/index');
+});
 //BONE HEALTH 
 app.get("/blogs/bonehealth" , (req , res) => {
   res.render("blog/bonehealth/index")
@@ -96,6 +135,7 @@ app.get("/blogs/arthiritis" , (req , res) => {
 app.get("/blogs/fracture" , (req , res) => {
   res.render("blog/fracture/index")
 })
+
 //Submit Form 
 app.post('/submit-appointment', (req, res) => {
 
