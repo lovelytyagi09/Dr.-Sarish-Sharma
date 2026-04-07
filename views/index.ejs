@@ -302,7 +302,7 @@
             <div class="section-tag">Health Blog</div>
             <h2 class="section-title" style="margin-bottom:0">Insights on Orthopedic Health<br>& Non-Surgical Living</h2>
           </div>
-          <a href="#" class="btn btn-primary fade-up fade-up-delay-2">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/blogs" class="btn btn-primary fade-up fade-up-delay-2">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="blog-grid">
           <div class="blog-card fade-up">
@@ -571,98 +571,38 @@
     </a>
 
     <!-- ─── ALL SCRIPTS AT BOTTOM — runs after DOM is ready ─── -->
-    <script>
-      // ── Scroll animations ──
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.10 });
-      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-      // ── Hamburger menu ──
+     <script>
+  // ── Hamburger menu & Mobile Dropdowns ──
       const ham = document.querySelector('.hamburger');
       const navLinks = document.querySelector('.nav-links');
+
+      // 1. Open/Close main hamburger menu
       ham?.addEventListener('click', () => {
         navLinks.classList.toggle('open');
       });
 
-      // ── Close nav when a link inside it is clicked ──
-      navLinks?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('open');
+      // 2. Handle Dropdown Clicks (Like 'About' or 'Locations')
+      const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault(); // Stops the page from jumping to the top
+          // Find the parent folder and toggle the 'active' class
+          const parent = toggle.closest('.nav-dropdown');
+          parent.classList.toggle('active');
         });
       });
 
-      // ── Navbar shadow on scroll ──
-      window.addEventListener('scroll', () => {
-        document.querySelector('.navbar').style.boxShadow = window.scrollY > 50
-          ? '0 4px 28px rgba(10,35,66,0.12)'
-          : '0 1px 20px rgba(10,35,66,0.07)';
+      // 3. Close the whole nav ONLY when a real page link is clicked
+      navLinks?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          // If the link they clicked is NOT a dropdown toggle, close the menu
+          if (!link.closest('.nav-dropdown-toggle')) {
+            navLinks.classList.remove('open');
+            // Also reset any open dropdowns for next time
+            document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
+          }
+        });
       });
-
-      // ── About dropdown ──
-      function toggleAbout(e) {
-        e.stopPropagation();
-        document.querySelector('.about-dropdown-wrapper').classList.toggle('open');
-      }
-      document.addEventListener('click', function () {
-        document.querySelector('.about-dropdown-wrapper').classList.remove('open');
-      });
-
-      // ── YouTube play ──
-      function playVideo(thumb, videoId) {
-        thumb.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1"
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-          gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      }
-
-      // ── Appointment form ──
-      async function submitForm() {
-        const btn = document.querySelector('.form-submit');
-        const data = {
-          firstName: document.querySelector('[name="firstName"]').value.trim(),
-          lastName:  document.querySelector('[name="lastName"]').value.trim(),
-          phone:     document.querySelector('[name="phone"]').value.trim(),
-          email:     document.querySelector('[name="email"]').value.trim(),
-          date:      document.querySelector('[name="date"]').value,
-          time:      document.querySelector('[name="time"]').value,
-          service:   document.querySelector('[name="service"]').value,
-          concern:   document.querySelector('[name="concern"]').value.trim(),
-        };
-        if (!data.firstName || !data.phone) {
-          alert('Please fill in your name and phone number.');
-          return;
-        }
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening WhatsApp...';
-        btn.disabled = true;
-        try {
-          const response = await fetch('/submit-appointment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          const result = await response.json();
-          window.open(result.url, '_blank');
-          btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
-          btn.style.background = '#16a34a';
-        } catch (err) {
-          alert('Something went wrong. Please try again.');
-          btn.innerHTML = '<i class="fa-regular fa-calendar-check"></i> Confirm My Appointment';
-          btn.disabled = false;
-        }
-      }
-      function playVideo(el, id, start = 0) {
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&start=${start}`;
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-  iframe.setAttribute('allowfullscreen', '');
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  el.innerHTML = '';
-  el.appendChild(iframe);
-}
     </script>
 
   </body>

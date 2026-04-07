@@ -334,3 +334,37 @@
 </a>
 
 <%- include('../partials/footer') %>
+ <!-- ─── ALL SCRIPTS AT BOTTOM — runs after DOM is ready ─── -->
+     <script>
+  // ── Hamburger menu & Mobile Dropdowns ──
+      const ham = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+
+      // 1. Open/Close main hamburger menu
+      ham?.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      // 2. Handle Dropdown Clicks (Like 'About' or 'Locations')
+      const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault(); // Stops the page from jumping to the top
+          // Find the parent folder and toggle the 'active' class
+          const parent = toggle.closest('.nav-dropdown');
+          parent.classList.toggle('active');
+        });
+      });
+
+      // 3. Close the whole nav ONLY when a real page link is clicked
+      navLinks?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          // If the link they clicked is NOT a dropdown toggle, close the menu
+          if (!link.closest('.nav-dropdown-toggle')) {
+            navLinks.classList.remove('open');
+            // Also reset any open dropdowns for next time
+            document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
+          }
+        });
+      });
+    </script>
